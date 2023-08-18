@@ -1,3 +1,13 @@
+export 'models/mixins/node_mixins.dart';
+export 'models/mixins/padding_mixin.dart';
+export 'models/mixins/auto_layout_mixin.dart';
+export 'models/mixins/layout_mixin.dart';
+export 'models/mixins/strokes_mixin.dart';
+export 'models/mixins/fills_mixin.dart';
+export 'models/mixins/corner_mixin.dart';
+export 'models/mixins/effects_mixin.dart';
+export 'models/node_children_mixin.dart';
+export 'models/node_types.dart';
 export 'models/blend_mode.dart';
 export 'models/boolean_operation.dart';
 export 'models/canvas.dart';

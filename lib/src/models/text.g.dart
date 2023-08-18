@@ -9,6 +9,8 @@ part of 'text.dart';
 abstract class _$TextCWProxy {
   Text id(String id);
 
+  Text type(NodeTypes type);
+
   Text visible(bool visible);
 
   Text locked(bool locked);
@@ -51,6 +53,8 @@ abstract class _$TextCWProxy {
   Text blendMode(BlendMode? blendMode);
 
   Text layoutAlign(LayoutAlign? layoutAlign);
+
+  Text layoutPositioning(LayoutPositioning? layoutPositioning);
 
   Text constraints(LayoutConstraint? constraints);
 
@@ -102,6 +106,7 @@ abstract class _$TextCWProxy {
   /// ````
   Text call({
     String? id,
+    NodeTypes? type,
     bool? visible,
     bool? locked,
     List<ExportSetting>? exportSettings,
@@ -123,6 +128,7 @@ abstract class _$TextCWProxy {
     dynamic sharedPluginData,
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
+    LayoutPositioning? layoutPositioning,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -155,6 +161,9 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
 
   @override
   Text id(String id) => this(id: id);
+
+  @override
+  Text type(NodeTypes type) => this(type: type);
 
   @override
   Text visible(bool visible) => this(visible: visible);
@@ -225,6 +234,10 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
 
   @override
   Text layoutAlign(LayoutAlign? layoutAlign) => this(layoutAlign: layoutAlign);
+
+  @override
+  Text layoutPositioning(LayoutPositioning? layoutPositioning) =>
+      this(layoutPositioning: layoutPositioning);
 
   @override
   Text constraints(LayoutConstraint? constraints) =>
@@ -312,6 +325,7 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
   /// ````
   Text call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
     Object? visible = const $CopyWithPlaceholder(),
     Object? locked = const $CopyWithPlaceholder(),
     Object? exportSettings = const $CopyWithPlaceholder(),
@@ -333,6 +347,7 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
     Object? sharedPluginData = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
+    Object? layoutPositioning = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -360,6 +375,10 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as NodeTypes,
       visible: visible == const $CopyWithPlaceholder() || visible == null
           ? _value.visible
           // ignore: cast_nullable_to_non_nullable
@@ -454,6 +473,10 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
           ? _value.layoutAlign
           // ignore: cast_nullable_to_non_nullable
           : layoutAlign as LayoutAlign?,
+      layoutPositioning: layoutPositioning == const $CopyWithPlaceholder()
+          ? _value.layoutPositioning
+          // ignore: cast_nullable_to_non_nullable
+          : layoutPositioning as LayoutPositioning?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -556,6 +579,7 @@ extension $TextCopyWith on Text {
 
 Text _$TextFromJson(Map<String, dynamic> json) => Text(
       id: json['id'] as String,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       visible: json['visible'] as bool? ?? true,
       locked: json['locked'] as bool? ?? false,
       exportSettings: (json['exportSettings'] as List<dynamic>?)
@@ -599,6 +623,8 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
       blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
       layoutAlign:
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
+      layoutPositioning: $enumDecodeNullable(
+          _$LayoutPositioningEnumMap, json['layoutPositioning']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -669,6 +695,7 @@ Map<String, dynamic> _$TextToJson(Text instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -678,6 +705,8 @@ Map<String, dynamic> _$TextToJson(Text instance) => <String, dynamic>{
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
       'preserveRatio': instance.preserveRatio,
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
+      'layoutPositioning':
+          _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
@@ -714,6 +743,26 @@ Map<String, dynamic> _$TextToJson(Text instance) => <String, dynamic>{
           instance.lineTypes?.map((e) => _$LineTypeEnumMap[e]!).toList(),
       'lineIndentations': instance.lineIndentations,
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};
 
 const _$StrokeCapEnumMap = {
   StrokeCap.none: 'NONE',
@@ -757,6 +806,11 @@ const _$LayoutAlignEnumMap = {
   LayoutAlign.max: 'MAX',
   LayoutAlign.stretch: 'STRETCH',
   LayoutAlign.inherit: 'INHERIT',
+};
+
+const _$LayoutPositioningEnumMap = {
+  LayoutPositioning.auto: 'AUTO',
+  LayoutPositioning.absolute: 'ABSOLUTE',
 };
 
 const _$EasingTypeEnumMap = {

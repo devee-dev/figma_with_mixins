@@ -13,38 +13,41 @@ class NodeJsonConverter implements JsonConverter<Node?, Object?> {
       return null;
     }
     final node = Node.fromJson(json as Map<String, dynamic>);
-    switch (node.type?.toUpperCase()) {
-      case 'CANVAS':
+    switch (node.type) {
+      case NodeTypes.CANVAS:
         return Canvas.fromJson(json);
-      case 'FRAME':
+      case NodeTypes.FRAME:
         return Frame.fromJson(json);
-      case 'VECTOR':
+
+      case NodeTypes.VECTOR:
         return Vector.fromJson(json);
-      case 'STAR':
+      case NodeTypes.STAR:
         return Star.fromJson(json);
-      case 'BOOLEAN_OPERATION':
+      case NodeTypes.BOOLEAN_OPERATION:
         return BooleanOperation.fromJson(json);
-      case 'COMPONENT':
+      case NodeTypes.SECTION:
+        return Frame.fromJson(json);
+      case NodeTypes.COMPONENT:
         return ComponentNode.fromJson(json);
-      case 'COMPONENT_SET':
+      case NodeTypes.COMPONENT_SET:
         return ComponentNode.fromJson(json);
-      case 'LINE':
+      case NodeTypes.LINE:
         return Line.fromJson(json);
-      case 'TEXT':
+      case NodeTypes.TEXT:
         return Text.fromJson(json);
-      case 'ELLIPSE':
+      case NodeTypes.ELLIPSE:
         return Ellipse.fromJson(json);
-      case 'GROUP':
+      case NodeTypes.GROUP:
         return Group.fromJson(json);
-      case 'RECTANGLE':
+      case NodeTypes.RECTANGLE:
         return Rectangle.fromJson(json);
-      case 'REGULAR_POLYGON':
+      case NodeTypes.REGULAR_POLYGON:
         return RegularPolygon.fromJson(json);
-      case 'SLICE':
+      case NodeTypes.SLICE:
         return Slice.fromJson(json);
-      case 'INSTANCE':
+      case NodeTypes.INSTANCE:
         return Instance.fromJson(json);
-      case 'DOCUMENT':
+      case NodeTypes.DOCUMENT:
         return Document.fromJson(json);
       default:
         throw UnsupportedError('Unsupported node type : ${node.type}');

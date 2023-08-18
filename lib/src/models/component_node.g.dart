@@ -87,7 +87,7 @@ abstract class _$ComponentNodeCWProxy {
 
   ComponentNode sharedPluginData(dynamic sharedPluginData);
 
-  ComponentNode type(String? type);
+  ComponentNode type(NodeTypes type);
 
   ComponentNode strokeWeight(double? strokeWeight);
 
@@ -163,7 +163,7 @@ abstract class _$ComponentNodeCWProxy {
     String? name,
     dynamic pluginData,
     dynamic sharedPluginData,
-    String? type,
+    NodeTypes? type,
     double? strokeWeight,
     StrokeAlign? strokeAlign,
     double? cornerRadius,
@@ -330,7 +330,7 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
       this(sharedPluginData: sharedPluginData);
 
   @override
-  ComponentNode type(String? type) => this(type: type);
+  ComponentNode type(NodeTypes type) => this(type: type);
 
   @override
   ComponentNode strokeWeight(double? strokeWeight) =>
@@ -632,10 +632,10 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       strokeWeight: strokeWeight == const $CopyWithPlaceholder()
           ? _value.strokeWeight
           // ignore: cast_nullable_to_non_nullable
@@ -802,7 +802,7 @@ ComponentNode _$ComponentNodeFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
@@ -840,7 +840,7 @@ Map<String, dynamic> _$ComponentNodeToJson(ComponentNode instance) =>
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -922,6 +922,7 @@ const _$CounterAxisAlignItemsEnumMap = {
   CounterAxisAlignItems.min: 'MIN',
   CounterAxisAlignItems.center: 'CENTER',
   CounterAxisAlignItems.max: 'MAX',
+  CounterAxisAlignItems.basline: 'BASELINE',
 };
 
 const _$PrimaryAxisAlignItemsEnumMap = {
@@ -944,6 +945,26 @@ const _$StyleTypeKeyEnumMap = {
   StyleTypeKey.text: 'text',
   StyleTypeKey.effect: 'effect',
   StyleTypeKey.grid: 'grid',
+};
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
 };
 
 const _$StrokeAlignEnumMap = {

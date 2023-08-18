@@ -9,6 +9,7 @@ part 'line.g.dart';
 class Line extends Vector {
   Line({
     required super.id,
+    required super.type,
     required super.visible,
     required super.locked,
     required super.exportSettings,
@@ -30,6 +31,7 @@ class Line extends Vector {
     super.sharedPluginData,
     super.blendMode,
     super.layoutAlign,
+    super.layoutPositioning,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,

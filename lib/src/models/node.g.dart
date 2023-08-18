@@ -13,7 +13,7 @@ abstract class _$NodeCWProxy {
 
   Node visible(bool visible);
 
-  Node type(String? type);
+  Node type(NodeTypes type);
 
   Node pluginData(dynamic pluginData);
 
@@ -34,7 +34,7 @@ abstract class _$NodeCWProxy {
     String? id,
     String? name,
     bool? visible,
-    String? type,
+    NodeTypes? type,
     dynamic pluginData,
     dynamic sharedPluginData,
     double? rotation,
@@ -58,7 +58,7 @@ class _$NodeCWProxyImpl implements _$NodeCWProxy {
   Node visible(bool visible) => this(visible: visible);
 
   @override
-  Node type(String? type) => this(type: type);
+  Node type(NodeTypes type) => this(type: type);
 
   @override
   Node pluginData(dynamic pluginData) => this(pluginData: pluginData);
@@ -106,10 +106,10 @@ class _$NodeCWProxyImpl implements _$NodeCWProxy {
           ? _value.visible
           // ignore: cast_nullable_to_non_nullable
           : visible as bool,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       pluginData:
           pluginData == const $CopyWithPlaceholder() || pluginData == null
               ? _value.pluginData
@@ -147,7 +147,7 @@ Node _$NodeFromJson(Map<String, dynamic> json) => Node(
       id: json['id'] as String,
       name: json['name'] as String?,
       visible: json['visible'] as bool? ?? true,
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
       rotation: (json['rotation'] as num?)?.toDouble(),
@@ -161,9 +161,29 @@ Map<String, dynamic> _$NodeToJson(Node instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
       'componentPropertyReferences': instance.componentPropertyReferences,
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};

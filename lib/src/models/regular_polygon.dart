@@ -9,6 +9,7 @@ part 'regular_polygon.g.dart';
 class RegularPolygon extends Vector {
   RegularPolygon({
     required super.id,
+    required super.type,
     required super.visible,
     required super.locked,
     required super.exportSettings,
@@ -30,6 +31,7 @@ class RegularPolygon extends Vector {
     super.sharedPluginData,
     super.blendMode,
     super.layoutAlign,
+    super.layoutPositioning,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,

@@ -48,7 +48,7 @@ class ComponentNode extends Frame {
     super.name,
     super.pluginData,
     super.sharedPluginData,
-    super.type,
+    required super.type,
     super.strokeWeight,
     super.strokeAlign,
     super.cornerRadius,

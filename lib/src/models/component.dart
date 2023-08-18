@@ -17,6 +17,8 @@ class Component extends Equatable {
   @JsonKey(name: 'file_key')
   final String? fileKey;
 
+  final bool? remote;
+
   /// Id of the component node within the figma file.
   @JsonKey(name: 'node_id')
   final String? nodeId;
@@ -62,6 +64,7 @@ class Component extends Equatable {
 
   Component({
     this.key,
+    this.remote,
     this.fileKey,
     this.nodeId,
     this.thumbnailUrl,
@@ -80,6 +83,7 @@ class Component extends Equatable {
   List<Object?> get props => [
         key,
         fileKey,
+        remote,
         nodeId,
         thumbnailUrl,
         name,

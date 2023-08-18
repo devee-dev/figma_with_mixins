@@ -16,7 +16,7 @@ abstract class _$DocumentCWProxy {
 
   Document rotation(double? rotation);
 
-  Document type(String? type);
+  Document type(NodeTypes type);
 
   Document name(String? name);
 
@@ -37,7 +37,7 @@ abstract class _$DocumentCWProxy {
     bool? visible,
     Map<String, String>? componentPropertyReferences,
     double? rotation,
-    String? type,
+    NodeTypes? type,
     String? name,
     dynamic pluginData,
     dynamic sharedPluginData,
@@ -66,7 +66,7 @@ class _$DocumentCWProxyImpl implements _$DocumentCWProxy {
   Document rotation(double? rotation) => this(rotation: rotation);
 
   @override
-  Document type(String? type) => this(type: type);
+  Document type(NodeTypes type) => this(type: type);
 
   @override
   Document name(String? name) => this(name: name);
@@ -118,10 +118,10 @@ class _$DocumentCWProxyImpl implements _$DocumentCWProxy {
           ? _value.rotation
           // ignore: cast_nullable_to_non_nullable
           : rotation as double?,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
@@ -162,7 +162,7 @@ Document _$DocumentFromJson(Map<String, dynamic> json) => Document(
         (k, e) => MapEntry(k, e as String),
       ),
       rotation: (json['rotation'] as num?)?.toDouble(),
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       name: json['name'] as String?,
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
@@ -175,7 +175,7 @@ Map<String, dynamic> _$DocumentToJson(Document instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -183,3 +183,23 @@ Map<String, dynamic> _$DocumentToJson(Document instance) => <String, dynamic>{
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};

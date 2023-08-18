@@ -18,7 +18,7 @@ abstract class _$SliceCWProxy {
 
   Slice name(String? name);
 
-  Slice type(String? type);
+  Slice type(NodeTypes type);
 
   Slice pluginData(dynamic pluginData);
 
@@ -46,7 +46,7 @@ abstract class _$SliceCWProxy {
     Map<String, String>? componentPropertyReferences,
     double? rotation,
     String? name,
-    String? type,
+    NodeTypes? type,
     dynamic pluginData,
     dynamic sharedPluginData,
     List<ExportSetting>? exportSettings,
@@ -81,7 +81,7 @@ class _$SliceCWProxyImpl implements _$SliceCWProxy {
   Slice name(String? name) => this(name: name);
 
   @override
-  Slice type(String? type) => this(type: type);
+  Slice type(NodeTypes type) => this(type: type);
 
   @override
   Slice pluginData(dynamic pluginData) => this(pluginData: pluginData);
@@ -154,10 +154,10 @@ class _$SliceCWProxyImpl implements _$SliceCWProxy {
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String?,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       pluginData:
           pluginData == const $CopyWithPlaceholder() || pluginData == null
               ? _value.pluginData
@@ -211,7 +211,7 @@ Slice _$SliceFromJson(Map<String, dynamic> json) => Slice(
       ),
       rotation: (json['rotation'] as num?)?.toDouble(),
       name: json['name'] as String?,
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
       exportSettings: (json['exportSettings'] as List<dynamic>?)
@@ -237,7 +237,7 @@ Map<String, dynamic> _$SliceToJson(Slice instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -248,3 +248,23 @@ Map<String, dynamic> _$SliceToJson(Slice instance) => <String, dynamic>{
       'size': instance.size,
       'relativeTransform': instance.relativeTransform,
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};

@@ -9,6 +9,8 @@ part of 'boolean_operation.dart';
 abstract class _$BooleanOperationCWProxy {
   BooleanOperation id(String id);
 
+  BooleanOperation type(NodeTypes type);
+
   BooleanOperation visible(bool visible);
 
   BooleanOperation locked(bool locked);
@@ -51,6 +53,8 @@ abstract class _$BooleanOperationCWProxy {
   BooleanOperation blendMode(BlendMode? blendMode);
 
   BooleanOperation layoutAlign(LayoutAlign? layoutAlign);
+
+  BooleanOperation layoutPositioning(LayoutPositioning? layoutPositioning);
 
   BooleanOperation constraints(LayoutConstraint? constraints);
 
@@ -96,6 +100,7 @@ abstract class _$BooleanOperationCWProxy {
   /// ````
   BooleanOperation call({
     String? id,
+    NodeTypes? type,
     bool? visible,
     bool? locked,
     List<ExportSetting>? exportSettings,
@@ -117,6 +122,7 @@ abstract class _$BooleanOperationCWProxy {
     dynamic sharedPluginData,
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
+    LayoutPositioning? layoutPositioning,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -145,6 +151,9 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
 
   @override
   BooleanOperation id(String id) => this(id: id);
+
+  @override
+  BooleanOperation type(NodeTypes type) => this(type: type);
 
   @override
   BooleanOperation visible(bool visible) => this(visible: visible);
@@ -223,6 +232,10 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
       this(layoutAlign: layoutAlign);
 
   @override
+  BooleanOperation layoutPositioning(LayoutPositioning? layoutPositioning) =>
+      this(layoutPositioning: layoutPositioning);
+
+  @override
   BooleanOperation constraints(LayoutConstraint? constraints) =>
       this(constraints: constraints);
 
@@ -299,6 +312,7 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
   /// ````
   BooleanOperation call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
     Object? visible = const $CopyWithPlaceholder(),
     Object? locked = const $CopyWithPlaceholder(),
     Object? exportSettings = const $CopyWithPlaceholder(),
@@ -320,6 +334,7 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
     Object? sharedPluginData = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
+    Object? layoutPositioning = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -343,6 +358,10 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as NodeTypes,
       visible: visible == const $CopyWithPlaceholder() || visible == null
           ? _value.visible
           // ignore: cast_nullable_to_non_nullable
@@ -437,6 +456,10 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
           ? _value.layoutAlign
           // ignore: cast_nullable_to_non_nullable
           : layoutAlign as LayoutAlign?,
+      layoutPositioning: layoutPositioning == const $CopyWithPlaceholder()
+          ? _value.layoutPositioning
+          // ignore: cast_nullable_to_non_nullable
+          : layoutPositioning as LayoutPositioning?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -523,6 +546,7 @@ extension $BooleanOperationCopyWith on BooleanOperation {
 BooleanOperation _$BooleanOperationFromJson(Map<String, dynamic> json) =>
     BooleanOperation(
       id: json['id'] as String,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       visible: json['visible'] as bool? ?? true,
       locked: json['locked'] as bool? ?? false,
       exportSettings: (json['exportSettings'] as List<dynamic>?)
@@ -566,6 +590,8 @@ BooleanOperation _$BooleanOperationFromJson(Map<String, dynamic> json) =>
       blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
       layoutAlign:
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
+      layoutPositioning: $enumDecodeNullable(
+          _$LayoutPositioningEnumMap, json['layoutPositioning']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -622,6 +648,7 @@ Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -631,6 +658,8 @@ Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
       'preserveRatio': instance.preserveRatio,
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
+      'layoutPositioning':
+          _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
@@ -662,6 +691,26 @@ Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
       'operation': _$OperationEnumMap[instance.operation],
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};
 
 const _$StrokeCapEnumMap = {
   StrokeCap.none: 'NONE',
@@ -705,6 +754,11 @@ const _$LayoutAlignEnumMap = {
   LayoutAlign.max: 'MAX',
   LayoutAlign.stretch: 'STRETCH',
   LayoutAlign.inherit: 'INHERIT',
+};
+
+const _$LayoutPositioningEnumMap = {
+  LayoutPositioning.auto: 'AUTO',
+  LayoutPositioning.absolute: 'ABSOLUTE',
 };
 
 const _$EasingTypeEnumMap = {

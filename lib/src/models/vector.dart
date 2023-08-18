@@ -9,7 +9,8 @@ part 'vector.g.dart';
 /// are vectors, as well as [Text], among others.
 @JsonSerializable()
 @CopyWith()
-class Vector extends Node {
+class Vector extends Node
+    implements LayoutMixin, StrokesMixin, FillsMixin, EffectsMixin {
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
@@ -22,20 +23,29 @@ class Vector extends Node {
   final BlendMode? blendMode;
 
   /// Keep height and width constrained to same ratio.
+  @override
   @JsonKey(defaultValue: false)
   final bool preserveRatio;
 
   /// How the layer is aligned inside an auto-layout frame. This property is
   /// only provided for direct children of auto-layout frames.
+  @override
   final LayoutAlign? layoutAlign;
+
+  ///This property is applicable only for direct children of auto-layout frames.
+  ///Determines whether a layer's size and position should be dermined by auto-layout settings or manually adjustable.
+  @override
+  final LayoutPositioning? layoutPositioning;
 
   /// This property is applicable only for direct children of auto-layout frames,
   /// ignored otherwise. Determines whether a layer should stretch along the parent’s
   /// primary axis. A `0` corresponds to a fixed size and `1` corresponds to stretch.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double layoutGrow;
 
   /// Horizontal and vertical layout constraints for node.
+  @override
   final LayoutConstraint? constraints;
 
   /// Node ID of node to transition to in prototyping.
@@ -52,12 +62,14 @@ class Vector extends Node {
   final double opacity;
 
   /// Bounding box of the node in absolute space coordinates.
+  @override
   final SizeRectangle? absoluteBoundingBox;
 
   /// The bounds of the rendered node in the file in absolute space coordinates.
   final SizeRectangle? absoluteRenderBounds;
 
   /// An array of effects attached to this node (see [Effect]).
+  @override
   final List<Effect>? effects;
 
   /// Width and height of element. This is different from the width and height
@@ -77,11 +89,13 @@ class Vector extends Node {
   final bool isMask;
 
   /// An array of fill paints applied to the node.
+  @override
   @JsonKey(defaultValue: [])
   final List<Paint> fills;
 
   /// Only specified if parameter geometry=paths is used. An array of paths
   /// representing the object fill.
+  @override
   @JsonKey(defaultValue: [])
   final List<Path> fillGeometry;
 
@@ -91,23 +105,28 @@ class Vector extends Node {
   final Map<int, PaintOverride?>? fillOverrideTable;
 
   /// An array of stroke paints applied to the node.
+  @override
   @JsonKey(defaultValue: [])
   final List<Paint> strokes;
 
   /// The weight of strokes on the node.
+  @override
   final double? strokeWeight;
 
   /// The weight of strokes on the node per side, if they vary.
+  @override
   final StrokeWeights? individualStrokeWeights;
 
   /// A string enum with value of [StrokeCap.none], [StrokeCap.round],
   /// [StrokeCap.square], [StrokeCap.lineArrow] or [StrokeCap.triangleArrow],
   /// describing the end caps of vector paths.
+  @override
   @JsonKey(defaultValue: StrokeCap.none)
   final StrokeCap strokeCap;
 
   /// A string enum with value of [StrokeJoin.miter], [StrokeJoin.bevel], or
   /// [StrokeCap.round], describing how corners in vector paths are rendered.
+  @override
   @JsonKey(defaultValue: StrokeJoin.miter)
   final StrokeJoin strokeJoin;
 
@@ -115,20 +134,24 @@ class Vector extends Node {
   /// and gap lengths that the vector path follows. For example a value of
   /// `[1, 2]` indicates that the path has a dash of length 1 followed by a gap
   /// of length 2, repeated.
+  @override
   @JsonKey(defaultValue: [])
   final List<double> strokeDashes;
 
   /// Only valid if strokeJoin is [StrokeJoin.miter]. The corner angle, in
   /// degrees, below which strokeJoin will be set to [StrokeJoin.bevel] to
   /// avoid super sharp corners. By default this is 28.96 degrees.
+  @override
   @JsonKey(defaultValue: 28.96)
   final double strokeMiterAngle;
 
   /// Only specified if parameter geometry=paths is used. An array of paths
   /// representing the object stroke.
+  @override
   final List<dynamic>? strokeGeometry;
 
   /// Position of stroke relative to vector outline.
+  @override
   final StrokeAlign? strokeAlign;
 
   /// A mapping of a StyleType to style ID (see [Style]) of styles present on
@@ -144,6 +167,7 @@ class Vector extends Node {
     super.rotation,
     super.pluginData,
     super.sharedPluginData,
+    required super.type,
     required this.locked,
     required this.exportSettings,
     required this.preserveRatio,
@@ -159,6 +183,7 @@ class Vector extends Node {
     required this.strokes,
     this.blendMode,
     this.layoutAlign,
+    this.layoutPositioning,
     this.constraints,
     this.transitionNodeID,
     this.transitionDuration,
@@ -184,6 +209,7 @@ class Vector extends Node {
         blendMode,
         preserveRatio,
         layoutAlign,
+        layoutPositioning,
         layoutGrow,
         constraints,
         transitionNodeID,

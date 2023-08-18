@@ -10,6 +10,7 @@ part 'ellipse.g.dart';
 class Ellipse extends Vector {
   Ellipse({
     required super.id,
+    required super.type,
     required super.visible,
     required super.locked,
     required super.exportSettings,
@@ -31,6 +32,7 @@ class Ellipse extends Vector {
     super.sharedPluginData,
     super.blendMode,
     super.layoutAlign,
+    super.layoutPositioning,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,

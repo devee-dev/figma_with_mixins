@@ -9,27 +9,22 @@ part 'document.g.dart';
 ///  node stems any Canvas nodes.
 @JsonSerializable()
 @CopyWith()
-class Document extends Node {
-  /// An array of canvases attached to the document.
-  @NodeJsonConverter()
-  final List<Node?>? children;
-
+class Document extends NodeWithChildren {
   Document({
     required super.id,
     required super.visible,
     super.componentPropertyReferences,
     super.rotation,
-    super.type,
+    required super.type,
     super.name,
     super.pluginData,
     super.sharedPluginData,
-    this.children,
+    super.children,
   });
 
   @override
   List<Object?> get props => [
         ...super.props,
-        children,
       ];
 
   @override

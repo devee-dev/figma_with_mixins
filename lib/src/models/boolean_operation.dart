@@ -32,6 +32,7 @@ class BooleanOperation extends Vector {
 
   BooleanOperation({
     required super.id,
+    required super.type,
     required super.visible,
     required super.locked,
     required super.exportSettings,
@@ -53,6 +54,7 @@ class BooleanOperation extends Vector {
     super.sharedPluginData,
     super.blendMode,
     super.layoutAlign,
+    super.layoutPositioning,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,

@@ -11,11 +11,7 @@ part 'canvas.g.dart';
 /// (e.g an object) on the Canvas.
 @JsonSerializable()
 @CopyWith()
-class Canvas extends Node {
-  /// An array of top level layers on the canvas.
-  @NodeJsonConverter()
-  final List<Node?>? children;
-
+class Canvas extends NodeWithChildren {
   /// Background color of the canvas.
   final Color? backgroundColor;
 
@@ -38,18 +34,17 @@ class Canvas extends Node {
     super.rotation,
     super.pluginData,
     super.sharedPluginData,
-    super.type,
+    required super.type,
     required this.prototypeDevice,
     required this.flowStartingPoints,
     required this.exportSettings,
-    this.children,
+    super.children,
     this.backgroundColor,
   });
 
   @override
   List<Object?> get props => [
         ...super.props,
-        children,
         backgroundColor,
         exportSettings,
         flowStartingPoints,

@@ -14,4 +14,7 @@ enum CounterAxisAlignItems {
   /// Align children to the end of the layout grid.
   @JsonValue('MAX')
   max,
+
+  @JsonValue('BASELINE')
+  basline
 }

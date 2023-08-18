@@ -47,10 +47,11 @@ class Instance extends Frame {
     super.name,
     super.pluginData,
     super.sharedPluginData,
-    super.type,
+    required super.type,
     super.strokeWeight,
     super.strokeAlign,
     super.cornerRadius,
+    super.cornerSmoothing,
     super.rectangleCornerRadii,
     super.blendMode,
     super.constraints,
@@ -61,9 +62,16 @@ class Instance extends Frame {
     super.clipsContent,
     super.layoutMode,
     super.individualStrokeWeights,
+    super.strokeCap,
+    super.strokeJoin,
+    super.strokeDashes,
+    super.strokeMiterAngle,
+    super.strokeGeometry,
+    super.fillGeometry,
     required this.isExposedInstance,
     required this.exposedInstances,
     required this.componentProperties,
+    this.overrides,
     this.componentId,
     required this.componentPropertyDefinitions,
   });
@@ -71,6 +79,8 @@ class Instance extends Frame {
   /// ID of component that this instance came from, refers to components
   /// table.
   final String? componentId;
+
+  final List<Overrides>? overrides;
 
   /// If true, this node has been marked as exposed to its containing component or component set
   @JsonKey(defaultValue: false)

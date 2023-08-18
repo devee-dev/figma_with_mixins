@@ -8,17 +8,23 @@ part 'rectangle.g.dart';
 /// may have rounded corners.
 @JsonSerializable()
 @CopyWith()
-class Rectangle extends Vector {
+class Rectangle extends Vector implements RectangleCornerMixin {
   /// Radius of each corner of the rectangle if
   /// a single radius is set for all corners.
+  @override
   final double? cornerRadius;
+
+  @override
+  final double? cornerSmoothing;
 
   /// Array of length 4 of the radius of each corner of the rectangle,
   /// starting in the top left and proceeding clockwise.
+  @override
   final List<double>? rectangleCornerRadii;
 
   Rectangle({
     required super.id,
+    required super.type,
     required super.visible,
     required super.locked,
     required super.exportSettings,
@@ -40,6 +46,7 @@ class Rectangle extends Vector {
     super.sharedPluginData,
     super.blendMode,
     super.layoutAlign,
+    super.layoutPositioning,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,
@@ -56,6 +63,7 @@ class Rectangle extends Vector {
     super.fillOverrideTable,
     super.individualStrokeWeights,
     this.cornerRadius,
+    this.cornerSmoothing,
     this.rectangleCornerRadii,
   });
 

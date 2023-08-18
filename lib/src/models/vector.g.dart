@@ -22,6 +22,8 @@ abstract class _$VectorCWProxy {
 
   Vector sharedPluginData(dynamic sharedPluginData);
 
+  Vector type(NodeTypes type);
+
   Vector locked(bool locked);
 
   Vector exportSettings(List<ExportSetting> exportSettings);
@@ -51,6 +53,8 @@ abstract class _$VectorCWProxy {
   Vector blendMode(BlendMode? blendMode);
 
   Vector layoutAlign(LayoutAlign? layoutAlign);
+
+  Vector layoutPositioning(LayoutPositioning? layoutPositioning);
 
   Vector constraints(LayoutConstraint? constraints);
 
@@ -96,6 +100,7 @@ abstract class _$VectorCWProxy {
     double? rotation,
     dynamic pluginData,
     dynamic sharedPluginData,
+    NodeTypes? type,
     bool? locked,
     List<ExportSetting>? exportSettings,
     bool? preserveRatio,
@@ -111,6 +116,7 @@ abstract class _$VectorCWProxy {
     List<Paint>? strokes,
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
+    LayoutPositioning? layoutPositioning,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -158,6 +164,9 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
   @override
   Vector sharedPluginData(dynamic sharedPluginData) =>
       this(sharedPluginData: sharedPluginData);
+
+  @override
+  Vector type(NodeTypes type) => this(type: type);
 
   @override
   Vector locked(bool locked) => this(locked: locked);
@@ -209,6 +218,10 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
   @override
   Vector layoutAlign(LayoutAlign? layoutAlign) =>
       this(layoutAlign: layoutAlign);
+
+  @override
+  Vector layoutPositioning(LayoutPositioning? layoutPositioning) =>
+      this(layoutPositioning: layoutPositioning);
 
   @override
   Vector constraints(LayoutConstraint? constraints) =>
@@ -282,6 +295,7 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
     Object? rotation = const $CopyWithPlaceholder(),
     Object? pluginData = const $CopyWithPlaceholder(),
     Object? sharedPluginData = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
     Object? locked = const $CopyWithPlaceholder(),
     Object? exportSettings = const $CopyWithPlaceholder(),
     Object? preserveRatio = const $CopyWithPlaceholder(),
@@ -297,6 +311,7 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
     Object? strokes = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
+    Object? layoutPositioning = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -345,6 +360,10 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as NodeTypes,
       locked: locked == const $CopyWithPlaceholder() || locked == null
           ? _value.locked
           // ignore: cast_nullable_to_non_nullable
@@ -412,6 +431,10 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
           ? _value.layoutAlign
           // ignore: cast_nullable_to_non_nullable
           : layoutAlign as LayoutAlign?,
+      layoutPositioning: layoutPositioning == const $CopyWithPlaceholder()
+          ? _value.layoutPositioning
+          // ignore: cast_nullable_to_non_nullable
+          : layoutPositioning as LayoutPositioning?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -498,6 +521,7 @@ Vector _$VectorFromJson(Map<String, dynamic> json) => Vector(
       rotation: (json['rotation'] as num?)?.toDouble(),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       locked: json['locked'] as bool? ?? false,
       exportSettings: (json['exportSettings'] as List<dynamic>?)
               ?.map((e) => ExportSetting.fromJson(e as Map<String, dynamic>))
@@ -532,6 +556,8 @@ Vector _$VectorFromJson(Map<String, dynamic> json) => Vector(
       blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
       layoutAlign:
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
+      layoutPositioning: $enumDecodeNullable(
+          _$LayoutPositioningEnumMap, json['layoutPositioning']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -583,6 +609,7 @@ Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -592,6 +619,8 @@ Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
       'preserveRatio': instance.preserveRatio,
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
+      'layoutPositioning':
+          _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
@@ -620,6 +649,26 @@ Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
       'styles': instance.styles
           ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};
 
 const _$StrokeCapEnumMap = {
   StrokeCap.none: 'NONE',
@@ -663,6 +712,11 @@ const _$LayoutAlignEnumMap = {
   LayoutAlign.max: 'MAX',
   LayoutAlign.stretch: 'STRETCH',
   LayoutAlign.inherit: 'INHERIT',
+};
+
+const _$LayoutPositioningEnumMap = {
+  LayoutPositioning.auto: 'AUTO',
+  LayoutPositioning.absolute: 'ABSOLUTE',
 };
 
 const _$EasingTypeEnumMap = {

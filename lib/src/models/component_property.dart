@@ -2,6 +2,8 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:figma/src/models/instance_swap_preferred_value.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'component_property_type.dart';
+
 part 'component_property.g.dart';
 
 /// Component properties.
@@ -15,7 +17,7 @@ class ComponentProperty {
   });
 
   /// The type of the property.
-  final String type;
+  final ComponentPropertyType type;
 
   /// Value of this property for instances. Either a string or a boolean.
   final dynamic value;

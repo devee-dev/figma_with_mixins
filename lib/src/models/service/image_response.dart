@@ -13,7 +13,7 @@ class ImageResponse extends Equatable {
 
   /// Images made by Figma.
   /// Map where the keys are image IDs and the value is an image URL.
-  final Map<String, String>? images;
+  final Map<String, String?>? images;
 
   /// Images imported by the user.
   /// Map where the keys are image IDs and the value is an image URL.

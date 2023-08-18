@@ -10,6 +10,7 @@ part 'star.g.dart';
 class Star extends Vector {
   Star({
     required super.id,
+    required super.type,
     required super.visible,
     required super.locked,
     required super.exportSettings,
@@ -31,6 +32,7 @@ class Star extends Vector {
     super.sharedPluginData,
     super.blendMode,
     super.layoutAlign,
+    super.layoutPositioning,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,

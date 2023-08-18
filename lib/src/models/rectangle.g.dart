@@ -9,6 +9,8 @@ part of 'rectangle.dart';
 abstract class _$RectangleCWProxy {
   Rectangle id(String id);
 
+  Rectangle type(NodeTypes type);
+
   Rectangle visible(bool visible);
 
   Rectangle locked(bool locked);
@@ -52,6 +54,8 @@ abstract class _$RectangleCWProxy {
 
   Rectangle layoutAlign(LayoutAlign? layoutAlign);
 
+  Rectangle layoutPositioning(LayoutPositioning? layoutPositioning);
+
   Rectangle constraints(LayoutConstraint? constraints);
 
   Rectangle transitionNodeID(String? transitionNodeID);
@@ -84,6 +88,8 @@ abstract class _$RectangleCWProxy {
 
   Rectangle cornerRadius(double? cornerRadius);
 
+  Rectangle cornerSmoothing(double? cornerSmoothing);
+
   Rectangle rectangleCornerRadii(List<double>? rectangleCornerRadii);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Rectangle(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -94,6 +100,7 @@ abstract class _$RectangleCWProxy {
   /// ````
   Rectangle call({
     String? id,
+    NodeTypes? type,
     bool? visible,
     bool? locked,
     List<ExportSetting>? exportSettings,
@@ -115,6 +122,7 @@ abstract class _$RectangleCWProxy {
     dynamic sharedPluginData,
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
+    LayoutPositioning? layoutPositioning,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -131,6 +139,7 @@ abstract class _$RectangleCWProxy {
     Map<int, PaintOverride?>? fillOverrideTable,
     StrokeWeights? individualStrokeWeights,
     double? cornerRadius,
+    double? cornerSmoothing,
     List<double>? rectangleCornerRadii,
   });
 }
@@ -143,6 +152,9 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
 
   @override
   Rectangle id(String id) => this(id: id);
+
+  @override
+  Rectangle type(NodeTypes type) => this(type: type);
 
   @override
   Rectangle visible(bool visible) => this(visible: visible);
@@ -217,6 +229,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
       this(layoutAlign: layoutAlign);
 
   @override
+  Rectangle layoutPositioning(LayoutPositioning? layoutPositioning) =>
+      this(layoutPositioning: layoutPositioning);
+
+  @override
   Rectangle constraints(LayoutConstraint? constraints) =>
       this(constraints: constraints);
 
@@ -278,6 +294,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
       this(cornerRadius: cornerRadius);
 
   @override
+  Rectangle cornerSmoothing(double? cornerSmoothing) =>
+      this(cornerSmoothing: cornerSmoothing);
+
+  @override
   Rectangle rectangleCornerRadii(List<double>? rectangleCornerRadii) =>
       this(rectangleCornerRadii: rectangleCornerRadii);
 
@@ -291,6 +311,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
   /// ````
   Rectangle call({
     Object? id = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
     Object? visible = const $CopyWithPlaceholder(),
     Object? locked = const $CopyWithPlaceholder(),
     Object? exportSettings = const $CopyWithPlaceholder(),
@@ -312,6 +333,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
     Object? sharedPluginData = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
+    Object? layoutPositioning = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -328,6 +350,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
     Object? cornerRadius = const $CopyWithPlaceholder(),
+    Object? cornerSmoothing = const $CopyWithPlaceholder(),
     Object? rectangleCornerRadii = const $CopyWithPlaceholder(),
   }) {
     return Rectangle(
@@ -335,6 +358,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as NodeTypes,
       visible: visible == const $CopyWithPlaceholder() || visible == null
           ? _value.visible
           // ignore: cast_nullable_to_non_nullable
@@ -429,6 +456,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
           ? _value.layoutAlign
           // ignore: cast_nullable_to_non_nullable
           : layoutAlign as LayoutAlign?,
+      layoutPositioning: layoutPositioning == const $CopyWithPlaceholder()
+          ? _value.layoutPositioning
+          // ignore: cast_nullable_to_non_nullable
+          : layoutPositioning as LayoutPositioning?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -494,6 +525,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
           ? _value.cornerRadius
           // ignore: cast_nullable_to_non_nullable
           : cornerRadius as double?,
+      cornerSmoothing: cornerSmoothing == const $CopyWithPlaceholder()
+          ? _value.cornerSmoothing
+          // ignore: cast_nullable_to_non_nullable
+          : cornerSmoothing as double?,
       rectangleCornerRadii: rectangleCornerRadii == const $CopyWithPlaceholder()
           ? _value.rectangleCornerRadii
           // ignore: cast_nullable_to_non_nullable
@@ -514,6 +549,7 @@ extension $RectangleCopyWith on Rectangle {
 
 Rectangle _$RectangleFromJson(Map<String, dynamic> json) => Rectangle(
       id: json['id'] as String,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       visible: json['visible'] as bool? ?? true,
       locked: json['locked'] as bool? ?? false,
       exportSettings: (json['exportSettings'] as List<dynamic>?)
@@ -557,6 +593,8 @@ Rectangle _$RectangleFromJson(Map<String, dynamic> json) => Rectangle(
       blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
       layoutAlign:
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
+      layoutPositioning: $enumDecodeNullable(
+          _$LayoutPositioningEnumMap, json['layoutPositioning']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -603,6 +641,7 @@ Rectangle _$RectangleFromJson(Map<String, dynamic> json) => Rectangle(
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
       cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
+      cornerSmoothing: (json['cornerSmoothing'] as num?)?.toDouble(),
       rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
           ?.map((e) => (e as num).toDouble())
           .toList(),
@@ -612,6 +651,7 @@ Map<String, dynamic> _$RectangleToJson(Rectangle instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -621,6 +661,8 @@ Map<String, dynamic> _$RectangleToJson(Rectangle instance) => <String, dynamic>{
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
       'preserveRatio': instance.preserveRatio,
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
+      'layoutPositioning':
+          _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
@@ -649,8 +691,29 @@ Map<String, dynamic> _$RectangleToJson(Rectangle instance) => <String, dynamic>{
       'styles': instance.styles
           ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
       'cornerRadius': instance.cornerRadius,
+      'cornerSmoothing': instance.cornerSmoothing,
       'rectangleCornerRadii': instance.rectangleCornerRadii,
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};
 
 const _$StrokeCapEnumMap = {
   StrokeCap.none: 'NONE',
@@ -694,6 +757,11 @@ const _$LayoutAlignEnumMap = {
   LayoutAlign.max: 'MAX',
   LayoutAlign.stretch: 'STRETCH',
   LayoutAlign.inherit: 'INHERIT',
+};
+
+const _$LayoutPositioningEnumMap = {
+  LayoutPositioning.auto: 'AUTO',
+  LayoutPositioning.absolute: 'ABSOLUTE',
 };
 
 const _$EasingTypeEnumMap = {

@@ -7,7 +7,7 @@ part of 'component_property.dart';
 // **************************************************************************
 
 abstract class _$ComponentPropertyCWProxy {
-  ComponentProperty type(String type);
+  ComponentProperty type(ComponentPropertyType type);
 
   ComponentProperty value(dynamic value);
 
@@ -21,7 +21,7 @@ abstract class _$ComponentPropertyCWProxy {
   /// ComponentProperty(...).copyWith(id: 12, name: "My name")
   /// ````
   ComponentProperty call({
-    String? type,
+    ComponentPropertyType? type,
     dynamic value,
     List<InstanceSwapPreferredValue>? preferredValues,
   });
@@ -34,7 +34,7 @@ class _$ComponentPropertyCWProxyImpl implements _$ComponentPropertyCWProxy {
   final ComponentProperty _value;
 
   @override
-  ComponentProperty type(String type) => this(type: type);
+  ComponentProperty type(ComponentPropertyType type) => this(type: type);
 
   @override
   ComponentProperty value(dynamic value) => this(value: value);
@@ -61,7 +61,7 @@ class _$ComponentPropertyCWProxyImpl implements _$ComponentPropertyCWProxy {
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String,
+          : type as ComponentPropertyType,
       value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ extension $ComponentPropertyCopyWith on ComponentProperty {
 
 ComponentProperty _$ComponentPropertyFromJson(Map<String, dynamic> json) =>
     ComponentProperty(
-      type: json['type'] as String,
+      type: $enumDecode(_$ComponentPropertyTypeEnumMap, json['type']),
       value: json['value'],
       preferredValues: (json['preferredValues'] as List<dynamic>?)
           ?.map((e) =>
@@ -97,7 +97,14 @@ ComponentProperty _$ComponentPropertyFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ComponentPropertyToJson(ComponentProperty instance) =>
     <String, dynamic>{
-      'type': instance.type,
+      'type': _$ComponentPropertyTypeEnumMap[instance.type]!,
       'value': instance.value,
       'preferredValues': instance.preferredValues,
     };
+
+const _$ComponentPropertyTypeEnumMap = {
+  ComponentPropertyType.boolean: 'BOOLEAN',
+  ComponentPropertyType.text: 'TEXT',
+  ComponentPropertyType.instanceSwap: 'INSTANCE_SWAP',
+  ComponentPropertyType.variant: 'VARIANT',
+};

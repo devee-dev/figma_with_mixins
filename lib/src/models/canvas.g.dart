@@ -22,7 +22,7 @@ abstract class _$CanvasCWProxy {
 
   Canvas sharedPluginData(dynamic sharedPluginData);
 
-  Canvas type(String? type);
+  Canvas type(NodeTypes type);
 
   Canvas prototypeDevice(PrototypeDevice prototypeDevice);
 
@@ -48,7 +48,7 @@ abstract class _$CanvasCWProxy {
     double? rotation,
     dynamic pluginData,
     dynamic sharedPluginData,
-    String? type,
+    NodeTypes? type,
     PrototypeDevice? prototypeDevice,
     List<FlowStartingPoint>? flowStartingPoints,
     List<ExportSetting>? exportSettings,
@@ -88,7 +88,7 @@ class _$CanvasCWProxyImpl implements _$CanvasCWProxy {
       this(sharedPluginData: sharedPluginData);
 
   @override
-  Canvas type(String? type) => this(type: type);
+  Canvas type(NodeTypes type) => this(type: type);
 
   @override
   Canvas prototypeDevice(PrototypeDevice prototypeDevice) =>
@@ -164,10 +164,10 @@ class _$CanvasCWProxyImpl implements _$CanvasCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       prototypeDevice: prototypeDevice == const $CopyWithPlaceholder() ||
               prototypeDevice == null
           ? _value.prototypeDevice
@@ -216,7 +216,7 @@ Canvas _$CanvasFromJson(Map<String, dynamic> json) => Canvas(
       rotation: (json['rotation'] as num?)?.toDouble(),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       prototypeDevice: PrototypeDevice.fromJson(
           json['prototypeDevice'] as Map<String, dynamic>),
       flowStartingPoints: (json['flowStartingPoints'] as List<dynamic>?)
@@ -240,7 +240,7 @@ Map<String, dynamic> _$CanvasToJson(Canvas instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -252,3 +252,23 @@ Map<String, dynamic> _$CanvasToJson(Canvas instance) => <String, dynamic>{
       'flowStartingPoints': instance.flowStartingPoints,
       'prototypeDevice': instance.prototypeDevice,
     };
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};

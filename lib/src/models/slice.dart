@@ -41,7 +41,7 @@ class Slice extends Node {
     super.componentPropertyReferences,
     super.rotation,
     super.name,
-    super.type,
+    required super.type,
     super.pluginData,
     super.sharedPluginData,
     this.exportSettings,

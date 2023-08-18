@@ -7,7 +7,7 @@ part of 'component_property_definition.dart';
 // **************************************************************************
 
 abstract class _$ComponentPropertyDefinitionCWProxy {
-  ComponentPropertyDefinition type(String type);
+  ComponentPropertyDefinition type(ComponentPropertyType type);
 
   ComponentPropertyDefinition defaultValue(dynamic defaultValue);
 
@@ -23,7 +23,7 @@ abstract class _$ComponentPropertyDefinitionCWProxy {
   /// ComponentPropertyDefinition(...).copyWith(id: 12, name: "My name")
   /// ````
   ComponentPropertyDefinition call({
-    String? type,
+    ComponentPropertyType? type,
     dynamic defaultValue,
     List<String>? variantOptions,
     List<InstanceSwapPreferredValue>? preferredValues,
@@ -38,7 +38,8 @@ class _$ComponentPropertyDefinitionCWProxyImpl
   final ComponentPropertyDefinition _value;
 
   @override
-  ComponentPropertyDefinition type(String type) => this(type: type);
+  ComponentPropertyDefinition type(ComponentPropertyType type) =>
+      this(type: type);
 
   @override
   ComponentPropertyDefinition defaultValue(dynamic defaultValue) =>
@@ -71,7 +72,7 @@ class _$ComponentPropertyDefinitionCWProxyImpl
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String,
+          : type as ComponentPropertyType,
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
               ? _value.defaultValue
@@ -103,7 +104,7 @@ extension $ComponentPropertyDefinitionCopyWith on ComponentPropertyDefinition {
 ComponentPropertyDefinition _$ComponentPropertyDefinitionFromJson(
         Map<String, dynamic> json) =>
     ComponentPropertyDefinition(
-      type: json['type'] as String,
+      type: $enumDecode(_$ComponentPropertyTypeEnumMap, json['type']),
       defaultValue: json['defaultValue'],
       variantOptions: (json['variantOptions'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -117,8 +118,15 @@ ComponentPropertyDefinition _$ComponentPropertyDefinitionFromJson(
 Map<String, dynamic> _$ComponentPropertyDefinitionToJson(
         ComponentPropertyDefinition instance) =>
     <String, dynamic>{
-      'type': instance.type,
+      'type': _$ComponentPropertyTypeEnumMap[instance.type]!,
       'defaultValue': instance.defaultValue,
       'variantOptions': instance.variantOptions,
       'preferredValues': instance.preferredValues,
     };
+
+const _$ComponentPropertyTypeEnumMap = {
+  ComponentPropertyType.boolean: 'BOOLEAN',
+  ComponentPropertyType.text: 'TEXT',
+  ComponentPropertyType.instanceSwap: 'INSTANCE_SWAP',
+  ComponentPropertyType.variant: 'VARIANT',
+};

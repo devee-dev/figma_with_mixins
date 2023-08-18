@@ -9,6 +9,8 @@ part of 'component.dart';
 abstract class _$ComponentCWProxy {
   Component key(String? key);
 
+  Component remote(bool? remote);
+
   Component fileKey(String? fileKey);
 
   Component nodeId(String? nodeId);
@@ -42,6 +44,7 @@ abstract class _$ComponentCWProxy {
   /// ````
   Component call({
     String? key,
+    bool? remote,
     String? fileKey,
     String? nodeId,
     String? thumbnailUrl,
@@ -65,6 +68,9 @@ class _$ComponentCWProxyImpl implements _$ComponentCWProxy {
 
   @override
   Component key(String? key) => this(key: key);
+
+  @override
+  Component remote(bool? remote) => this(remote: remote);
 
   @override
   Component fileKey(String? fileKey) => this(fileKey: fileKey);
@@ -119,6 +125,7 @@ class _$ComponentCWProxyImpl implements _$ComponentCWProxy {
   /// ````
   Component call({
     Object? key = const $CopyWithPlaceholder(),
+    Object? remote = const $CopyWithPlaceholder(),
     Object? fileKey = const $CopyWithPlaceholder(),
     Object? nodeId = const $CopyWithPlaceholder(),
     Object? thumbnailUrl = const $CopyWithPlaceholder(),
@@ -137,6 +144,10 @@ class _$ComponentCWProxyImpl implements _$ComponentCWProxy {
           ? _value.key
           // ignore: cast_nullable_to_non_nullable
           : key as String?,
+      remote: remote == const $CopyWithPlaceholder()
+          ? _value.remote
+          // ignore: cast_nullable_to_non_nullable
+          : remote as bool?,
       fileKey: fileKey == const $CopyWithPlaceholder()
           ? _value.fileKey
           // ignore: cast_nullable_to_non_nullable
@@ -205,6 +216,7 @@ extension $ComponentCopyWith on Component {
 
 Component _$ComponentFromJson(Map<String, dynamic> json) => Component(
       key: json['key'] as String?,
+      remote: json['remote'] as bool?,
       fileKey: json['file_key'] as String?,
       nodeId: json['node_id'] as String?,
       thumbnailUrl: json['thumbnail_url'] as String?,
@@ -238,6 +250,7 @@ Component _$ComponentFromJson(Map<String, dynamic> json) => Component(
 Map<String, dynamic> _$ComponentToJson(Component instance) => <String, dynamic>{
       'key': instance.key,
       'file_key': instance.fileKey,
+      'remote': instance.remote,
       'node_id': instance.nodeId,
       'thumbnail_url': instance.thumbnailUrl,
       'name': instance.name,

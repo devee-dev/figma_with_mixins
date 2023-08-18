@@ -22,7 +22,7 @@ abstract class _$FrameCWProxy {
 
   Frame sharedPluginData(dynamic sharedPluginData);
 
-  Frame type(String? type);
+  Frame type(NodeTypes type);
 
   Frame locked(bool locked);
 
@@ -82,15 +82,29 @@ abstract class _$FrameCWProxy {
 
   Frame absoluteRenderBounds(SizeRectangle? absoluteRenderBounds);
 
+  Frame fillGeometry(List<dynamic>? fillGeometry);
+
   Frame size(Vector2D? size);
 
   Frame strokeWeight(double? strokeWeight);
 
   Frame individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
+  Frame strokeCap(StrokeCap? strokeCap);
+
+  Frame strokeJoin(StrokeJoin? strokeJoin);
+
+  Frame strokeDashes(List<double>? strokeDashes);
+
+  Frame strokeMiterAngle(double? strokeMiterAngle);
+
+  Frame strokeGeometry(List<dynamic>? strokeGeometry);
+
   Frame strokeAlign(StrokeAlign? strokeAlign);
 
   Frame cornerRadius(double? cornerRadius);
+
+  Frame cornerSmoothing(double? cornerSmoothing);
 
   Frame rectangleCornerRadii(List<double>? rectangleCornerRadii);
 
@@ -126,7 +140,7 @@ abstract class _$FrameCWProxy {
     double? rotation,
     dynamic pluginData,
     dynamic sharedPluginData,
-    String? type,
+    NodeTypes? type,
     bool? locked,
     List<Paint>? fills,
     List<Paint>? strokes,
@@ -156,11 +170,18 @@ abstract class _$FrameCWProxy {
     double? layoutGrow,
     SizeRectangle? absoluteBoundingBox,
     SizeRectangle? absoluteRenderBounds,
+    List<dynamic>? fillGeometry,
     Vector2D? size,
     double? strokeWeight,
     StrokeWeights? individualStrokeWeights,
+    StrokeCap? strokeCap,
+    StrokeJoin? strokeJoin,
+    List<double>? strokeDashes,
+    double? strokeMiterAngle,
+    List<dynamic>? strokeGeometry,
     StrokeAlign? strokeAlign,
     double? cornerRadius,
+    double? cornerSmoothing,
     List<double>? rectangleCornerRadii,
     BlendMode? blendMode,
     LayoutConstraint? constraints,
@@ -205,7 +226,7 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
       this(sharedPluginData: sharedPluginData);
 
   @override
-  Frame type(String? type) => this(type: type);
+  Frame type(NodeTypes type) => this(type: type);
 
   @override
   Frame locked(bool locked) => this(locked: locked);
@@ -310,6 +331,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
       this(absoluteRenderBounds: absoluteRenderBounds);
 
   @override
+  Frame fillGeometry(List<dynamic>? fillGeometry) =>
+      this(fillGeometry: fillGeometry);
+
+  @override
   Frame size(Vector2D? size) => this(size: size);
 
   @override
@@ -320,10 +345,32 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
+  Frame strokeCap(StrokeCap? strokeCap) => this(strokeCap: strokeCap);
+
+  @override
+  Frame strokeJoin(StrokeJoin? strokeJoin) => this(strokeJoin: strokeJoin);
+
+  @override
+  Frame strokeDashes(List<double>? strokeDashes) =>
+      this(strokeDashes: strokeDashes);
+
+  @override
+  Frame strokeMiterAngle(double? strokeMiterAngle) =>
+      this(strokeMiterAngle: strokeMiterAngle);
+
+  @override
+  Frame strokeGeometry(List<dynamic>? strokeGeometry) =>
+      this(strokeGeometry: strokeGeometry);
+
+  @override
   Frame strokeAlign(StrokeAlign? strokeAlign) => this(strokeAlign: strokeAlign);
 
   @override
   Frame cornerRadius(double? cornerRadius) => this(cornerRadius: cornerRadius);
+
+  @override
+  Frame cornerSmoothing(double? cornerSmoothing) =>
+      this(cornerSmoothing: cornerSmoothing);
 
   @override
   Frame rectangleCornerRadii(List<double>? rectangleCornerRadii) =>
@@ -406,11 +453,18 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
     Object? layoutGrow = const $CopyWithPlaceholder(),
     Object? absoluteBoundingBox = const $CopyWithPlaceholder(),
     Object? absoluteRenderBounds = const $CopyWithPlaceholder(),
+    Object? fillGeometry = const $CopyWithPlaceholder(),
     Object? size = const $CopyWithPlaceholder(),
     Object? strokeWeight = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
+    Object? strokeCap = const $CopyWithPlaceholder(),
+    Object? strokeJoin = const $CopyWithPlaceholder(),
+    Object? strokeDashes = const $CopyWithPlaceholder(),
+    Object? strokeMiterAngle = const $CopyWithPlaceholder(),
+    Object? strokeGeometry = const $CopyWithPlaceholder(),
     Object? strokeAlign = const $CopyWithPlaceholder(),
     Object? cornerRadius = const $CopyWithPlaceholder(),
+    Object? cornerSmoothing = const $CopyWithPlaceholder(),
     Object? rectangleCornerRadii = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
@@ -454,10 +508,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       locked: locked == const $CopyWithPlaceholder() || locked == null
           ? _value.locked
           // ignore: cast_nullable_to_non_nullable
@@ -599,6 +653,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.absoluteRenderBounds
           // ignore: cast_nullable_to_non_nullable
           : absoluteRenderBounds as SizeRectangle?,
+      fillGeometry: fillGeometry == const $CopyWithPlaceholder()
+          ? _value.fillGeometry
+          // ignore: cast_nullable_to_non_nullable
+          : fillGeometry as List<dynamic>?,
       size: size == const $CopyWithPlaceholder()
           ? _value.size
           // ignore: cast_nullable_to_non_nullable
@@ -612,6 +670,26 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
               ? _value.individualStrokeWeights
               // ignore: cast_nullable_to_non_nullable
               : individualStrokeWeights as StrokeWeights?,
+      strokeCap: strokeCap == const $CopyWithPlaceholder()
+          ? _value.strokeCap
+          // ignore: cast_nullable_to_non_nullable
+          : strokeCap as StrokeCap?,
+      strokeJoin: strokeJoin == const $CopyWithPlaceholder()
+          ? _value.strokeJoin
+          // ignore: cast_nullable_to_non_nullable
+          : strokeJoin as StrokeJoin?,
+      strokeDashes: strokeDashes == const $CopyWithPlaceholder()
+          ? _value.strokeDashes
+          // ignore: cast_nullable_to_non_nullable
+          : strokeDashes as List<double>?,
+      strokeMiterAngle: strokeMiterAngle == const $CopyWithPlaceholder()
+          ? _value.strokeMiterAngle
+          // ignore: cast_nullable_to_non_nullable
+          : strokeMiterAngle as double?,
+      strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
+          ? _value.strokeGeometry
+          // ignore: cast_nullable_to_non_nullable
+          : strokeGeometry as List<dynamic>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -620,6 +698,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.cornerRadius
           // ignore: cast_nullable_to_non_nullable
           : cornerRadius as double?,
+      cornerSmoothing: cornerSmoothing == const $CopyWithPlaceholder()
+          ? _value.cornerSmoothing
+          // ignore: cast_nullable_to_non_nullable
+          : cornerSmoothing as double?,
       rectangleCornerRadii: rectangleCornerRadii == const $CopyWithPlaceholder()
           ? _value.rectangleCornerRadii
           // ignore: cast_nullable_to_non_nullable
@@ -685,7 +767,7 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
       rotation: (json['rotation'] as num?)?.toDouble(),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       locked: json['locked'] as bool? ?? false,
       fills: (json['fills'] as List<dynamic>?)
               ?.map((e) => Paint.fromJson(e as Map<String, dynamic>))
@@ -751,6 +833,7 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
           ? null
           : SizeRectangle.fromJson(
               json['absoluteRenderBounds'] as Map<String, dynamic>),
+      fillGeometry: json['fillGeometry'] as List<dynamic>?,
       size: json['size'] == null
           ? null
           : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
@@ -759,9 +842,17 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
+      strokeCap: $enumDecodeNullable(_$StrokeCapEnumMap, json['strokeCap']),
+      strokeJoin: $enumDecodeNullable(_$StrokeJoinEnumMap, json['strokeJoin']),
+      strokeDashes: (json['strokeDashes'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
+      strokeMiterAngle: (json['strokeMiterAngle'] as num?)?.toDouble(),
+      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
+      cornerSmoothing: (json['cornerSmoothing'] as num?)?.toDouble(),
       rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
           ?.map((e) => (e as num).toDouble())
           .toList(),
@@ -791,7 +882,7 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -800,11 +891,18 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
       'locked': instance.locked,
       'fills': instance.fills,
+      'fillGeometry': instance.fillGeometry,
       'strokes': instance.strokes,
       'strokeWeight': instance.strokeWeight,
       'individualStrokeWeights': instance.individualStrokeWeights,
+      'strokeCap': _$StrokeCapEnumMap[instance.strokeCap],
+      'strokeJoin': _$StrokeJoinEnumMap[instance.strokeJoin],
+      'strokeDashes': instance.strokeDashes,
+      'strokeMiterAngle': instance.strokeMiterAngle,
+      'strokeGeometry': instance.strokeGeometry,
       'strokeAlign': _$StrokeAlignEnumMap[instance.strokeAlign],
       'cornerRadius': instance.cornerRadius,
+      'cornerSmoothing': instance.cornerSmoothing,
       'rectangleCornerRadii': instance.rectangleCornerRadii,
       'exportSettings': instance.exportSettings,
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
@@ -850,6 +948,26 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
           ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
     };
 
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
+};
+
 const _$PrimaryAxisAlignItemsEnumMap = {
   PrimaryAxisAlignItems.min: 'MIN',
   PrimaryAxisAlignItems.center: 'CENTER',
@@ -861,6 +979,7 @@ const _$CounterAxisAlignItemsEnumMap = {
   CounterAxisAlignItems.min: 'MIN',
   CounterAxisAlignItems.center: 'CENTER',
   CounterAxisAlignItems.max: 'MAX',
+  CounterAxisAlignItems.basline: 'BASELINE',
 };
 
 const _$PrimaryAxisSizingModeEnumMap = {
@@ -884,6 +1003,20 @@ const _$OverflowDirectionEnumMap = {
 const _$LayoutPositioningEnumMap = {
   LayoutPositioning.auto: 'AUTO',
   LayoutPositioning.absolute: 'ABSOLUTE',
+};
+
+const _$StrokeCapEnumMap = {
+  StrokeCap.none: 'NONE',
+  StrokeCap.round: 'ROUND',
+  StrokeCap.square: 'SQUARE',
+  StrokeCap.lineArrow: 'LINE_ARROW',
+  StrokeCap.triangleArrow: 'TRIANGLE_ARROW',
+};
+
+const _$StrokeJoinEnumMap = {
+  StrokeJoin.miter: 'MITER',
+  StrokeJoin.bevel: 'BEVEL',
+  StrokeJoin.round: 'ROUND',
 };
 
 const _$StrokeAlignEnumMap = {

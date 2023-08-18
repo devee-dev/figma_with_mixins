@@ -9,7 +9,7 @@ part of 'image_response.dart';
 abstract class _$ImageResponseCWProxy {
   ImageResponse err(String? err);
 
-  ImageResponse images(Map<String, String>? images);
+  ImageResponse images(Map<String, String?>? images);
 
   ImageResponse imageFills(Map<String, String>? imageFills);
 
@@ -23,7 +23,7 @@ abstract class _$ImageResponseCWProxy {
   /// ````
   ImageResponse call({
     String? err,
-    Map<String, String>? images,
+    Map<String, String?>? images,
     Map<String, String>? imageFills,
     int? status,
   });
@@ -39,7 +39,7 @@ class _$ImageResponseCWProxyImpl implements _$ImageResponseCWProxy {
   ImageResponse err(String? err) => this(err: err);
 
   @override
-  ImageResponse images(Map<String, String>? images) => this(images: images);
+  ImageResponse images(Map<String, String?>? images) => this(images: images);
 
   @override
   ImageResponse imageFills(Map<String, String>? imageFills) =>
@@ -70,7 +70,7 @@ class _$ImageResponseCWProxyImpl implements _$ImageResponseCWProxy {
       images: images == const $CopyWithPlaceholder()
           ? _value.images
           // ignore: cast_nullable_to_non_nullable
-          : images as Map<String, String>?,
+          : images as Map<String, String?>?,
       imageFills: imageFills == const $CopyWithPlaceholder()
           ? _value.imageFills
           // ignore: cast_nullable_to_non_nullable
@@ -97,7 +97,7 @@ ImageResponse _$ImageResponseFromJson(Map<String, dynamic> json) =>
     ImageResponse(
       err: json['err'] as String?,
       images: (json['images'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
+        (k, e) => MapEntry(k, e as String?),
       ),
       imageFills: (ImageResponse._readValueWithString(json, 'meta')
               as Map<String, dynamic>?)

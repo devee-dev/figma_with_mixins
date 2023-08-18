@@ -134,9 +134,10 @@ Future<void> download(
 
     // Remove eventual "some_" prefix from the name.
     final name = component.name!.replaceAll('some_', '');
+    if (url.value == null) continue;
 
     // Add future to list.
-    final future = get(Uri.parse(url.value)).then((svgRes) async {
+    final future = get(Uri.parse(url.value!)).then((svgRes) async {
       if (svgRes.statusCode == 200) {
         final path = '${dir.path}/$name.svg';
         final file = File(path);

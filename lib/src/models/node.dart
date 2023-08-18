@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:figma/figma.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
@@ -21,7 +22,7 @@ class Node extends Equatable {
   /// The type of the node. This is usually the same as the Node subtype classes
   /// (e.g. [Frame], [Component] etc.), but can be different in the case of
   /// foreign nodes.
-  final String? type;
+  final NodeTypes type;
 
   /// Data written by plugins that is visible only to the plugin that wrote
   /// it. Requires the `pluginData` to include the ID of the plugin.
@@ -44,7 +45,7 @@ class Node extends Equatable {
     required this.id,
     this.name,
     required this.visible,
-    this.type,
+    required this.type,
     this.pluginData,
     this.sharedPluginData,
     this.rotation,

@@ -8,37 +8,85 @@ part 'frame.g.dart';
 /// A Figma frame.
 @JsonSerializable()
 @CopyWith()
-class Frame extends Node {
-  /// An array of nodes that are direct children of this node.
-  @NodeJsonConverter()
-  final List<Node?>? children;
-
+class Frame extends NodeWithChildren
+    implements
+        LayoutMixin,
+        StrokesMixin,
+        FillsMixin,
+        RectangleCornerMixin,
+        PaddingMixin,
+        EffectsMixin,
+        AutoLayoutMixin {
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
 
   /// An array of fill paints applied to the node.
+  @override
   @JsonKey(defaultValue: [])
   final List<Paint> fills;
 
+  /// Only specified if parameter geometry=paths is used. An array of paths
+  /// representing the object fill
+  @override
+  final List<dynamic>? fillGeometry;
+
   /// An array of stroke paints applied to the node.
+  @override
   @JsonKey(defaultValue: [])
   final List<Paint> strokes;
 
   /// The weight of strokes on the node.
+  @override
   final double? strokeWeight;
 
   /// The weight of strokes on the node per side, if they vary.
+  @override
   final StrokeWeights? individualStrokeWeights;
 
+  /// A string enum with value of [StrokeCap.none], [StrokeCap.round],
+  /// [StrokeCap.squary], [StrokeCap.lineArrow] or [StrokeCap.triangleArrow],
+  /// describing the end caps of vector paths.
+  @override
+  final StrokeCap? strokeCap;
+
+  /// A string enum with value of [StrokeJoin.miter], [StrokeJoin.bevel], or
+  /// [StrokeCap.round], describing how corners in vector paths are rendered.
+  @override
+  final StrokeJoin? strokeJoin;
+
+  /// An array of floating point numbers describing the pattern of dash length
+  /// and gap lengths that the vector path follows. For example a value of
+  /// [1, 2] indicates that the path has a dash of length 1 followed by a gap
+  /// of length 2, repeated.
+  @override
+  final List<double>? strokeDashes;
+
+  /// Only valid if strokeJoin is [StrokeJoin.miter]. The corner angle, in
+  /// degrees, below which strokeJoin will be set to [StrokeJoin.bevel] to
+  /// avoid super sharp corners. By default this is 28.96 degrees.
+  @override
+  final double? strokeMiterAngle;
+
+  /// Only specified if parameter geometry=paths is used. An array of paths
+  /// representing the object stroke
+  @override
+  final List<dynamic>? strokeGeometry;
+
   /// Position of stroke relative to vector outline, as a string enum.
+  @override
   final StrokeAlign? strokeAlign;
 
   /// Radius of each corner of the frame if a single radius is set for all corners.
+  @override
   final double? cornerRadius;
+
+  @override
+  final double? cornerSmoothing;
 
   /// Array of length 4 of the radius of each corner of the frame,
   /// starting in the top left and proceeding clockwise.
+  @override
   final List<double>? rectangleCornerRadii;
 
   /// An array of export settings representing images to export from node.
@@ -49,16 +97,19 @@ class Frame extends Node {
   final BlendMode? blendMode;
 
   /// Keep height and width constrained to same ratio.
+  @override
   @JsonKey(defaultValue: false)
   final bool preserveRatio;
 
   /// This property is applicable only for direct children of auto-layout frames,
   /// ignored otherwise. Determines whether a layer should stretch along the parent’s
   /// primary axis. A `0` corresponds to a fixed size and `1` corresponds to stretch.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double layoutGrow;
 
   /// Horizontal and vertical layout constraints for node.
+  @override
   final LayoutConstraint? constraints;
 
   /// How the layer is aligned inside an auto-layout frame.
@@ -68,6 +119,7 @@ class Frame extends Node {
   /// In horizontal auto-layout frames, "MIN" and "MAX" correspond to
   /// "TOP" and "BOTTOM". In vertical auto-layout frames, "MIN" and "MAX"
   /// correspond to "LEFT" and "RIGHT".
+  @override
   final LayoutAlign? layoutAlign;
 
   /// Node ID of node to transition to in prototyping.
@@ -81,6 +133,7 @@ class Frame extends Node {
   final double opacity;
 
   /// Bounding box of the node in absolute space coordinates.
+  @override
   final SizeRectangle? absoluteBoundingBox;
 
   /// The bounds of the rendered node in the file in absolute space coordinates.
@@ -102,50 +155,59 @@ class Frame extends Node {
   final bool? clipsContent;
 
   /// Whether this layer uses auto-layout to position its children.
+  @override
   @JsonKey(defaultValue: LayoutMode.none)
   final LayoutMode? layoutMode;
 
   /// Whether the counter axis has a fixed length (determined by the user)
   /// or an automatic length (determined by the layout engine). This property
   /// is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: CounterAxisSizingMode.auto)
   final CounterAxisSizingMode counterAxisSizingMode;
 
   /// Whether the primary axis has a fixed length (determined by the user) or
   /// an automatic length (determined by the layout engine). This property is
   /// only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: PrimaryAxisSizingMode.auto)
   final PrimaryAxisSizingMode primaryAxisSizingMode;
 
   /// Determines how the auto-layout frame’s children should be aligned in
   /// the primary axis direction. This property is only applicable for
   /// auto-layout frames.
+  @override
   @JsonKey(defaultValue: PrimaryAxisAlignItems.min)
   final PrimaryAxisAlignItems primaryAxisAlignItems;
 
   /// Determines how the auto-layout frame’s children should be aligned in
   /// the counter axis direction. This property is only applicable for
   /// auto-layout frames.
+  @override
   @JsonKey(defaultValue: CounterAxisAlignItems.min)
   final CounterAxisAlignItems counterAxisAlignItems;
 
   /// The padding betweeen the left border of the frame and its children.
   /// This property is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double paddingLeft;
 
   /// The padding betweeen the top border of the frame and its children.
   /// This property is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double paddingTop;
 
   /// The padding betweeen the right border of the frame and its children.
   /// This property is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double paddingRight;
 
   /// The padding betweeen the bottom border of the frame and its children.
   /// This property is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double paddingBottom;
 
@@ -161,23 +223,27 @@ class Frame extends Node {
 
   /// The distance between children of the frame.
   /// This property is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: 0.0)
   final double itemSpacing;
 
   /// Determines whether a layer's size and position should be determined by
   /// auto-layout settings or manually adjustable.
+  @override
   @JsonKey(defaultValue: LayoutPositioning.auto)
   final LayoutPositioning layoutPositioning;
 
   /// Determines the canvas stacking order of layers in this frame. When true,
   /// the first layer will be draw on top. This property is only applicable
   /// for auto-layout frames.
+  @override
   @JsonKey(defaultValue: false)
   final bool itemReverseZIndex;
 
   /// Determines whether strokes are included in layout calculations. When true,
   /// auto-layout frames behave like css "box-sizing: border-box". This property
   /// is only applicable for auto-layout frames.
+  @override
   @JsonKey(defaultValue: false)
   final bool strokesIncludedInLayout;
 
@@ -194,6 +260,7 @@ class Frame extends Node {
   final OverflowDirection overflowDirection;
 
   /// An array of effects attached to this node.
+  @override
   @JsonKey(defaultValue: [])
   final List<Effect> effects;
 
@@ -218,12 +285,12 @@ class Frame extends Node {
     super.rotation,
     super.pluginData,
     super.sharedPluginData,
-    super.type,
+    required super.type,
     required this.locked,
     required this.fills,
     required this.strokes,
     required this.exportSettings,
-    required this.children,
+    required super.children,
     required this.opacity,
     required this.primaryAxisAlignItems,
     required this.counterAxisAlignItems,
@@ -248,11 +315,18 @@ class Frame extends Node {
     required this.layoutGrow,
     this.absoluteBoundingBox,
     this.absoluteRenderBounds,
+    this.fillGeometry,
     this.size,
     this.strokeWeight,
     this.individualStrokeWeights,
+    this.strokeCap,
+    this.strokeJoin,
+    this.strokeDashes,
+    this.strokeMiterAngle,
+    this.strokeGeometry,
     this.strokeAlign,
     this.cornerRadius,
+    this.cornerSmoothing,
     this.rectangleCornerRadii,
     this.blendMode,
     this.constraints,
@@ -268,14 +342,20 @@ class Frame extends Node {
   @override
   List<Object?> get props => [
         ...super.props,
-        children,
         locked,
         fills,
+        fillGeometry,
         strokes,
         strokeWeight,
         individualStrokeWeights,
+        strokeCap,
+        strokeJoin,
+        strokeDashes,
+        strokeMiterAngle,
+        strokeGeometry,
         strokeAlign,
         cornerRadius,
+        cornerSmoothing,
         rectangleCornerRadii,
         exportSettings,
         blendMode,

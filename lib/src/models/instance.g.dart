@@ -84,13 +84,15 @@ abstract class _$InstanceCWProxy {
 
   Instance sharedPluginData(dynamic sharedPluginData);
 
-  Instance type(String? type);
+  Instance type(NodeTypes type);
 
   Instance strokeWeight(double? strokeWeight);
 
   Instance strokeAlign(StrokeAlign? strokeAlign);
 
   Instance cornerRadius(double? cornerRadius);
+
+  Instance cornerSmoothing(double? cornerSmoothing);
 
   Instance rectangleCornerRadii(List<double>? rectangleCornerRadii);
 
@@ -112,12 +114,26 @@ abstract class _$InstanceCWProxy {
 
   Instance individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
+  Instance strokeCap(StrokeCap? strokeCap);
+
+  Instance strokeJoin(StrokeJoin? strokeJoin);
+
+  Instance strokeDashes(List<double>? strokeDashes);
+
+  Instance strokeMiterAngle(double? strokeMiterAngle);
+
+  Instance strokeGeometry(List<dynamic>? strokeGeometry);
+
+  Instance fillGeometry(List<dynamic>? fillGeometry);
+
   Instance isExposedInstance(bool isExposedInstance);
 
   Instance exposedInstances(List<String> exposedInstances);
 
   Instance componentProperties(
       Map<String, ComponentProperty> componentProperties);
+
+  Instance overrides(List<Overrides>? overrides);
 
   Instance componentId(String? componentId);
 
@@ -169,10 +185,11 @@ abstract class _$InstanceCWProxy {
     String? name,
     dynamic pluginData,
     dynamic sharedPluginData,
-    String? type,
+    NodeTypes? type,
     double? strokeWeight,
     StrokeAlign? strokeAlign,
     double? cornerRadius,
+    double? cornerSmoothing,
     List<double>? rectangleCornerRadii,
     BlendMode? blendMode,
     LayoutConstraint? constraints,
@@ -183,9 +200,16 @@ abstract class _$InstanceCWProxy {
     bool? clipsContent,
     LayoutMode? layoutMode,
     StrokeWeights? individualStrokeWeights,
+    StrokeCap? strokeCap,
+    StrokeJoin? strokeJoin,
+    List<double>? strokeDashes,
+    double? strokeMiterAngle,
+    List<dynamic>? strokeGeometry,
+    List<dynamic>? fillGeometry,
     bool? isExposedInstance,
     List<String>? exposedInstances,
     Map<String, ComponentProperty>? componentProperties,
+    List<Overrides>? overrides,
     String? componentId,
     Map<String, ComponentPropertyDefinition>? componentPropertyDefinitions,
   });
@@ -333,7 +357,7 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
       this(sharedPluginData: sharedPluginData);
 
   @override
-  Instance type(String? type) => this(type: type);
+  Instance type(NodeTypes type) => this(type: type);
 
   @override
   Instance strokeWeight(double? strokeWeight) =>
@@ -346,6 +370,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
   @override
   Instance cornerRadius(double? cornerRadius) =>
       this(cornerRadius: cornerRadius);
+
+  @override
+  Instance cornerSmoothing(double? cornerSmoothing) =>
+      this(cornerSmoothing: cornerSmoothing);
 
   @override
   Instance rectangleCornerRadii(List<double>? rectangleCornerRadii) =>
@@ -385,6 +413,28 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
+  Instance strokeCap(StrokeCap? strokeCap) => this(strokeCap: strokeCap);
+
+  @override
+  Instance strokeJoin(StrokeJoin? strokeJoin) => this(strokeJoin: strokeJoin);
+
+  @override
+  Instance strokeDashes(List<double>? strokeDashes) =>
+      this(strokeDashes: strokeDashes);
+
+  @override
+  Instance strokeMiterAngle(double? strokeMiterAngle) =>
+      this(strokeMiterAngle: strokeMiterAngle);
+
+  @override
+  Instance strokeGeometry(List<dynamic>? strokeGeometry) =>
+      this(strokeGeometry: strokeGeometry);
+
+  @override
+  Instance fillGeometry(List<dynamic>? fillGeometry) =>
+      this(fillGeometry: fillGeometry);
+
+  @override
   Instance isExposedInstance(bool isExposedInstance) =>
       this(isExposedInstance: isExposedInstance);
 
@@ -396,6 +446,9 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
   Instance componentProperties(
           Map<String, ComponentProperty> componentProperties) =>
       this(componentProperties: componentProperties);
+
+  @override
+  Instance overrides(List<Overrides>? overrides) => this(overrides: overrides);
 
   @override
   Instance componentId(String? componentId) => this(componentId: componentId);
@@ -457,6 +510,7 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
     Object? strokeWeight = const $CopyWithPlaceholder(),
     Object? strokeAlign = const $CopyWithPlaceholder(),
     Object? cornerRadius = const $CopyWithPlaceholder(),
+    Object? cornerSmoothing = const $CopyWithPlaceholder(),
     Object? rectangleCornerRadii = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
@@ -467,9 +521,16 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
     Object? clipsContent = const $CopyWithPlaceholder(),
     Object? layoutMode = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
+    Object? strokeCap = const $CopyWithPlaceholder(),
+    Object? strokeJoin = const $CopyWithPlaceholder(),
+    Object? strokeDashes = const $CopyWithPlaceholder(),
+    Object? strokeMiterAngle = const $CopyWithPlaceholder(),
+    Object? strokeGeometry = const $CopyWithPlaceholder(),
+    Object? fillGeometry = const $CopyWithPlaceholder(),
     Object? isExposedInstance = const $CopyWithPlaceholder(),
     Object? exposedInstances = const $CopyWithPlaceholder(),
     Object? componentProperties = const $CopyWithPlaceholder(),
+    Object? overrides = const $CopyWithPlaceholder(),
     Object? componentId = const $CopyWithPlaceholder(),
     Object? componentPropertyDefinitions = const $CopyWithPlaceholder(),
   }) {
@@ -654,10 +715,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
-          : type as String?,
+          : type as NodeTypes,
       strokeWeight: strokeWeight == const $CopyWithPlaceholder()
           ? _value.strokeWeight
           // ignore: cast_nullable_to_non_nullable
@@ -670,6 +731,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
           ? _value.cornerRadius
           // ignore: cast_nullable_to_non_nullable
           : cornerRadius as double?,
+      cornerSmoothing: cornerSmoothing == const $CopyWithPlaceholder()
+          ? _value.cornerSmoothing
+          // ignore: cast_nullable_to_non_nullable
+          : cornerSmoothing as double?,
       rectangleCornerRadii: rectangleCornerRadii == const $CopyWithPlaceholder()
           ? _value.rectangleCornerRadii
           // ignore: cast_nullable_to_non_nullable
@@ -711,6 +776,30 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
               ? _value.individualStrokeWeights
               // ignore: cast_nullable_to_non_nullable
               : individualStrokeWeights as StrokeWeights?,
+      strokeCap: strokeCap == const $CopyWithPlaceholder()
+          ? _value.strokeCap
+          // ignore: cast_nullable_to_non_nullable
+          : strokeCap as StrokeCap?,
+      strokeJoin: strokeJoin == const $CopyWithPlaceholder()
+          ? _value.strokeJoin
+          // ignore: cast_nullable_to_non_nullable
+          : strokeJoin as StrokeJoin?,
+      strokeDashes: strokeDashes == const $CopyWithPlaceholder()
+          ? _value.strokeDashes
+          // ignore: cast_nullable_to_non_nullable
+          : strokeDashes as List<double>?,
+      strokeMiterAngle: strokeMiterAngle == const $CopyWithPlaceholder()
+          ? _value.strokeMiterAngle
+          // ignore: cast_nullable_to_non_nullable
+          : strokeMiterAngle as double?,
+      strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
+          ? _value.strokeGeometry
+          // ignore: cast_nullable_to_non_nullable
+          : strokeGeometry as List<dynamic>?,
+      fillGeometry: fillGeometry == const $CopyWithPlaceholder()
+          ? _value.fillGeometry
+          // ignore: cast_nullable_to_non_nullable
+          : fillGeometry as List<dynamic>?,
       isExposedInstance: isExposedInstance == const $CopyWithPlaceholder() ||
               isExposedInstance == null
           ? _value.isExposedInstance
@@ -727,6 +816,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
               ? _value.componentProperties
               // ignore: cast_nullable_to_non_nullable
               : componentProperties as Map<String, ComponentProperty>,
+      overrides: overrides == const $CopyWithPlaceholder()
+          ? _value.overrides
+          // ignore: cast_nullable_to_non_nullable
+          : overrides as List<Overrides>?,
       componentId: componentId == const $CopyWithPlaceholder()
           ? _value.componentId
           // ignore: cast_nullable_to_non_nullable
@@ -834,11 +927,12 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
       name: json['name'] as String?,
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
-      type: json['type'] as String?,
+      type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
+      cornerSmoothing: (json['cornerSmoothing'] as num?)?.toDouble(),
       rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
           ?.map((e) => (e as num).toDouble())
           .toList(),
@@ -863,6 +957,14 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
+      strokeCap: $enumDecodeNullable(_$StrokeCapEnumMap, json['strokeCap']),
+      strokeJoin: $enumDecodeNullable(_$StrokeJoinEnumMap, json['strokeJoin']),
+      strokeDashes: (json['strokeDashes'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
+      strokeMiterAngle: (json['strokeMiterAngle'] as num?)?.toDouble(),
+      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      fillGeometry: json['fillGeometry'] as List<dynamic>?,
       isExposedInstance: json['isExposedInstance'] as bool? ?? false,
       exposedInstances: (json['exposedInstances'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -874,6 +976,9 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
                     k, ComponentProperty.fromJson(e as Map<String, dynamic>)),
               ) ??
               {},
+      overrides: (json['overrides'] as List<dynamic>?)
+          ?.map((e) => Overrides.fromJson(e as Map<String, dynamic>))
+          .toList(),
       componentId: json['componentId'] as String?,
       componentPropertyDefinitions:
           (json['componentPropertyDefinitions'] as Map<String, dynamic>?)?.map(
@@ -889,7 +994,7 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'visible': instance.visible,
-      'type': instance.type,
+      'type': _$NodeTypesEnumMap[instance.type]!,
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
@@ -898,11 +1003,18 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
       'locked': instance.locked,
       'fills': instance.fills,
+      'fillGeometry': instance.fillGeometry,
       'strokes': instance.strokes,
       'strokeWeight': instance.strokeWeight,
       'individualStrokeWeights': instance.individualStrokeWeights,
+      'strokeCap': _$StrokeCapEnumMap[instance.strokeCap],
+      'strokeJoin': _$StrokeJoinEnumMap[instance.strokeJoin],
+      'strokeDashes': instance.strokeDashes,
+      'strokeMiterAngle': instance.strokeMiterAngle,
+      'strokeGeometry': instance.strokeGeometry,
       'strokeAlign': _$StrokeAlignEnumMap[instance.strokeAlign],
       'cornerRadius': instance.cornerRadius,
+      'cornerSmoothing': instance.cornerSmoothing,
       'rectangleCornerRadii': instance.rectangleCornerRadii,
       'exportSettings': instance.exportSettings,
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
@@ -947,6 +1059,7 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
       'styles': instance.styles
           ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
       'componentId': instance.componentId,
+      'overrides': instance.overrides,
       'isExposedInstance': instance.isExposedInstance,
       'exposedInstances': instance.exposedInstances,
       'componentProperties': instance.componentProperties,
@@ -975,6 +1088,7 @@ const _$CounterAxisAlignItemsEnumMap = {
   CounterAxisAlignItems.min: 'MIN',
   CounterAxisAlignItems.center: 'CENTER',
   CounterAxisAlignItems.max: 'MAX',
+  CounterAxisAlignItems.basline: 'BASELINE',
 };
 
 const _$PrimaryAxisAlignItemsEnumMap = {
@@ -997,6 +1111,26 @@ const _$StyleTypeKeyEnumMap = {
   StyleTypeKey.text: 'text',
   StyleTypeKey.effect: 'effect',
   StyleTypeKey.grid: 'grid',
+};
+
+const _$NodeTypesEnumMap = {
+  NodeTypes.CANVAS: 'CANVAS',
+  NodeTypes.FRAME: 'FRAME',
+  NodeTypes.VECTOR: 'VECTOR',
+  NodeTypes.STAR: 'STAR',
+  NodeTypes.BOOLEAN_OPERATION: 'BOOLEAN_OPERATION',
+  NodeTypes.COMPONENT: 'COMPONENT',
+  NodeTypes.COMPONENT_SET: 'COMPONENT_SET',
+  NodeTypes.LINE: 'LINE',
+  NodeTypes.TEXT: 'TEXT',
+  NodeTypes.ELLIPSE: 'ELLIPSE',
+  NodeTypes.GROUP: 'GROUP',
+  NodeTypes.RECTANGLE: 'RECTANGLE',
+  NodeTypes.REGULAR_POLYGON: 'REGULAR_POLYGON',
+  NodeTypes.SLICE: 'SLICE',
+  NodeTypes.INSTANCE: 'INSTANCE',
+  NodeTypes.DOCUMENT: 'DOCUMENT',
+  NodeTypes.SECTION: 'SECTION',
 };
 
 const _$StrokeAlignEnumMap = {
@@ -1039,4 +1173,18 @@ const _$LayoutModeEnumMap = {
   LayoutMode.none: 'NONE',
   LayoutMode.horizontal: 'HORIZONTAL',
   LayoutMode.vertical: 'VERTICAL',
+};
+
+const _$StrokeCapEnumMap = {
+  StrokeCap.none: 'NONE',
+  StrokeCap.round: 'ROUND',
+  StrokeCap.square: 'SQUARE',
+  StrokeCap.lineArrow: 'LINE_ARROW',
+  StrokeCap.triangleArrow: 'TRIANGLE_ARROW',
+};
+
+const _$StrokeJoinEnumMap = {
+  StrokeJoin.miter: 'MITER',
+  StrokeJoin.bevel: 'BEVEL',
+  StrokeJoin.round: 'ROUND',
 };
