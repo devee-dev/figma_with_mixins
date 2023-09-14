@@ -13,7 +13,7 @@ dependencies:
   http2: ^2.0.1
   json_annotation: ^4.8.1
   equatable: ^2.0.5
-  collection: ^1.17.2
+  collection: any
   copy_with_extension: ^5.0.2
 
 dev_dependencies:
