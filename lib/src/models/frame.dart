@@ -163,15 +163,14 @@ class Frame extends NodeWithChildren
   /// or an automatic length (determined by the layout engine). This property
   /// is only applicable for auto-layout frames.
   @override
-  @JsonKey(defaultValue: CounterAxisSizingMode.auto)
-  final CounterAxisSizingMode counterAxisSizingMode;
+  @JsonKey()
+  final CounterAxisSizingMode? counterAxisSizingMode;
 
   /// Whether the primary axis has a fixed length (determined by the user) or
   /// an automatic length (determined by the layout engine). This property is
   /// only applicable for auto-layout frames.
   @override
-  @JsonKey(defaultValue: PrimaryAxisSizingMode.auto)
-  final PrimaryAxisSizingMode primaryAxisSizingMode;
+  final PrimaryAxisSizingMode? primaryAxisSizingMode;
 
   /// Determines how the auto-layout frame’s children should be aligned in
   /// the primary axis direction. This property is only applicable for

@@ -29,7 +29,7 @@ abstract class _$InstanceCWProxy {
 
   Instance strokesIncludedInLayout(bool strokesIncludedInLayout);
 
-  Instance counterAxisSizingMode(CounterAxisSizingMode counterAxisSizingMode);
+  Instance counterAxisSizingMode(CounterAxisSizingMode? counterAxisSizingMode);
 
   Instance horizontalPadding(double horizontalPadding);
 
@@ -51,7 +51,7 @@ abstract class _$InstanceCWProxy {
 
   Instance primaryAxisAlignItems(PrimaryAxisAlignItems primaryAxisAlignItems);
 
-  Instance primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode);
+  Instance primaryAxisSizingMode(PrimaryAxisSizingMode? primaryAxisSizingMode);
 
   Instance paddingBottom(double paddingBottom);
 
@@ -259,7 +259,8 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
       this(strokesIncludedInLayout: strokesIncludedInLayout);
 
   @override
-  Instance counterAxisSizingMode(CounterAxisSizingMode counterAxisSizingMode) =>
+  Instance counterAxisSizingMode(
+          CounterAxisSizingMode? counterAxisSizingMode) =>
       this(counterAxisSizingMode: counterAxisSizingMode);
 
   @override
@@ -300,7 +301,8 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
       this(primaryAxisAlignItems: primaryAxisAlignItems);
 
   @override
-  Instance primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode) =>
+  Instance primaryAxisSizingMode(
+          PrimaryAxisSizingMode? primaryAxisSizingMode) =>
       this(primaryAxisSizingMode: primaryAxisSizingMode);
 
   @override
@@ -585,11 +587,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
               // ignore: cast_nullable_to_non_nullable
               : strokesIncludedInLayout as bool,
       counterAxisSizingMode:
-          counterAxisSizingMode == const $CopyWithPlaceholder() ||
-                  counterAxisSizingMode == null
+          counterAxisSizingMode == const $CopyWithPlaceholder()
               ? _value.counterAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
-              : counterAxisSizingMode as CounterAxisSizingMode,
+              : counterAxisSizingMode as CounterAxisSizingMode?,
       horizontalPadding: horizontalPadding == const $CopyWithPlaceholder() ||
               horizontalPadding == null
           ? _value.horizontalPadding
@@ -641,11 +642,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
               // ignore: cast_nullable_to_non_nullable
               : primaryAxisAlignItems as PrimaryAxisAlignItems,
       primaryAxisSizingMode:
-          primaryAxisSizingMode == const $CopyWithPlaceholder() ||
-                  primaryAxisSizingMode == null
+          primaryAxisSizingMode == const $CopyWithPlaceholder()
               ? _value.primaryAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
-              : primaryAxisSizingMode as PrimaryAxisSizingMode,
+              : primaryAxisSizingMode as PrimaryAxisSizingMode?,
       paddingBottom:
           paddingBottom == const $CopyWithPlaceholder() || paddingBottom == null
               ? _value.paddingBottom
@@ -872,8 +872,7 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
       strokesIncludedInLayout:
           json['strokesIncludedInLayout'] as bool? ?? false,
       counterAxisSizingMode: $enumDecodeNullable(
-              _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']) ??
-          CounterAxisSizingMode.auto,
+          _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
       horizontalPadding: (json['horizontalPadding'] as num?)?.toDouble() ?? 0.0,
       verticalPadding: (json['verticalPadding'] as num?)?.toDouble() ?? 0.0,
       itemSpacing: (json['itemSpacing'] as num?)?.toDouble() ?? 0.0,
@@ -897,8 +896,7 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
               _$PrimaryAxisAlignItemsEnumMap, json['primaryAxisAlignItems']) ??
           PrimaryAxisAlignItems.min,
       primaryAxisSizingMode: $enumDecodeNullable(
-              _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']) ??
-          PrimaryAxisSizingMode.auto,
+          _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
       paddingBottom: (json['paddingBottom'] as num?)?.toDouble() ?? 0.0,
       paddingLeft: (json['paddingLeft'] as num?)?.toDouble() ?? 0.0,
       paddingRight: (json['paddingRight'] as num?)?.toDouble() ?? 0.0,
@@ -1032,9 +1030,9 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
       'clipsContent': instance.clipsContent,
       'layoutMode': _$LayoutModeEnumMap[instance.layoutMode],
       'counterAxisSizingMode':
-          _$CounterAxisSizingModeEnumMap[instance.counterAxisSizingMode]!,
+          _$CounterAxisSizingModeEnumMap[instance.counterAxisSizingMode],
       'primaryAxisSizingMode':
-          _$PrimaryAxisSizingModeEnumMap[instance.primaryAxisSizingMode]!,
+          _$PrimaryAxisSizingModeEnumMap[instance.primaryAxisSizingMode],
       'primaryAxisAlignItems':
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':

@@ -29,7 +29,7 @@ abstract class _$GroupCWProxy {
 
   Group strokesIncludedInLayout(bool strokesIncludedInLayout);
 
-  Group counterAxisSizingMode(CounterAxisSizingMode counterAxisSizingMode);
+  Group counterAxisSizingMode(CounterAxisSizingMode? counterAxisSizingMode);
 
   Group horizontalPadding(double horizontalPadding);
 
@@ -51,7 +51,7 @@ abstract class _$GroupCWProxy {
 
   Group primaryAxisAlignItems(PrimaryAxisAlignItems primaryAxisAlignItems);
 
-  Group primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode);
+  Group primaryAxisSizingMode(PrimaryAxisSizingMode? primaryAxisSizingMode);
 
   Group paddingBottom(double paddingBottom);
 
@@ -239,7 +239,7 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
       this(strokesIncludedInLayout: strokesIncludedInLayout);
 
   @override
-  Group counterAxisSizingMode(CounterAxisSizingMode counterAxisSizingMode) =>
+  Group counterAxisSizingMode(CounterAxisSizingMode? counterAxisSizingMode) =>
       this(counterAxisSizingMode: counterAxisSizingMode);
 
   @override
@@ -279,7 +279,7 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
       this(primaryAxisAlignItems: primaryAxisAlignItems);
 
   @override
-  Group primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode) =>
+  Group primaryAxisSizingMode(PrimaryAxisSizingMode? primaryAxisSizingMode) =>
       this(primaryAxisSizingMode: primaryAxisSizingMode);
 
   @override
@@ -527,11 +527,10 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
               // ignore: cast_nullable_to_non_nullable
               : strokesIncludedInLayout as bool,
       counterAxisSizingMode:
-          counterAxisSizingMode == const $CopyWithPlaceholder() ||
-                  counterAxisSizingMode == null
+          counterAxisSizingMode == const $CopyWithPlaceholder()
               ? _value.counterAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
-              : counterAxisSizingMode as CounterAxisSizingMode,
+              : counterAxisSizingMode as CounterAxisSizingMode?,
       horizontalPadding: horizontalPadding == const $CopyWithPlaceholder() ||
               horizontalPadding == null
           ? _value.horizontalPadding
@@ -583,11 +582,10 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
               // ignore: cast_nullable_to_non_nullable
               : primaryAxisAlignItems as PrimaryAxisAlignItems,
       primaryAxisSizingMode:
-          primaryAxisSizingMode == const $CopyWithPlaceholder() ||
-                  primaryAxisSizingMode == null
+          primaryAxisSizingMode == const $CopyWithPlaceholder()
               ? _value.primaryAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
-              : primaryAxisSizingMode as PrimaryAxisSizingMode,
+              : primaryAxisSizingMode as PrimaryAxisSizingMode?,
       paddingBottom:
           paddingBottom == const $CopyWithPlaceholder() || paddingBottom == null
               ? _value.paddingBottom
@@ -783,8 +781,7 @@ Group _$GroupFromJson(Map<String, dynamic> json) => Group(
       strokesIncludedInLayout:
           json['strokesIncludedInLayout'] as bool? ?? false,
       counterAxisSizingMode: $enumDecodeNullable(
-              _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']) ??
-          CounterAxisSizingMode.auto,
+          _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
       horizontalPadding: (json['horizontalPadding'] as num?)?.toDouble() ?? 0.0,
       verticalPadding: (json['verticalPadding'] as num?)?.toDouble() ?? 0.0,
       itemSpacing: (json['itemSpacing'] as num?)?.toDouble() ?? 0.0,
@@ -808,8 +805,7 @@ Group _$GroupFromJson(Map<String, dynamic> json) => Group(
               _$PrimaryAxisAlignItemsEnumMap, json['primaryAxisAlignItems']) ??
           PrimaryAxisAlignItems.min,
       primaryAxisSizingMode: $enumDecodeNullable(
-              _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']) ??
-          PrimaryAxisSizingMode.auto,
+          _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
       paddingBottom: (json['paddingBottom'] as num?)?.toDouble() ?? 0.0,
       paddingLeft: (json['paddingLeft'] as num?)?.toDouble() ?? 0.0,
       paddingRight: (json['paddingRight'] as num?)?.toDouble() ?? 0.0,
@@ -920,9 +916,9 @@ Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
       'clipsContent': instance.clipsContent,
       'layoutMode': _$LayoutModeEnumMap[instance.layoutMode],
       'counterAxisSizingMode':
-          _$CounterAxisSizingModeEnumMap[instance.counterAxisSizingMode]!,
+          _$CounterAxisSizingModeEnumMap[instance.counterAxisSizingMode],
       'primaryAxisSizingMode':
-          _$PrimaryAxisSizingModeEnumMap[instance.primaryAxisSizingMode]!,
+          _$PrimaryAxisSizingModeEnumMap[instance.primaryAxisSizingMode],
       'primaryAxisAlignItems':
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':

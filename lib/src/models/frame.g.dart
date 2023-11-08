@@ -40,9 +40,9 @@ abstract class _$FrameCWProxy {
 
   Frame counterAxisAlignItems(CounterAxisAlignItems counterAxisAlignItems);
 
-  Frame primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode);
+  Frame primaryAxisSizingMode(PrimaryAxisSizingMode? primaryAxisSizingMode);
 
-  Frame counterAxisSizingMode(CounterAxisSizingMode counterAxisSizingMode);
+  Frame counterAxisSizingMode(CounterAxisSizingMode? counterAxisSizingMode);
 
   Frame paddingBottom(double paddingBottom);
 
@@ -256,11 +256,11 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
       this(counterAxisAlignItems: counterAxisAlignItems);
 
   @override
-  Frame primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode) =>
+  Frame primaryAxisSizingMode(PrimaryAxisSizingMode? primaryAxisSizingMode) =>
       this(primaryAxisSizingMode: primaryAxisSizingMode);
 
   @override
-  Frame counterAxisSizingMode(CounterAxisSizingMode counterAxisSizingMode) =>
+  Frame counterAxisSizingMode(CounterAxisSizingMode? counterAxisSizingMode) =>
       this(counterAxisSizingMode: counterAxisSizingMode);
 
   @override
@@ -550,17 +550,15 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
               // ignore: cast_nullable_to_non_nullable
               : counterAxisAlignItems as CounterAxisAlignItems,
       primaryAxisSizingMode:
-          primaryAxisSizingMode == const $CopyWithPlaceholder() ||
-                  primaryAxisSizingMode == null
+          primaryAxisSizingMode == const $CopyWithPlaceholder()
               ? _value.primaryAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
-              : primaryAxisSizingMode as PrimaryAxisSizingMode,
+              : primaryAxisSizingMode as PrimaryAxisSizingMode?,
       counterAxisSizingMode:
-          counterAxisSizingMode == const $CopyWithPlaceholder() ||
-                  counterAxisSizingMode == null
+          counterAxisSizingMode == const $CopyWithPlaceholder()
               ? _value.counterAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
-              : counterAxisSizingMode as CounterAxisSizingMode,
+              : counterAxisSizingMode as CounterAxisSizingMode?,
       paddingBottom:
           paddingBottom == const $CopyWithPlaceholder() || paddingBottom == null
               ? _value.paddingBottom
@@ -792,11 +790,9 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
               _$CounterAxisAlignItemsEnumMap, json['counterAxisAlignItems']) ??
           CounterAxisAlignItems.min,
       primaryAxisSizingMode: $enumDecodeNullable(
-              _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']) ??
-          PrimaryAxisSizingMode.auto,
+          _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']),
       counterAxisSizingMode: $enumDecodeNullable(
-              _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']) ??
-          CounterAxisSizingMode.auto,
+          _$CounterAxisSizingModeEnumMap, json['counterAxisSizingMode']),
       paddingBottom: (json['paddingBottom'] as num?)?.toDouble() ?? 0.0,
       paddingLeft: (json['paddingLeft'] as num?)?.toDouble() ?? 0.0,
       paddingRight: (json['paddingRight'] as num?)?.toDouble() ?? 0.0,
@@ -920,9 +916,9 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'clipsContent': instance.clipsContent,
       'layoutMode': _$LayoutModeEnumMap[instance.layoutMode],
       'counterAxisSizingMode':
-          _$CounterAxisSizingModeEnumMap[instance.counterAxisSizingMode]!,
+          _$CounterAxisSizingModeEnumMap[instance.counterAxisSizingMode],
       'primaryAxisSizingMode':
-          _$PrimaryAxisSizingModeEnumMap[instance.primaryAxisSizingMode]!,
+          _$PrimaryAxisSizingModeEnumMap[instance.primaryAxisSizingMode],
       'primaryAxisAlignItems':
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
