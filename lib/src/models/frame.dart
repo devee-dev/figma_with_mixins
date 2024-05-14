@@ -16,7 +16,8 @@ class Frame extends NodeWithChildren
         RectangleCornerMixin,
         PaddingMixin,
         EffectsMixin,
-        AutoLayoutMixin {
+        AutoLayoutMixin,
+        BlendMixin {
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
@@ -94,6 +95,7 @@ class Frame extends NodeWithChildren
   final List<ExportSetting> exportSettings;
 
   /// How this node blends with nodes behind it in the scene.
+  @override
   final BlendMode? blendMode;
 
   /// Keep height and width constrained to same ratio.
@@ -129,6 +131,7 @@ class Frame extends NodeWithChildren
   final double? transitionDuration;
 
   /// Opacity of the node.
+  @override
   @JsonKey(defaultValue: 1.0)
   final double opacity;
 

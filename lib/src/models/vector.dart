@@ -10,7 +10,7 @@ part 'vector.g.dart';
 @JsonSerializable()
 @CopyWith()
 class Vector extends Node
-    implements LayoutMixin, StrokesMixin, FillsMixin, EffectsMixin {
+    implements LayoutMixin, StrokesMixin, FillsMixin, EffectsMixin, BlendMixin {
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
@@ -20,6 +20,7 @@ class Vector extends Node
   final List<ExportSetting> exportSettings;
 
   /// How this node blends with nodes behind it in the scene (see [BlendMode]).
+  @override
   final BlendMode? blendMode;
 
   /// Keep height and width constrained to same ratio.
@@ -58,6 +59,7 @@ class Vector extends Node
   final EasingType? transitionEasing;
 
   /// Opacity of the node.
+  @override
   @JsonKey(defaultValue: 1.0)
   final double opacity;
 
