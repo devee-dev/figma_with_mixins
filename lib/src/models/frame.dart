@@ -131,6 +131,7 @@ class Frame extends NodeWithChildren
   final double? transitionDuration;
 
   /// Opacity of the node.
+  @override
   @JsonKey(defaultValue: 1.0)
   final double opacity;
 
