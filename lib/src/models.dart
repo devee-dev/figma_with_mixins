@@ -5,6 +5,7 @@ export 'models/mixins/layout_mixin.dart';
 export 'models/mixins/strokes_mixin.dart';
 export 'models/mixins/fills_mixin.dart';
 export 'models/mixins/corner_mixin.dart';
+export 'models/mixins/blend_mixin.dart';
 export 'models/mixins/effects_mixin.dart';
 export 'models/node_children_mixin.dart';
 export 'models/node_types.dart';
