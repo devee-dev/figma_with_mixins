@@ -17,7 +17,8 @@ class Frame extends NodeWithChildren
         PaddingMixin,
         EffectsMixin,
         AutoLayoutMixin,
-        BlendMixin {
+        BlendMixin,
+        MaskMixin {
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
@@ -97,6 +98,10 @@ class Frame extends NodeWithChildren
   /// How this node blends with nodes behind it in the scene.
   @override
   final BlendMode? blendMode;
+
+  /// How this node masks with nodes behind it in the scene.
+  @override
+  final MaskType? maskType;
 
   /// Keep height and width constrained to same ratio.
   @override
@@ -332,6 +337,7 @@ class Frame extends NodeWithChildren
     this.cornerSmoothing,
     this.rectangleCornerRadii,
     this.blendMode,
+    this.maskType,
     this.constraints,
     this.layoutAlign,
     this.transitionNodeID,
@@ -362,6 +368,7 @@ class Frame extends NodeWithChildren
         rectangleCornerRadii,
         exportSettings,
         blendMode,
+        maskType,
         preserveRatio,
         layoutGrow,
         constraints,

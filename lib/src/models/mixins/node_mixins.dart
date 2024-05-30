@@ -14,6 +14,7 @@ enum NodeMixins {
 
   GeometryMixin,
   BlendMixin,
+  MaskMixin,
   ChildrenMixin,
   PluginDataMixin,
   BaseNodeMixin,

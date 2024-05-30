@@ -86,6 +86,8 @@ abstract class _$VectorCWProxy {
 
   Vector fillOverrideTable(Map<int, PaintOverride?>? fillOverrideTable);
 
+  Vector maskType(MaskType? maskType);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Vector(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -132,6 +134,7 @@ abstract class _$VectorCWProxy {
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
     Map<int, PaintOverride?>? fillOverrideTable,
+    MaskType? maskType,
   });
 }
 
@@ -280,6 +283,9 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
       this(fillOverrideTable: fillOverrideTable);
 
   @override
+  Vector maskType(MaskType? maskType) => this(maskType: maskType);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Vector(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -327,6 +333,7 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
     Object? styles = const $CopyWithPlaceholder(),
     Object? absoluteRenderBounds = const $CopyWithPlaceholder(),
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
+    Object? maskType = const $CopyWithPlaceholder(),
   }) {
     return Vector(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -496,6 +503,10 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
           ? _value.fillOverrideTable
           // ignore: cast_nullable_to_non_nullable
           : fillOverrideTable as Map<int, PaintOverride?>?,
+      maskType: maskType == const $CopyWithPlaceholder()
+          ? _value.maskType
+          // ignore: cast_nullable_to_non_nullable
+          : maskType as MaskType?,
     );
   }
 }
@@ -603,6 +614,7 @@ Vector _$VectorFromJson(Map<String, dynamic> json) => Vector(
                 ? null
                 : PaintOverride.fromJson(e as Map<String, dynamic>)),
       ),
+      maskType: $enumDecodeNullable(_$MaskTypeEnumMap, json['maskType']),
     );
 
 Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
@@ -621,6 +633,7 @@ Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
       'layoutPositioning':
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
+      'maskType': _$MaskTypeEnumMap[instance.maskType],
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
@@ -741,4 +754,10 @@ const _$StyleTypeKeyEnumMap = {
   StyleTypeKey.text: 'text',
   StyleTypeKey.effect: 'effect',
   StyleTypeKey.grid: 'grid',
+};
+
+const _$MaskTypeEnumMap = {
+  MaskType.alpha: 'ALPHA',
+  MaskType.vector: 'VECTOR',
+  MaskType.luminance: 'LUMINANCE',
 };

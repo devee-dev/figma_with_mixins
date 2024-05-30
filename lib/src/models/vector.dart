@@ -10,7 +10,13 @@ part 'vector.g.dart';
 @JsonSerializable()
 @CopyWith()
 class Vector extends Node
-    implements LayoutMixin, StrokesMixin, FillsMixin, EffectsMixin, BlendMixin {
+    implements
+        LayoutMixin,
+        StrokesMixin,
+        FillsMixin,
+        EffectsMixin,
+        BlendMixin,
+        MaskMixin {
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
@@ -37,6 +43,10 @@ class Vector extends Node
   ///Determines whether a layer's size and position should be dermined by auto-layout settings or manually adjustable.
   @override
   final LayoutPositioning? layoutPositioning;
+
+  /// How this node masks with nodes behind it in the scene.
+  @override
+  final MaskType? maskType;
 
   /// This property is applicable only for direct children of auto-layout frames,
   /// ignored otherwise. Determines whether a layer should stretch along the parent’s
@@ -201,6 +211,7 @@ class Vector extends Node
     this.styles,
     this.absoluteRenderBounds,
     this.fillOverrideTable,
+    this.maskType,
   });
 
   @override

@@ -62,6 +62,7 @@ class Rectangle extends Vector implements RectangleCornerMixin {
     super.absoluteRenderBounds,
     super.fillOverrideTable,
     super.individualStrokeWeights,
+    super.maskType,
     this.cornerRadius,
     this.cornerSmoothing,
     this.rectangleCornerRadii,
@@ -72,6 +73,7 @@ class Rectangle extends Vector implements RectangleCornerMixin {
         ...super.props,
         cornerRadius,
         rectangleCornerRadii,
+        maskType,
       ];
 
   factory Rectangle.fromJson(Map<String, dynamic> json) =>

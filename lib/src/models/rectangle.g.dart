@@ -86,6 +86,8 @@ abstract class _$RectangleCWProxy {
 
   Rectangle individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
+  Rectangle maskType(MaskType? maskType);
+
   Rectangle cornerRadius(double? cornerRadius);
 
   Rectangle cornerSmoothing(double? cornerSmoothing);
@@ -138,6 +140,7 @@ abstract class _$RectangleCWProxy {
     SizeRectangle? absoluteRenderBounds,
     Map<int, PaintOverride?>? fillOverrideTable,
     StrokeWeights? individualStrokeWeights,
+    MaskType? maskType,
     double? cornerRadius,
     double? cornerSmoothing,
     List<double>? rectangleCornerRadii,
@@ -290,6 +293,9 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
+  Rectangle maskType(MaskType? maskType) => this(maskType: maskType);
+
+  @override
   Rectangle cornerRadius(double? cornerRadius) =>
       this(cornerRadius: cornerRadius);
 
@@ -349,6 +355,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
     Object? absoluteRenderBounds = const $CopyWithPlaceholder(),
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
+    Object? maskType = const $CopyWithPlaceholder(),
     Object? cornerRadius = const $CopyWithPlaceholder(),
     Object? cornerSmoothing = const $CopyWithPlaceholder(),
     Object? rectangleCornerRadii = const $CopyWithPlaceholder(),
@@ -521,6 +528,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
               ? _value.individualStrokeWeights
               // ignore: cast_nullable_to_non_nullable
               : individualStrokeWeights as StrokeWeights?,
+      maskType: maskType == const $CopyWithPlaceholder()
+          ? _value.maskType
+          // ignore: cast_nullable_to_non_nullable
+          : maskType as MaskType?,
       cornerRadius: cornerRadius == const $CopyWithPlaceholder()
           ? _value.cornerRadius
           // ignore: cast_nullable_to_non_nullable
@@ -640,6 +651,7 @@ Rectangle _$RectangleFromJson(Map<String, dynamic> json) => Rectangle(
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
+      maskType: $enumDecodeNullable(_$MaskTypeEnumMap, json['maskType']),
       cornerRadius: (json['cornerRadius'] as num?)?.toDouble(),
       cornerSmoothing: (json['cornerSmoothing'] as num?)?.toDouble(),
       rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
@@ -663,6 +675,7 @@ Map<String, dynamic> _$RectangleToJson(Rectangle instance) => <String, dynamic>{
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
       'layoutPositioning':
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
+      'maskType': _$MaskTypeEnumMap[instance.maskType],
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
@@ -786,4 +799,10 @@ const _$StyleTypeKeyEnumMap = {
   StyleTypeKey.text: 'text',
   StyleTypeKey.effect: 'effect',
   StyleTypeKey.grid: 'grid',
+};
+
+const _$MaskTypeEnumMap = {
+  MaskType.alpha: 'ALPHA',
+  MaskType.vector: 'VECTOR',
+  MaskType.luminance: 'LUMINANCE',
 };

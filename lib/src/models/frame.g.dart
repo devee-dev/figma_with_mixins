@@ -110,6 +110,8 @@ abstract class _$FrameCWProxy {
 
   Frame blendMode(BlendMode? blendMode);
 
+  Frame maskType(MaskType? maskType);
+
   Frame constraints(LayoutConstraint? constraints);
 
   Frame layoutAlign(LayoutAlign? layoutAlign);
@@ -184,6 +186,7 @@ abstract class _$FrameCWProxy {
     double? cornerSmoothing,
     List<double>? rectangleCornerRadii,
     BlendMode? blendMode,
+    MaskType? maskType,
     LayoutConstraint? constraints,
     LayoutAlign? layoutAlign,
     String? transitionNodeID,
@@ -380,6 +383,9 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
   Frame blendMode(BlendMode? blendMode) => this(blendMode: blendMode);
 
   @override
+  Frame maskType(MaskType? maskType) => this(maskType: maskType);
+
+  @override
   Frame constraints(LayoutConstraint? constraints) =>
       this(constraints: constraints);
 
@@ -467,6 +473,7 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
     Object? cornerSmoothing = const $CopyWithPlaceholder(),
     Object? rectangleCornerRadii = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
+    Object? maskType = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
@@ -710,6 +717,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.blendMode
           // ignore: cast_nullable_to_non_nullable
           : blendMode as BlendMode?,
+      maskType: maskType == const $CopyWithPlaceholder()
+          ? _value.maskType
+          // ignore: cast_nullable_to_non_nullable
+          : maskType as MaskType?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -857,6 +868,7 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
           ?.map((e) => (e as num).toDouble())
           .toList(),
       blendMode: $enumDecodeNullable(_$BlendModeEnumMap, json['blendMode']),
+      maskType: $enumDecodeNullable(_$MaskTypeEnumMap, json['maskType']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -906,6 +918,7 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'rectangleCornerRadii': instance.rectangleCornerRadii,
       'exportSettings': instance.exportSettings,
       'blendMode': _$BlendModeEnumMap[instance.blendMode],
+      'maskType': _$MaskTypeEnumMap[instance.maskType],
       'preserveRatio': instance.preserveRatio,
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
@@ -1045,6 +1058,12 @@ const _$BlendModeEnumMap = {
   BlendMode.saturation: 'SATURATION',
   BlendMode.color: 'COLOR',
   BlendMode.luminosity: 'LUMINOSITY',
+};
+
+const _$MaskTypeEnumMap = {
+  MaskType.alpha: 'ALPHA',
+  MaskType.vector: 'VECTOR',
+  MaskType.luminance: 'LUMINANCE',
 };
 
 const _$LayoutAlignEnumMap = {
