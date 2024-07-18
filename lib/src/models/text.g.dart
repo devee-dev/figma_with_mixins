@@ -74,7 +74,7 @@ abstract class _$TextCWProxy {
 
   Text strokeWeight(double? strokeWeight);
 
-  Text strokeGeometry(List<dynamic>? strokeGeometry);
+  Text strokeGeometry(List<Path>? strokeGeometry);
 
   Text strokeAlign(StrokeAlign? strokeAlign);
 
@@ -138,7 +138,7 @@ abstract class _$TextCWProxy {
     Vector2D? size,
     List<List<double>>? relativeTransform,
     double? strokeWeight,
-    List<dynamic>? strokeGeometry,
+    List<Path>? strokeGeometry,
     StrokeAlign? strokeAlign,
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
@@ -273,7 +273,7 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
   Text strokeWeight(double? strokeWeight) => this(strokeWeight: strokeWeight);
 
   @override
-  Text strokeGeometry(List<dynamic>? strokeGeometry) =>
+  Text strokeGeometry(List<Path>? strokeGeometry) =>
       this(strokeGeometry: strokeGeometry);
 
   @override
@@ -516,7 +516,7 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
       strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
           ? _value.strokeGeometry
           // ignore: cast_nullable_to_non_nullable
-          : strokeGeometry as List<dynamic>?,
+          : strokeGeometry as List<Path>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -648,7 +648,9 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
               (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
           .toList(),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
-      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
+          ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
+          .toList(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
@@ -676,7 +678,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
           : TypeStyle.fromJson(json['style'] as Map<String, dynamic>),
       characterStyleOverrides:
           (json['characterStyleOverrides'] as List<dynamic>?)
-              ?.map((e) => (e as num).toInt())
+              ?.map((e) => e as int)
               .toList(),
       styleOverrideTable:
           (json['styleOverrideTable'] as Map<String, dynamic>?)?.map(
@@ -687,7 +689,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
           ?.map((e) => $enumDecode(_$LineTypeEnumMap, e))
           .toList(),
       lineIndentations: (json['lineIndentations'] as List<dynamic>?)
-          ?.map((e) => (e as num).toInt())
+          ?.map((e) => e as int)
           .toList(),
     );
 

@@ -74,7 +74,7 @@ abstract class _$BooleanOperationCWProxy {
 
   BooleanOperation strokeWeight(double? strokeWeight);
 
-  BooleanOperation strokeGeometry(List<dynamic>? strokeGeometry);
+  BooleanOperation strokeGeometry(List<Path>? strokeGeometry);
 
   BooleanOperation strokeAlign(StrokeAlign? strokeAlign);
 
@@ -132,7 +132,7 @@ abstract class _$BooleanOperationCWProxy {
     Vector2D? size,
     List<List<double>>? relativeTransform,
     double? strokeWeight,
-    List<dynamic>? strokeGeometry,
+    List<Path>? strokeGeometry,
     StrokeAlign? strokeAlign,
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
@@ -270,7 +270,7 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
       this(strokeWeight: strokeWeight);
 
   @override
-  BooleanOperation strokeGeometry(List<dynamic>? strokeGeometry) =>
+  BooleanOperation strokeGeometry(List<Path>? strokeGeometry) =>
       this(strokeGeometry: strokeGeometry);
 
   @override
@@ -499,7 +499,7 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
       strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
           ? _value.strokeGeometry
           // ignore: cast_nullable_to_non_nullable
-          : strokeGeometry as List<dynamic>?,
+          : strokeGeometry as List<Path>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -615,7 +615,9 @@ BooleanOperation _$BooleanOperationFromJson(Map<String, dynamic> json) =>
               (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
           .toList(),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
-      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
+          ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
+          .toList(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(

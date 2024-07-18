@@ -104,7 +104,7 @@ ImageResponse _$ImageResponseFromJson(Map<String, dynamic> json) =>
           ?.map(
         (k, e) => MapEntry(k, e as String),
       ),
-      status: (json['status'] as num?)?.toInt(),
+      status: json['status'] as int?,
     );
 
 Map<String, dynamic> _$ImageResponseToJson(ImageResponse instance) =>

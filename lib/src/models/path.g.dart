@@ -82,6 +82,7 @@ Map<String, dynamic> _$PathToJson(Path instance) => <String, dynamic>{
     };
 
 const _$WindingRuleEnumMap = {
-  WindingRule.nonzero: 'NONZERO',
-  WindingRule.evenodd: 'EVENODD',
+  WindingRule.nonZero: 'NONZERO',
+  WindingRule.evenOdd: 'EVENODD',
+  WindingRule.none: 'NONE',
 };

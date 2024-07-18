@@ -180,7 +180,7 @@ FileResponse _$FileResponseFromJson(Map<String, dynamic> json) => FileResponse(
       componentSets: (json['componentSets'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, ComponentSet.fromJson(e as Map<String, dynamic>)),
       ),
-      schemaVersion: (json['schemaVersion'] as num?)?.toInt(),
+      schemaVersion: json['schemaVersion'] as int?,
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, Style.fromJson(e as Map<String, dynamic>)),
       ),

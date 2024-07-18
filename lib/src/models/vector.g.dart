@@ -76,7 +76,7 @@ abstract class _$VectorCWProxy {
 
   Vector individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
-  Vector strokeGeometry(List<dynamic>? strokeGeometry);
+  Vector strokeGeometry(List<Path>? strokeGeometry);
 
   Vector strokeAlign(StrokeAlign? strokeAlign);
 
@@ -129,7 +129,7 @@ abstract class _$VectorCWProxy {
     List<List<double>>? relativeTransform,
     double? strokeWeight,
     StrokeWeights? individualStrokeWeights,
-    List<dynamic>? strokeGeometry,
+    List<Path>? strokeGeometry,
     StrokeAlign? strokeAlign,
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
@@ -264,7 +264,7 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
-  Vector strokeGeometry(List<dynamic>? strokeGeometry) =>
+  Vector strokeGeometry(List<Path>? strokeGeometry) =>
       this(strokeGeometry: strokeGeometry);
 
   @override
@@ -486,7 +486,7 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
       strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
           ? _value.strokeGeometry
           // ignore: cast_nullable_to_non_nullable
-          : strokeGeometry as List<dynamic>?,
+          : strokeGeometry as List<Path>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -596,7 +596,9 @@ Vector _$VectorFromJson(Map<String, dynamic> json) => Vector(
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
-      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
+          ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
+          .toList(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(

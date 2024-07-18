@@ -74,7 +74,7 @@ abstract class _$RectangleCWProxy {
 
   Rectangle strokeWeight(double? strokeWeight);
 
-  Rectangle strokeGeometry(List<dynamic>? strokeGeometry);
+  Rectangle strokeGeometry(List<Path>? strokeGeometry);
 
   Rectangle strokeAlign(StrokeAlign? strokeAlign);
 
@@ -134,7 +134,7 @@ abstract class _$RectangleCWProxy {
     Vector2D? size,
     List<List<double>>? relativeTransform,
     double? strokeWeight,
-    List<dynamic>? strokeGeometry,
+    List<Path>? strokeGeometry,
     StrokeAlign? strokeAlign,
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
@@ -270,7 +270,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
       this(strokeWeight: strokeWeight);
 
   @override
-  Rectangle strokeGeometry(List<dynamic>? strokeGeometry) =>
+  Rectangle strokeGeometry(List<Path>? strokeGeometry) =>
       this(strokeGeometry: strokeGeometry);
 
   @override
@@ -506,7 +506,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
       strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
           ? _value.strokeGeometry
           // ignore: cast_nullable_to_non_nullable
-          : strokeGeometry as List<dynamic>?,
+          : strokeGeometry as List<Path>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -629,7 +629,9 @@ Rectangle _$RectangleFromJson(Map<String, dynamic> json) => Rectangle(
               (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
           .toList(),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
-      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
+          ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
+          .toList(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(

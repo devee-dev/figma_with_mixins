@@ -74,7 +74,7 @@ abstract class _$LineCWProxy {
 
   Line strokeWeight(double? strokeWeight);
 
-  Line strokeGeometry(List<dynamic>? strokeGeometry);
+  Line strokeGeometry(List<Path>? strokeGeometry);
 
   Line strokeAlign(StrokeAlign? strokeAlign);
 
@@ -126,7 +126,7 @@ abstract class _$LineCWProxy {
     Vector2D? size,
     List<List<double>>? relativeTransform,
     double? strokeWeight,
-    List<dynamic>? strokeGeometry,
+    List<Path>? strokeGeometry,
     StrokeAlign? strokeAlign,
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
@@ -255,7 +255,7 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
   Line strokeWeight(double? strokeWeight) => this(strokeWeight: strokeWeight);
 
   @override
-  Line strokeGeometry(List<dynamic>? strokeGeometry) =>
+  Line strokeGeometry(List<Path>? strokeGeometry) =>
       this(strokeGeometry: strokeGeometry);
 
   @override
@@ -471,7 +471,7 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
       strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
           ? _value.strokeGeometry
           // ignore: cast_nullable_to_non_nullable
-          : strokeGeometry as List<dynamic>?,
+          : strokeGeometry as List<Path>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -578,7 +578,9 @@ Line _$LineFromJson(Map<String, dynamic> json) => Line(
               (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
           .toList(),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
-      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
+          ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
+          .toList(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(

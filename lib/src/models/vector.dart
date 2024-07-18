@@ -160,7 +160,7 @@ class Vector extends Node
   /// Only specified if parameter geometry=paths is used. An array of paths
   /// representing the object stroke.
   @override
-  final List<dynamic>? strokeGeometry;
+  final List<Path>? strokeGeometry;
 
   /// Position of stroke relative to vector outline.
   @override

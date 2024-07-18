@@ -6,10 +6,13 @@ part 'path.g.dart';
 // The winding rule for a path.
 enum WindingRule {
   @JsonValue('NONZERO')
-  nonzero,
+  nonZero,
 
   @JsonValue('EVENODD')
-  evenodd,
+  evenOdd,
+
+  @JsonValue('NONE')
+  none,
 }
 
 /// A path in a frame.

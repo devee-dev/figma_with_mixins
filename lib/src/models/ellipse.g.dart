@@ -74,7 +74,7 @@ abstract class _$EllipseCWProxy {
 
   Ellipse strokeWeight(double? strokeWeight);
 
-  Ellipse strokeGeometry(List<dynamic>? strokeGeometry);
+  Ellipse strokeGeometry(List<Path>? strokeGeometry);
 
   Ellipse strokeAlign(StrokeAlign? strokeAlign);
 
@@ -128,7 +128,7 @@ abstract class _$EllipseCWProxy {
     Vector2D? size,
     List<List<double>>? relativeTransform,
     double? strokeWeight,
-    List<dynamic>? strokeGeometry,
+    List<Path>? strokeGeometry,
     StrokeAlign? strokeAlign,
     Map<StyleTypeKey, String>? styles,
     SizeRectangle? absoluteRenderBounds,
@@ -261,7 +261,7 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
       this(strokeWeight: strokeWeight);
 
   @override
-  Ellipse strokeGeometry(List<dynamic>? strokeGeometry) =>
+  Ellipse strokeGeometry(List<Path>? strokeGeometry) =>
       this(strokeGeometry: strokeGeometry);
 
   @override
@@ -482,7 +482,7 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
       strokeGeometry: strokeGeometry == const $CopyWithPlaceholder()
           ? _value.strokeGeometry
           // ignore: cast_nullable_to_non_nullable
-          : strokeGeometry as List<dynamic>?,
+          : strokeGeometry as List<Path>?,
       strokeAlign: strokeAlign == const $CopyWithPlaceholder()
           ? _value.strokeAlign
           // ignore: cast_nullable_to_non_nullable
@@ -593,7 +593,9 @@ Ellipse _$EllipseFromJson(Map<String, dynamic> json) => Ellipse(
               (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
           .toList(),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
-      strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
+      strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
+          ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
+          .toList(),
       strokeAlign:
           $enumDecodeNullable(_$StrokeAlignEnumMap, json['strokeAlign']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
