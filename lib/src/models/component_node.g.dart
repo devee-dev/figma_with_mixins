@@ -70,6 +70,8 @@ abstract class _$ComponentNodeCWProxy {
   ComponentNode componentPropertyDefinitions(
       Map<String, ComponentPropertyDefinition> componentPropertyDefinitions);
 
+  ComponentNode devStatus(DevStatus? devStatus);
+
   ComponentNode styles(Map<StyleTypeKey, String>? styles);
 
   ComponentNode componentPropertyReferences(
@@ -155,6 +157,7 @@ abstract class _$ComponentNodeCWProxy {
     double? paddingTop,
     Vector2D? size,
     Map<String, ComponentPropertyDefinition>? componentPropertyDefinitions,
+    DevStatus? devStatus,
     Map<StyleTypeKey, String>? styles,
     Map<String, String>? componentPropertyReferences,
     SizeRectangle? absoluteBoundingBox,
@@ -300,6 +303,9 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
       this(componentPropertyDefinitions: componentPropertyDefinitions);
 
   @override
+  ComponentNode devStatus(DevStatus? devStatus) => this(devStatus: devStatus);
+
+  @override
   ComponentNode styles(Map<StyleTypeKey, String>? styles) =>
       this(styles: styles);
 
@@ -429,6 +435,7 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
     Object? paddingTop = const $CopyWithPlaceholder(),
     Object? size = const $CopyWithPlaceholder(),
     Object? componentPropertyDefinitions = const $CopyWithPlaceholder(),
+    Object? devStatus = const $CopyWithPlaceholder(),
     Object? styles = const $CopyWithPlaceholder(),
     Object? componentPropertyReferences = const $CopyWithPlaceholder(),
     Object? absoluteBoundingBox = const $CopyWithPlaceholder(),
@@ -597,6 +604,10 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
               // ignore: cast_nullable_to_non_nullable
               : componentPropertyDefinitions
                   as Map<String, ComponentPropertyDefinition>,
+      devStatus: devStatus == const $CopyWithPlaceholder()
+          ? _value.devStatus
+          // ignore: cast_nullable_to_non_nullable
+          : devStatus as DevStatus?,
       styles: styles == const $CopyWithPlaceholder()
           ? _value.styles
           // ignore: cast_nullable_to_non_nullable
@@ -783,6 +794,9 @@ ComponentNode _$ComponentNodeFromJson(Map<String, dynamic> json) =>
                         e as Map<String, dynamic>)),
               ) ??
               {},
+      devStatus: json['devStatus'] == null
+          ? null
+          : DevStatus.fromJson(json['devStatus'] as Map<String, dynamic>),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry($enumDecode(_$StyleTypeKeyEnumMap, k), e as String),
       ),
@@ -848,6 +862,7 @@ Map<String, dynamic> _$ComponentNodeToJson(ComponentNode instance) =>
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
       'locked': instance.locked,
+      'devStatus': instance.devStatus,
       'fills': instance.fills,
       'strokes': instance.strokes,
       'strokeWeight': instance.strokeWeight,

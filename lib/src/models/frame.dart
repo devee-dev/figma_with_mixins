@@ -1,5 +1,6 @@
 import 'package:figma/src/converters/converters.dart';
 import 'package:figma/src/models.dart';
+import 'package:figma/src/models/dev_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
@@ -22,6 +23,10 @@ class Frame extends NodeWithChildren
   /// If true, layer is locked and cannot be edited.
   @JsonKey(defaultValue: false)
   final bool locked;
+
+  // Whether the node is marked Ready for dev or Completed.
+  // If the node does not have a status, the property is null.
+  final DevStatus? devStatus;
 
   /// An array of fill paints applied to the node.
   @override
@@ -293,6 +298,7 @@ class Frame extends NodeWithChildren
     super.rotation,
     super.pluginData,
     super.sharedPluginData,
+    this.devStatus,
     required super.type,
     required this.locked,
     required this.fills,
@@ -351,6 +357,7 @@ class Frame extends NodeWithChildren
   @override
   List<Object?> get props => [
         ...super.props,
+        devStatus,
         locked,
         fills,
         fillGeometry,

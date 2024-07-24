@@ -180,15 +180,16 @@ FileResponse _$FileResponseFromJson(Map<String, dynamic> json) => FileResponse(
       componentSets: (json['componentSets'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, ComponentSet.fromJson(e as Map<String, dynamic>)),
       ),
-      schemaVersion: json['schemaVersion'] as int?,
+      schemaVersion: (json['schemaVersion'] as num?)?.toInt(),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, Style.fromJson(e as Map<String, dynamic>)),
       ),
-    );
+    )..originalJson = json['originalJson'] as Map<String, dynamic>?;
 
 Map<String, dynamic> _$FileResponseToJson(FileResponse instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'originalJson': instance.originalJson,
       'role': instance.role,
       'lastModified': instance.lastModified?.toIso8601String(),
       'thumbnailUrl': instance.thumbnailUrl,

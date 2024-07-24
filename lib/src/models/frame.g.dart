@@ -22,6 +22,8 @@ abstract class _$FrameCWProxy {
 
   Frame sharedPluginData(dynamic sharedPluginData);
 
+  Frame devStatus(DevStatus? devStatus);
+
   Frame type(NodeTypes type);
 
   Frame locked(bool locked);
@@ -142,6 +144,7 @@ abstract class _$FrameCWProxy {
     double? rotation,
     dynamic pluginData,
     dynamic sharedPluginData,
+    DevStatus? devStatus,
     NodeTypes? type,
     bool? locked,
     List<Paint>? fills,
@@ -227,6 +230,9 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
   @override
   Frame sharedPluginData(dynamic sharedPluginData) =>
       this(sharedPluginData: sharedPluginData);
+
+  @override
+  Frame devStatus(DevStatus? devStatus) => this(devStatus: devStatus);
 
   @override
   Frame type(NodeTypes type) => this(type: type);
@@ -429,6 +435,7 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
     Object? rotation = const $CopyWithPlaceholder(),
     Object? pluginData = const $CopyWithPlaceholder(),
     Object? sharedPluginData = const $CopyWithPlaceholder(),
+    Object? devStatus = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? locked = const $CopyWithPlaceholder(),
     Object? fills = const $CopyWithPlaceholder(),
@@ -515,6 +522,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
+      devStatus: devStatus == const $CopyWithPlaceholder()
+          ? _value.devStatus
+          // ignore: cast_nullable_to_non_nullable
+          : devStatus as DevStatus?,
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
@@ -778,6 +789,9 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
       rotation: (json['rotation'] as num?)?.toDouble(),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
+      devStatus: json['devStatus'] == null
+          ? null
+          : DevStatus.fromJson(json['devStatus'] as Map<String, dynamic>),
       type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       locked: json['locked'] as bool? ?? false,
       fills: (json['fills'] as List<dynamic>?)
@@ -902,6 +916,7 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
       'locked': instance.locked,
+      'devStatus': instance.devStatus,
       'fills': instance.fills,
       'fillGeometry': instance.fillGeometry,
       'strokes': instance.strokes,

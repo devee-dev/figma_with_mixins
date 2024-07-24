@@ -20,6 +20,7 @@ export 'models/component_set.dart';
 export 'models/constraint.dart';
 export 'models/counter_axis_align_items.dart';
 export 'models/counter_axis_sizing_mode.dart';
+export 'models/dev_status.dart';
 export 'models/document.dart';
 export 'models/easing_type.dart';
 export 'models/effect.dart';

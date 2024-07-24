@@ -58,8 +58,10 @@ class FigmaClient {
 
   /// Retrieves the Figma file specified by [key].
   Future<FileResponse> getFile(String key, [FigmaQuery? query]) async {
-    return await _getFigma('/files/$key', query)
-        .then((data) => FileResponse.fromJson(data));
+    return await _getFigma('/files/$key', query).then((data) {
+      //print(data);
+      return FileResponse.fromJson(data)..originalJson = data;
+    });
   }
 
   /// Retrieves the file nodes specified.

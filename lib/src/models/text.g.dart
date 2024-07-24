@@ -643,10 +643,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
       size: json['size'] == null
           ? null
           : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
-      relativeTransform: (json['relativeTransform'] as List<dynamic>?)
-          ?.map((e) =>
-              (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
-          .toList(),
+      relativeTransform: fromRelativeTransform(json['relativeTransform']),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
       strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
           ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
@@ -678,7 +675,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
           : TypeStyle.fromJson(json['style'] as Map<String, dynamic>),
       characterStyleOverrides:
           (json['characterStyleOverrides'] as List<dynamic>?)
-              ?.map((e) => e as int)
+              ?.map((e) => (e as num).toInt())
               .toList(),
       styleOverrideTable:
           (json['styleOverrideTable'] as Map<String, dynamic>?)?.map(
@@ -689,7 +686,7 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
           ?.map((e) => $enumDecode(_$LineTypeEnumMap, e))
           .toList(),
       lineIndentations: (json['lineIndentations'] as List<dynamic>?)
-          ?.map((e) => e as int)
+          ?.map((e) => (e as num).toInt())
           .toList(),
     );
 

@@ -94,6 +94,7 @@ class Vector extends Node
   /// relative to its parent. The bottom row of the matrix is implicitly always
   /// (0, 0, 1). Use to transform coordinates in geometry. Only present if
   /// geometry=paths is passed.
+  @JsonKey(fromJson: fromRelativeTransform)
   final List<List<double>>? relativeTransform;
 
   /// Does this node mask sibling nodes in front of it?
@@ -255,3 +256,9 @@ class Vector extends Node
   @override
   Map<String, dynamic> toJson() => _$VectorToJson(this);
 }
+
+List<List<double>>? fromRelativeTransform(dynamic json) => (json
+        as List<dynamic>?)
+    ?.map((e) =>
+        (e as List<dynamic>).map((e) => (e as num? ?? 0).toDouble()).toList())
+    .toList();

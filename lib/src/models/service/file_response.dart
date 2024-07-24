@@ -8,9 +8,11 @@ part 'file_response.g.dart';
 /// A response object containing a file.
 @JsonSerializable()
 @CopyWith()
+// ignore: must_be_immutable
 class FileResponse extends Equatable {
   /// Name of the file.
   final String? name;
+  Map<String, dynamic>? originalJson;
 
   /// Role.
   final String? role;

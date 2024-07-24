@@ -573,10 +573,7 @@ Star _$StarFromJson(Map<String, dynamic> json) => Star(
       size: json['size'] == null
           ? null
           : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
-      relativeTransform: (json['relativeTransform'] as List<dynamic>?)
-          ?.map((e) =>
-              (e as List<dynamic>).map((e) => (e as num).toDouble()).toList())
-          .toList(),
+      relativeTransform: fromRelativeTransform(json['relativeTransform']),
       strokeWeight: (json['strokeWeight'] as num?)?.toDouble(),
       strokeGeometry: (json['strokeGeometry'] as List<dynamic>?)
           ?.map((e) => Path.fromJson(e as Map<String, dynamic>))
