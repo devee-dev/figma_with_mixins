@@ -156,12 +156,14 @@ class Frame extends NodeWithChildren
   /// of the bounding box in that the absolute bounding box represents the
   /// element after scaling and rotation. Only present if geometry=paths
   /// is passed.
+  @override
   final Vector2D? size;
 
   /// The top two rows of a matrix that represents the 2D transform of this
   /// node relative to its parent. The bottom row of the matrix is implicitly
   /// always (0, 0, 1). Use to transform coordinates in geometry. Only present
   /// if `geometry=paths` is passed.
+  @override
   final List<List<double>>? relativeTransform;
 
   /// Whether or not this node clip content outside of its bounds.
