@@ -26,7 +26,7 @@ abstract class LayoutMixin {
 
   /// The bounds of the node that does not include rendered properties like drop shadows or strokes.
   /// The x and y inside this property represent the absolute position of the node on the page.
-  // SizeRectangle? get absoluteBoundingBox;
+  SizeRectangle? get absoluteBoundingBox;
 
   /// Width and height of element. This is different from the width and height
   /// of the bounding box in that the absolute bounding box represents the
