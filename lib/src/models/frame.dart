@@ -202,6 +202,18 @@ class Frame extends NodeWithChildren
   @JsonKey(defaultValue: CounterAxisAlignItems.min)
   final CounterAxisAlignItems counterAxisAlignItems;
 
+  /// The horizontal sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  @override
+  final String? layoutSizingHorizontal;
+
+  /// The vertical sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  @override
+  final String? layoutSizingVertical;
+
   /// The padding betweeen the left border of the frame and its children.
   /// This property is only applicable for auto-layout frames.
   @override
@@ -301,6 +313,8 @@ class Frame extends NodeWithChildren
     super.pluginData,
     super.sharedPluginData,
     this.devStatus,
+    this.layoutSizingHorizontal,
+    this.layoutSizingVertical,
     required super.type,
     required this.locked,
     required this.fills,
@@ -394,6 +408,8 @@ class Frame extends NodeWithChildren
         primaryAxisAlignItems,
         counterAxisSizingMode,
         counterAxisAlignItems,
+        layoutSizingHorizontal,
+        layoutSizingVertical,
         paddingTop,
         paddingLeft,
         paddingRight,

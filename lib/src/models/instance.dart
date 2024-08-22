@@ -39,6 +39,8 @@ class Instance extends Frame {
     required super.size,
     required super.preserveRatio,
     required super.layoutGrow,
+    super.layoutSizingVertical,
+    super.layoutSizingHorizontal,
     super.styles,
     super.componentPropertyReferences,
     super.absoluteBoundingBox,

@@ -32,6 +32,8 @@ class Group extends Frame {
     required super.counterAxisAlignItems,
     required super.primaryAxisAlignItems,
     required super.primaryAxisSizingMode,
+    super.layoutSizingHorizontal,
+    super.layoutSizingVertical,
     required super.paddingBottom,
     required super.paddingLeft,
     required super.paddingRight,

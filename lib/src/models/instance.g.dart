@@ -67,6 +67,10 @@ abstract class _$InstanceCWProxy {
 
   Instance layoutGrow(double layoutGrow);
 
+  Instance layoutSizingVertical(String? layoutSizingVertical);
+
+  Instance layoutSizingHorizontal(String? layoutSizingHorizontal);
+
   Instance styles(Map<StyleTypeKey, String>? styles);
 
   Instance componentPropertyReferences(
@@ -177,6 +181,8 @@ abstract class _$InstanceCWProxy {
     Vector2D? size,
     bool? preserveRatio,
     double? layoutGrow,
+    String? layoutSizingVertical,
+    String? layoutSizingHorizontal,
     Map<StyleTypeKey, String>? styles,
     Map<String, String>? componentPropertyReferences,
     SizeRectangle? absoluteBoundingBox,
@@ -326,6 +332,14 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
 
   @override
   Instance layoutGrow(double layoutGrow) => this(layoutGrow: layoutGrow);
+
+  @override
+  Instance layoutSizingVertical(String? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
+
+  @override
+  Instance layoutSizingHorizontal(String? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
 
   @override
   Instance styles(Map<StyleTypeKey, String>? styles) => this(styles: styles);
@@ -498,6 +512,8 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
     Object? size = const $CopyWithPlaceholder(),
     Object? preserveRatio = const $CopyWithPlaceholder(),
     Object? layoutGrow = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
     Object? styles = const $CopyWithPlaceholder(),
     Object? componentPropertyReferences = const $CopyWithPlaceholder(),
     Object? absoluteBoundingBox = const $CopyWithPlaceholder(),
@@ -680,6 +696,15 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
               ? _value.layoutGrow
               // ignore: cast_nullable_to_non_nullable
               : layoutGrow as double,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as String?,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as String?,
       styles: styles == const $CopyWithPlaceholder()
           ? _value.styles
           // ignore: cast_nullable_to_non_nullable
@@ -908,6 +933,8 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
           : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
       preserveRatio: json['preserveRatio'] as bool? ?? false,
       layoutGrow: (json['layoutGrow'] as num?)?.toDouble() ?? 0.0,
+      layoutSizingVertical: json['layoutSizingVertical'] as String?,
+      layoutSizingHorizontal: json['layoutSizingHorizontal'] as String?,
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry($enumDecode(_$StyleTypeKeyEnumMap, k), e as String),
       ),
@@ -1039,6 +1066,8 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
+      'layoutSizingHorizontal': instance.layoutSizingHorizontal,
+      'layoutSizingVertical': instance.layoutSizingVertical,
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,

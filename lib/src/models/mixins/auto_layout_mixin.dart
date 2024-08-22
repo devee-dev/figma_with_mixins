@@ -34,6 +34,16 @@ abstract class AutoLayoutMixin {
   ///Applicable only on auto-layout frames. Determines whether strokes are included in layout calculations. When true, auto-layout frames behave like css box-sizing: border-box.
   bool? get strokesIncludedInLayout;
 
+  /// The horizontal sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  String? get layoutSizingHorizontal;
+
+  /// The vertical sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  String? get layoutSizingVertical;
+
   ///DEPRECATED
   /// The horizontal padding between the borders of the frame and its children.
   /// This property is only applicable for auto-layout frames.

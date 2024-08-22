@@ -24,6 +24,10 @@ abstract class _$FrameCWProxy {
 
   Frame devStatus(DevStatus? devStatus);
 
+  Frame layoutSizingHorizontal(String? layoutSizingHorizontal);
+
+  Frame layoutSizingVertical(String? layoutSizingVertical);
+
   Frame type(NodeTypes type);
 
   Frame locked(bool locked);
@@ -145,6 +149,8 @@ abstract class _$FrameCWProxy {
     dynamic pluginData,
     dynamic sharedPluginData,
     DevStatus? devStatus,
+    String? layoutSizingHorizontal,
+    String? layoutSizingVertical,
     NodeTypes? type,
     bool? locked,
     List<Paint>? fills,
@@ -233,6 +239,14 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
 
   @override
   Frame devStatus(DevStatus? devStatus) => this(devStatus: devStatus);
+
+  @override
+  Frame layoutSizingHorizontal(String? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  Frame layoutSizingVertical(String? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
 
   @override
   Frame type(NodeTypes type) => this(type: type);
@@ -436,6 +450,8 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
     Object? pluginData = const $CopyWithPlaceholder(),
     Object? sharedPluginData = const $CopyWithPlaceholder(),
     Object? devStatus = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? locked = const $CopyWithPlaceholder(),
     Object? fills = const $CopyWithPlaceholder(),
@@ -526,6 +542,15 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.devStatus
           // ignore: cast_nullable_to_non_nullable
           : devStatus as DevStatus?,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as String?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as String?,
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
@@ -792,6 +817,8 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
       devStatus: json['devStatus'] == null
           ? null
           : DevStatus.fromJson(json['devStatus'] as Map<String, dynamic>),
+      layoutSizingHorizontal: json['layoutSizingHorizontal'] as String?,
+      layoutSizingVertical: json['layoutSizingVertical'] as String?,
       type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       locked: json['locked'] as bool? ?? false,
       fills: (json['fills'] as List<dynamic>?)
@@ -955,6 +982,8 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
+      'layoutSizingHorizontal': instance.layoutSizingHorizontal,
+      'layoutSizingVertical': instance.layoutSizingVertical,
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,

@@ -53,6 +53,10 @@ abstract class _$GroupCWProxy {
 
   Group primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode);
 
+  Group layoutSizingHorizontal(String? layoutSizingHorizontal);
+
+  Group layoutSizingVertical(String? layoutSizingVertical);
+
   Group paddingBottom(double paddingBottom);
 
   Group paddingLeft(double paddingLeft);
@@ -156,6 +160,8 @@ abstract class _$GroupCWProxy {
     CounterAxisAlignItems? counterAxisAlignItems,
     PrimaryAxisAlignItems? primaryAxisAlignItems,
     PrimaryAxisSizingMode? primaryAxisSizingMode,
+    String? layoutSizingHorizontal,
+    String? layoutSizingVertical,
     double? paddingBottom,
     double? paddingLeft,
     double? paddingRight,
@@ -281,6 +287,14 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
   @override
   Group primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode) =>
       this(primaryAxisSizingMode: primaryAxisSizingMode);
+
+  @override
+  Group layoutSizingHorizontal(String? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  Group layoutSizingVertical(String? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
 
   @override
   Group paddingBottom(double paddingBottom) =>
@@ -439,6 +453,8 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
     Object? counterAxisAlignItems = const $CopyWithPlaceholder(),
     Object? primaryAxisAlignItems = const $CopyWithPlaceholder(),
     Object? primaryAxisSizingMode = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? paddingBottom = const $CopyWithPlaceholder(),
     Object? paddingLeft = const $CopyWithPlaceholder(),
     Object? paddingRight = const $CopyWithPlaceholder(),
@@ -588,6 +604,15 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
               ? _value.primaryAxisSizingMode
               // ignore: cast_nullable_to_non_nullable
               : primaryAxisSizingMode as PrimaryAxisSizingMode,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as String?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as String?,
       paddingBottom:
           paddingBottom == const $CopyWithPlaceholder() || paddingBottom == null
               ? _value.paddingBottom
@@ -810,6 +835,8 @@ Group _$GroupFromJson(Map<String, dynamic> json) => Group(
       primaryAxisSizingMode: $enumDecodeNullable(
               _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']) ??
           PrimaryAxisSizingMode.auto,
+      layoutSizingHorizontal: json['layoutSizingHorizontal'] as String?,
+      layoutSizingVertical: json['layoutSizingVertical'] as String?,
       paddingBottom: (json['paddingBottom'] as num?)?.toDouble() ?? 0.0,
       paddingLeft: (json['paddingLeft'] as num?)?.toDouble() ?? 0.0,
       paddingRight: (json['paddingRight'] as num?)?.toDouble() ?? 0.0,
@@ -927,6 +954,8 @@ Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
+      'layoutSizingHorizontal': instance.layoutSizingHorizontal,
+      'layoutSizingVertical': instance.layoutSizingVertical,
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,
