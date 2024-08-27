@@ -4,6 +4,8 @@ import 'package:figma/src/models/dev_status.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
+import 'auto_layout_sizing_mode.dart';
+
 part 'frame.g.dart';
 
 /// A Figma frame.
@@ -206,13 +208,13 @@ class Frame extends NodeWithChildren
   /// FIXED,HUG, FILL
   /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
   @override
-  final String? layoutSizingHorizontal;
+  final AutoLayoutSizingMode? layoutSizingHorizontal;
 
   /// The vertical sizing setting on this auto-layout frame or frame child.
   /// FIXED,HUG, FILL
   /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
   @override
-  final String? layoutSizingVertical;
+  final AutoLayoutSizingMode? layoutSizingVertical;
 
   /// The padding betweeen the left border of the frame and its children.
   /// This property is only applicable for auto-layout frames.

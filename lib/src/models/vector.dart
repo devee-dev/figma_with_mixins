@@ -2,6 +2,8 @@ import 'package:figma/src/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 
+import 'auto_layout_sizing_mode.dart';
+
 part 'vector.g.dart';
 
 /// A vector node, either a path or a group of paths. All geometry in a vector
@@ -55,6 +57,18 @@ class Vector extends Node
   @JsonKey(defaultValue: 0.0)
   final double layoutGrow;
 
+  /// The horizontal sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  @override
+  final AutoLayoutSizingMode? layoutSizingHorizontal;
+
+  /// The vertical sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  @override
+  final AutoLayoutSizingMode? layoutSizingVertical;
+
   /// Horizontal and vertical layout constraints for node.
   @override
   final LayoutConstraint? constraints;
@@ -88,12 +102,14 @@ class Vector extends Node
   /// of the bounding box in that the absolute bounding box represents the
   /// element after scaling and rotation. Only present if geometry=paths is
   /// passed.
+  @override
   final Vector2D? size;
 
   /// The top two rows of a matrix that represents the 2D transform of this node
   /// relative to its parent. The bottom row of the matrix is implicitly always
   /// (0, 0, 1). Use to transform coordinates in geometry. Only present if
   /// geometry=paths is passed.
+  @override
   @JsonKey(fromJson: fromRelativeTransform)
   final List<List<double>>? relativeTransform;
 
@@ -197,6 +213,8 @@ class Vector extends Node
     this.blendMode,
     this.layoutAlign,
     this.layoutPositioning,
+    required this.layoutSizingHorizontal,
+    required this.layoutSizingVertical,
     this.constraints,
     this.transitionNodeID,
     this.transitionDuration,
@@ -224,6 +242,8 @@ class Vector extends Node
         preserveRatio,
         layoutAlign,
         layoutPositioning,
+        layoutSizingHorizontal,
+        layoutSizingVertical,
         layoutGrow,
         constraints,
         transitionNodeID,

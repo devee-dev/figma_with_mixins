@@ -67,9 +67,9 @@ abstract class _$InstanceCWProxy {
 
   Instance layoutGrow(double layoutGrow);
 
-  Instance layoutSizingVertical(String? layoutSizingVertical);
+  Instance layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
 
-  Instance layoutSizingHorizontal(String? layoutSizingHorizontal);
+  Instance layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
 
   Instance styles(Map<StyleTypeKey, String>? styles);
 
@@ -181,8 +181,8 @@ abstract class _$InstanceCWProxy {
     Vector2D? size,
     bool? preserveRatio,
     double? layoutGrow,
-    String? layoutSizingVertical,
-    String? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
     Map<StyleTypeKey, String>? styles,
     Map<String, String>? componentPropertyReferences,
     SizeRectangle? absoluteBoundingBox,
@@ -334,11 +334,12 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
   Instance layoutGrow(double layoutGrow) => this(layoutGrow: layoutGrow);
 
   @override
-  Instance layoutSizingVertical(String? layoutSizingVertical) =>
+  Instance layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
       this(layoutSizingVertical: layoutSizingVertical);
 
   @override
-  Instance layoutSizingHorizontal(String? layoutSizingHorizontal) =>
+  Instance layoutSizingHorizontal(
+          AutoLayoutSizingMode? layoutSizingHorizontal) =>
       this(layoutSizingHorizontal: layoutSizingHorizontal);
 
   @override
@@ -699,12 +700,12 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
       layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
           ? _value.layoutSizingVertical
           // ignore: cast_nullable_to_non_nullable
-          : layoutSizingVertical as String?,
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       layoutSizingHorizontal:
           layoutSizingHorizontal == const $CopyWithPlaceholder()
               ? _value.layoutSizingHorizontal
               // ignore: cast_nullable_to_non_nullable
-              : layoutSizingHorizontal as String?,
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
       styles: styles == const $CopyWithPlaceholder()
           ? _value.styles
           // ignore: cast_nullable_to_non_nullable
@@ -933,8 +934,10 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
           : Vector2D.fromJson(json['size'] as Map<String, dynamic>),
       preserveRatio: json['preserveRatio'] as bool? ?? false,
       layoutGrow: (json['layoutGrow'] as num?)?.toDouble() ?? 0.0,
-      layoutSizingVertical: json['layoutSizingVertical'] as String?,
-      layoutSizingHorizontal: json['layoutSizingHorizontal'] as String?,
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
       styles: (json['styles'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry($enumDecode(_$StyleTypeKeyEnumMap, k), e as String),
       ),
@@ -1066,8 +1069,10 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
-      'layoutSizingHorizontal': instance.layoutSizingHorizontal,
-      'layoutSizingVertical': instance.layoutSizingVertical,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,
@@ -1130,6 +1135,12 @@ const _$PrimaryAxisAlignItemsEnumMap = {
 const _$PrimaryAxisSizingModeEnumMap = {
   PrimaryAxisSizingMode.fixed: 'FIXED',
   PrimaryAxisSizingMode.auto: 'AUTO',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$StyleTypeKeyEnumMap = {

@@ -56,6 +56,12 @@ abstract class _$BooleanOperationCWProxy {
 
   BooleanOperation layoutPositioning(LayoutPositioning? layoutPositioning);
 
+  BooleanOperation layoutSizingHorizontal(
+      AutoLayoutSizingMode? layoutSizingHorizontal);
+
+  BooleanOperation layoutSizingVertical(
+      AutoLayoutSizingMode? layoutSizingVertical);
+
   BooleanOperation constraints(LayoutConstraint? constraints);
 
   BooleanOperation transitionNodeID(String? transitionNodeID);
@@ -123,6 +129,8 @@ abstract class _$BooleanOperationCWProxy {
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
     LayoutPositioning? layoutPositioning,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -236,6 +244,16 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
       this(layoutPositioning: layoutPositioning);
 
   @override
+  BooleanOperation layoutSizingHorizontal(
+          AutoLayoutSizingMode? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  BooleanOperation layoutSizingVertical(
+          AutoLayoutSizingMode? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
+
+  @override
   BooleanOperation constraints(LayoutConstraint? constraints) =>
       this(constraints: constraints);
 
@@ -335,6 +353,8 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
     Object? layoutPositioning = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -460,6 +480,15 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
           ? _value.layoutPositioning
           // ignore: cast_nullable_to_non_nullable
           : layoutPositioning as LayoutPositioning?,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -592,6 +621,10 @@ BooleanOperation _$BooleanOperationFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
       layoutPositioning: $enumDecodeNullable(
           _$LayoutPositioningEnumMap, json['layoutPositioning']),
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -660,6 +693,10 @@ Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
       'layoutPositioning':
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
       'transitionDuration': instance.transitionDuration,
@@ -758,6 +795,12 @@ const _$LayoutAlignEnumMap = {
 const _$LayoutPositioningEnumMap = {
   LayoutPositioning.auto: 'AUTO',
   LayoutPositioning.absolute: 'ABSOLUTE',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$EasingTypeEnumMap = {

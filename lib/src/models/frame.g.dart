@@ -24,9 +24,9 @@ abstract class _$FrameCWProxy {
 
   Frame devStatus(DevStatus? devStatus);
 
-  Frame layoutSizingHorizontal(String? layoutSizingHorizontal);
+  Frame layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
 
-  Frame layoutSizingVertical(String? layoutSizingVertical);
+  Frame layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
 
   Frame type(NodeTypes type);
 
@@ -149,8 +149,8 @@ abstract class _$FrameCWProxy {
     dynamic pluginData,
     dynamic sharedPluginData,
     DevStatus? devStatus,
-    String? layoutSizingHorizontal,
-    String? layoutSizingVertical,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     NodeTypes? type,
     bool? locked,
     List<Paint>? fills,
@@ -241,11 +241,11 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
   Frame devStatus(DevStatus? devStatus) => this(devStatus: devStatus);
 
   @override
-  Frame layoutSizingHorizontal(String? layoutSizingHorizontal) =>
+  Frame layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal) =>
       this(layoutSizingHorizontal: layoutSizingHorizontal);
 
   @override
-  Frame layoutSizingVertical(String? layoutSizingVertical) =>
+  Frame layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
       this(layoutSizingVertical: layoutSizingVertical);
 
   @override
@@ -546,11 +546,11 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           layoutSizingHorizontal == const $CopyWithPlaceholder()
               ? _value.layoutSizingHorizontal
               // ignore: cast_nullable_to_non_nullable
-              : layoutSizingHorizontal as String?,
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
       layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
           ? _value.layoutSizingVertical
           // ignore: cast_nullable_to_non_nullable
-          : layoutSizingVertical as String?,
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
@@ -817,8 +817,10 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
       devStatus: json['devStatus'] == null
           ? null
           : DevStatus.fromJson(json['devStatus'] as Map<String, dynamic>),
-      layoutSizingHorizontal: json['layoutSizingHorizontal'] as String?,
-      layoutSizingVertical: json['layoutSizingVertical'] as String?,
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       type: $enumDecode(_$NodeTypesEnumMap, json['type']),
       locked: json['locked'] as bool? ?? false,
       fills: (json['fills'] as List<dynamic>?)
@@ -982,8 +984,10 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
-      'layoutSizingHorizontal': instance.layoutSizingHorizontal,
-      'layoutSizingVertical': instance.layoutSizingVertical,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,
@@ -1004,6 +1008,12 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'styles': instance.styles
           ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
     };
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
+};
 
 const _$NodeTypesEnumMap = {
   NodeTypes.CANVAS: 'CANVAS',

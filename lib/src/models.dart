@@ -8,6 +8,7 @@ export 'models/mixins/corner_mixin.dart';
 export 'models/mixins/blend_mixin.dart';
 export 'models/mixins/mask_mixin.dart';
 export 'models/mixins/effects_mixin.dart';
+export 'models/auto_layout_sizing_mode.dart';
 export 'models/node_children_mixin.dart';
 export 'models/node_types.dart';
 export 'models/blend_mode.dart';

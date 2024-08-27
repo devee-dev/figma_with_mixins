@@ -56,6 +56,10 @@ abstract class _$VectorCWProxy {
 
   Vector layoutPositioning(LayoutPositioning? layoutPositioning);
 
+  Vector layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
+
+  Vector layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
+
   Vector constraints(LayoutConstraint? constraints);
 
   Vector transitionNodeID(String? transitionNodeID);
@@ -119,6 +123,8 @@ abstract class _$VectorCWProxy {
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
     LayoutPositioning? layoutPositioning,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -227,6 +233,14 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
       this(layoutPositioning: layoutPositioning);
 
   @override
+  Vector layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  Vector layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
+
+  @override
   Vector constraints(LayoutConstraint? constraints) =>
       this(constraints: constraints);
 
@@ -318,6 +332,8 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
     Object? layoutPositioning = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -442,6 +458,15 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
           ? _value.layoutPositioning
           // ignore: cast_nullable_to_non_nullable
           : layoutPositioning as LayoutPositioning?,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -569,6 +594,10 @@ Vector _$VectorFromJson(Map<String, dynamic> json) => Vector(
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
       layoutPositioning: $enumDecodeNullable(
           _$LayoutPositioningEnumMap, json['layoutPositioning']),
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -634,6 +663,10 @@ Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'maskType': _$MaskTypeEnumMap[instance.maskType],
       'layoutGrow': instance.layoutGrow,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
       'transitionDuration': instance.transitionDuration,
@@ -729,6 +762,12 @@ const _$LayoutAlignEnumMap = {
 const _$LayoutPositioningEnumMap = {
   LayoutPositioning.auto: 'AUTO',
   LayoutPositioning.absolute: 'ABSOLUTE',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$EasingTypeEnumMap = {

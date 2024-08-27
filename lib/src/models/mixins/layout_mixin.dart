@@ -1,4 +1,5 @@
 import 'package:figma/figma.dart';
+import 'package:figma/src/models/auto_layout_sizing_mode.dart';
 
 abstract class LayoutMixin {
   /// Keep height and width constrained to same ratio
@@ -39,4 +40,14 @@ abstract class LayoutMixin {
   /// always (0, 0, 1). Use to transform coordinates in geometry. Only present
   /// if `geometry=paths` is passed.
   List<List<double>>? get relativeTransform;
+
+  /// The horizontal sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  AutoLayoutSizingMode? get layoutSizingHorizontal;
+
+  /// The vertical sizing setting on this auto-layout frame or frame child.
+  /// FIXED,HUG, FILL
+  /// HUG is only valid on auto-layout frames and text nodes. FILL is only valid on auto-layout frame children.
+  AutoLayoutSizingMode? get layoutSizingVertical;
 }

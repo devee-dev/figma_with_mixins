@@ -21,6 +21,10 @@ abstract class _$EllipseCWProxy {
 
   Ellipse layoutGrow(double layoutGrow);
 
+  Ellipse layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
+
+  Ellipse layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
+
   Ellipse opacity(double opacity);
 
   Ellipse isMask(bool isMask);
@@ -102,6 +106,8 @@ abstract class _$EllipseCWProxy {
     List<ExportSetting>? exportSettings,
     bool? preserveRatio,
     double? layoutGrow,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     double? opacity,
     bool? isMask,
     List<Paint>? fills,
@@ -166,6 +172,15 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
 
   @override
   Ellipse layoutGrow(double layoutGrow) => this(layoutGrow: layoutGrow);
+
+  @override
+  Ellipse layoutSizingHorizontal(
+          AutoLayoutSizingMode? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  Ellipse layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
 
   @override
   Ellipse opacity(double opacity) => this(opacity: opacity);
@@ -302,6 +317,8 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
     Object? exportSettings = const $CopyWithPlaceholder(),
     Object? preserveRatio = const $CopyWithPlaceholder(),
     Object? layoutGrow = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? opacity = const $CopyWithPlaceholder(),
     Object? isMask = const $CopyWithPlaceholder(),
     Object? fills = const $CopyWithPlaceholder(),
@@ -368,6 +385,15 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
               ? _value.layoutGrow
               // ignore: cast_nullable_to_non_nullable
               : layoutGrow as double,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       opacity: opacity == const $CopyWithPlaceholder() || opacity == null
           ? _value.opacity
           // ignore: cast_nullable_to_non_nullable
@@ -533,6 +559,10 @@ Ellipse _$EllipseFromJson(Map<String, dynamic> json) => Ellipse(
           [],
       preserveRatio: json['preserveRatio'] as bool? ?? false,
       layoutGrow: (json['layoutGrow'] as num?)?.toDouble() ?? 0.0,
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       opacity: (json['opacity'] as num?)?.toDouble() ?? 1.0,
       isMask: json['isMask'] as bool? ?? false,
       fills: (json['fills'] as List<dynamic>?)
@@ -634,6 +664,10 @@ Map<String, dynamic> _$EllipseToJson(Ellipse instance) => <String, dynamic>{
       'layoutPositioning':
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
       'transitionDuration': instance.transitionDuration,
@@ -681,6 +715,12 @@ const _$NodeTypesEnumMap = {
   NodeTypes.INSTANCE: 'INSTANCE',
   NodeTypes.DOCUMENT: 'DOCUMENT',
   NodeTypes.SECTION: 'SECTION',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$StrokeCapEnumMap = {

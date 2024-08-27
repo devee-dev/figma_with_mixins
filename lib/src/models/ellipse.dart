@@ -16,6 +16,8 @@ class Ellipse extends Vector {
     required super.exportSettings,
     required super.preserveRatio,
     required super.layoutGrow,
+    super.layoutSizingHorizontal,
+    super.layoutSizingVertical,
     required super.opacity,
     required super.isMask,
     required super.fills,

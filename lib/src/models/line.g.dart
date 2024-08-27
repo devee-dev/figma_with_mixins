@@ -39,6 +39,10 @@ abstract class _$LineCWProxy {
 
   Line strokeMiterAngle(double strokeMiterAngle);
 
+  Line layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
+
+  Line layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
+
   Line componentPropertyReferences(
       Map<String, String>? componentPropertyReferences);
 
@@ -109,6 +113,8 @@ abstract class _$LineCWProxy {
     StrokeJoin? strokeJoin,
     List<double>? strokeDashes,
     double? strokeMiterAngle,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     Map<String, String>? componentPropertyReferences,
     String? name,
     double? rotation,
@@ -192,6 +198,14 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
   @override
   Line strokeMiterAngle(double strokeMiterAngle) =>
       this(strokeMiterAngle: strokeMiterAngle);
+
+  @override
+  Line layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  Line layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
 
   @override
   Line componentPropertyReferences(
@@ -301,6 +315,8 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
     Object? strokeJoin = const $CopyWithPlaceholder(),
     Object? strokeDashes = const $CopyWithPlaceholder(),
     Object? strokeMiterAngle = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? componentPropertyReferences = const $CopyWithPlaceholder(),
     Object? name = const $CopyWithPlaceholder(),
     Object? rotation = const $CopyWithPlaceholder(),
@@ -397,6 +413,15 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
           ? _value.strokeMiterAngle
           // ignore: cast_nullable_to_non_nullable
           : strokeMiterAngle as double,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       componentPropertyReferences:
           componentPropertyReferences == const $CopyWithPlaceholder()
               ? _value.componentPropertyReferences
@@ -542,6 +567,10 @@ Line _$LineFromJson(Map<String, dynamic> json) => Line(
               .toList() ??
           [],
       strokeMiterAngle: (json['strokeMiterAngle'] as num?)?.toDouble() ?? 28.96,
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       componentPropertyReferences:
           (json['componentPropertyReferences'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
@@ -618,6 +647,10 @@ Map<String, dynamic> _$LineToJson(Line instance) => <String, dynamic>{
       'layoutPositioning':
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
       'transitionDuration': instance.transitionDuration,
@@ -678,6 +711,12 @@ const _$StrokeJoinEnumMap = {
   StrokeJoin.miter: 'MITER',
   StrokeJoin.bevel: 'BEVEL',
   StrokeJoin.round: 'ROUND',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$BlendModeEnumMap = {

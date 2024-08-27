@@ -56,6 +56,10 @@ abstract class _$StarCWProxy {
 
   Star layoutPositioning(LayoutPositioning? layoutPositioning);
 
+  Star layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
+
+  Star layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
+
   Star constraints(LayoutConstraint? constraints);
 
   Star transitionNodeID(String? transitionNodeID);
@@ -117,6 +121,8 @@ abstract class _$StarCWProxy {
     BlendMode? blendMode,
     LayoutAlign? layoutAlign,
     LayoutPositioning? layoutPositioning,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     LayoutConstraint? constraints,
     String? transitionNodeID,
     double? transitionDuration,
@@ -222,6 +228,14 @@ class _$StarCWProxyImpl implements _$StarCWProxy {
       this(layoutPositioning: layoutPositioning);
 
   @override
+  Star layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  Star layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
+
+  @override
   Star constraints(LayoutConstraint? constraints) =>
       this(constraints: constraints);
 
@@ -309,6 +323,8 @@ class _$StarCWProxyImpl implements _$StarCWProxy {
     Object? blendMode = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
     Object? layoutPositioning = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
@@ -432,6 +448,15 @@ class _$StarCWProxyImpl implements _$StarCWProxy {
           ? _value.layoutPositioning
           // ignore: cast_nullable_to_non_nullable
           : layoutPositioning as LayoutPositioning?,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       constraints: constraints == const $CopyWithPlaceholder()
           ? _value.constraints
           // ignore: cast_nullable_to_non_nullable
@@ -555,6 +580,10 @@ Star _$StarFromJson(Map<String, dynamic> json) => Star(
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
       layoutPositioning: $enumDecodeNullable(
           _$LayoutPositioningEnumMap, json['layoutPositioning']),
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       constraints: json['constraints'] == null
           ? null
           : LayoutConstraint.fromJson(
@@ -618,6 +647,10 @@ Map<String, dynamic> _$StarToJson(Star instance) => <String, dynamic>{
       'layoutPositioning':
           _$LayoutPositioningEnumMap[instance.layoutPositioning],
       'layoutGrow': instance.layoutGrow,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'constraints': instance.constraints,
       'transitionNodeID': instance.transitionNodeID,
       'transitionDuration': instance.transitionDuration,
@@ -713,6 +746,12 @@ const _$LayoutAlignEnumMap = {
 const _$LayoutPositioningEnumMap = {
   LayoutPositioning.auto: 'AUTO',
   LayoutPositioning.absolute: 'ABSOLUTE',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$EasingTypeEnumMap = {

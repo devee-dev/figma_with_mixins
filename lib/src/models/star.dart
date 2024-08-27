@@ -33,6 +33,8 @@ class Star extends Vector {
     super.blendMode,
     super.layoutAlign,
     super.layoutPositioning,
+    super.layoutSizingHorizontal,
+    super.layoutSizingVertical,
     super.constraints,
     super.transitionNodeID,
     super.transitionDuration,

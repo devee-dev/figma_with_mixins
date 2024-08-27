@@ -24,6 +24,8 @@ class Line extends Vector {
     required super.strokeJoin,
     required super.strokeDashes,
     required super.strokeMiterAngle,
+    super.layoutSizingHorizontal,
+    super.layoutSizingVertical,
     super.componentPropertyReferences,
     super.name,
     super.rotation,

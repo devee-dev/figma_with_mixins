@@ -53,9 +53,9 @@ abstract class _$GroupCWProxy {
 
   Group primaryAxisSizingMode(PrimaryAxisSizingMode primaryAxisSizingMode);
 
-  Group layoutSizingHorizontal(String? layoutSizingHorizontal);
+  Group layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
 
-  Group layoutSizingVertical(String? layoutSizingVertical);
+  Group layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical);
 
   Group paddingBottom(double paddingBottom);
 
@@ -160,8 +160,8 @@ abstract class _$GroupCWProxy {
     CounterAxisAlignItems? counterAxisAlignItems,
     PrimaryAxisAlignItems? primaryAxisAlignItems,
     PrimaryAxisSizingMode? primaryAxisSizingMode,
-    String? layoutSizingHorizontal,
-    String? layoutSizingVertical,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
     double? paddingBottom,
     double? paddingLeft,
     double? paddingRight,
@@ -289,11 +289,11 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
       this(primaryAxisSizingMode: primaryAxisSizingMode);
 
   @override
-  Group layoutSizingHorizontal(String? layoutSizingHorizontal) =>
+  Group layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal) =>
       this(layoutSizingHorizontal: layoutSizingHorizontal);
 
   @override
-  Group layoutSizingVertical(String? layoutSizingVertical) =>
+  Group layoutSizingVertical(AutoLayoutSizingMode? layoutSizingVertical) =>
       this(layoutSizingVertical: layoutSizingVertical);
 
   @override
@@ -608,11 +608,11 @@ class _$GroupCWProxyImpl implements _$GroupCWProxy {
           layoutSizingHorizontal == const $CopyWithPlaceholder()
               ? _value.layoutSizingHorizontal
               // ignore: cast_nullable_to_non_nullable
-              : layoutSizingHorizontal as String?,
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
       layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
           ? _value.layoutSizingVertical
           // ignore: cast_nullable_to_non_nullable
-          : layoutSizingVertical as String?,
+          : layoutSizingVertical as AutoLayoutSizingMode?,
       paddingBottom:
           paddingBottom == const $CopyWithPlaceholder() || paddingBottom == null
               ? _value.paddingBottom
@@ -835,8 +835,10 @@ Group _$GroupFromJson(Map<String, dynamic> json) => Group(
       primaryAxisSizingMode: $enumDecodeNullable(
               _$PrimaryAxisSizingModeEnumMap, json['primaryAxisSizingMode']) ??
           PrimaryAxisSizingMode.auto,
-      layoutSizingHorizontal: json['layoutSizingHorizontal'] as String?,
-      layoutSizingVertical: json['layoutSizingVertical'] as String?,
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
       paddingBottom: (json['paddingBottom'] as num?)?.toDouble() ?? 0.0,
       paddingLeft: (json['paddingLeft'] as num?)?.toDouble() ?? 0.0,
       paddingRight: (json['paddingRight'] as num?)?.toDouble() ?? 0.0,
@@ -954,8 +956,10 @@ Map<String, dynamic> _$GroupToJson(Group instance) => <String, dynamic>{
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
-      'layoutSizingHorizontal': instance.layoutSizingHorizontal,
-      'layoutSizingVertical': instance.layoutSizingVertical,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,
@@ -1012,6 +1016,12 @@ const _$PrimaryAxisAlignItemsEnumMap = {
 const _$PrimaryAxisSizingModeEnumMap = {
   PrimaryAxisSizingMode.fixed: 'FIXED',
   PrimaryAxisSizingMode.auto: 'AUTO',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };
 
 const _$StyleTypeKeyEnumMap = {
