@@ -121,6 +121,12 @@ abstract class _$ComponentNodeCWProxy {
 
   ComponentNode individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
+  ComponentNode layoutSizingHorizontal(
+      AutoLayoutSizingMode? layoutSizingHorizontal);
+
+  ComponentNode layoutSizingVertical(
+      AutoLayoutSizingMode? layoutSizingVertical);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ComponentNode(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -182,6 +188,8 @@ abstract class _$ComponentNodeCWProxy {
     bool? clipsContent,
     LayoutMode? layoutMode,
     StrokeWeights? individualStrokeWeights,
+    AutoLayoutSizingMode? layoutSizingHorizontal,
+    AutoLayoutSizingMode? layoutSizingVertical,
   });
 }
 
@@ -398,6 +406,16 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
+  ComponentNode layoutSizingHorizontal(
+          AutoLayoutSizingMode? layoutSizingHorizontal) =>
+      this(layoutSizingHorizontal: layoutSizingHorizontal);
+
+  @override
+  ComponentNode layoutSizingVertical(
+          AutoLayoutSizingMode? layoutSizingVertical) =>
+      this(layoutSizingVertical: layoutSizingVertical);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ComponentNode(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -460,6 +478,8 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
     Object? clipsContent = const $CopyWithPlaceholder(),
     Object? layoutMode = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
+    Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
+    Object? layoutSizingVertical = const $CopyWithPlaceholder(),
   }) {
     return ComponentNode(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -710,6 +730,15 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
               ? _value.individualStrokeWeights
               // ignore: cast_nullable_to_non_nullable
               : individualStrokeWeights as StrokeWeights?,
+      layoutSizingHorizontal:
+          layoutSizingHorizontal == const $CopyWithPlaceholder()
+              ? _value.layoutSizingHorizontal
+              // ignore: cast_nullable_to_non_nullable
+              : layoutSizingHorizontal as AutoLayoutSizingMode?,
+      layoutSizingVertical: layoutSizingVertical == const $CopyWithPlaceholder()
+          ? _value.layoutSizingVertical
+          // ignore: cast_nullable_to_non_nullable
+          : layoutSizingVertical as AutoLayoutSizingMode?,
     );
   }
 }
@@ -847,6 +876,10 @@ ComponentNode _$ComponentNodeFromJson(Map<String, dynamic> json) =>
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
+      layoutSizingHorizontal: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
+      layoutSizingVertical: $enumDecodeNullable(
+          _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
     );
 
 Map<String, dynamic> _$ComponentNodeToJson(ComponentNode instance) =>
@@ -893,6 +926,10 @@ Map<String, dynamic> _$ComponentNodeToJson(ComponentNode instance) =>
           _$PrimaryAxisAlignItemsEnumMap[instance.primaryAxisAlignItems]!,
       'counterAxisAlignItems':
           _$CounterAxisAlignItemsEnumMap[instance.counterAxisAlignItems]!,
+      'layoutSizingHorizontal':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingHorizontal],
+      'layoutSizingVertical':
+          _$AutoLayoutSizingModeEnumMap[instance.layoutSizingVertical],
       'paddingLeft': instance.paddingLeft,
       'paddingTop': instance.paddingTop,
       'paddingRight': instance.paddingRight,
@@ -1022,4 +1059,10 @@ const _$LayoutModeEnumMap = {
   LayoutMode.none: 'NONE',
   LayoutMode.horizontal: 'HORIZONTAL',
   LayoutMode.vertical: 'VERTICAL',
+};
+
+const _$AutoLayoutSizingModeEnumMap = {
+  AutoLayoutSizingMode.fixed: 'FIXED',
+  AutoLayoutSizingMode.hug: 'HUG',
+  AutoLayoutSizingMode.fill: 'FILL',
 };

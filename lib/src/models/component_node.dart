@@ -65,6 +65,8 @@ class ComponentNode extends Frame {
     super.clipsContent,
     super.layoutMode,
     super.individualStrokeWeights,
+    super.layoutSizingHorizontal,
+    super.layoutSizingVertical
   });
 
   /// A mapping of name to ComponentPropertyDefinition for every component
