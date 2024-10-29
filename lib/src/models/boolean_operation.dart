@@ -21,14 +21,15 @@ enum Operation {
 /// formulas: Union, Subtract, Intersect, and Exclude.
 @JsonSerializable()
 @CopyWith()
-class BooleanOperation extends Vector {
+class BooleanOperation extends Vector implements NodeWithChildren {
   /// An array of nodes that are being boolean operated on.
+  @override
   @NodeJsonConverter()
   final List<Node?>? children;
 
   /// A string enum with value of "UNION", "INTERSECT", "SUBTRACT", or "EXCLUDE"
   /// indicating the type of boolean operation applied.
-  final Operation? operation;
+  final Operation? booleanOperation;
 
   BooleanOperation({
     required super.id,
@@ -73,14 +74,14 @@ class BooleanOperation extends Vector {
     super.fillOverrideTable,
     super.individualStrokeWeights,
     this.children,
-    this.operation,
+    this.booleanOperation,
   });
 
   @override
   List<Object?> get props => [
         ...super.props,
         children,
-        operation,
+        booleanOperation,
       ];
 
   factory BooleanOperation.fromJson(Map<String, dynamic> json) =>

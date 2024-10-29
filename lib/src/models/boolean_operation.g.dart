@@ -96,7 +96,7 @@ abstract class _$BooleanOperationCWProxy {
 
   BooleanOperation children(List<Node?>? children);
 
-  BooleanOperation operation(Operation? operation);
+  BooleanOperation booleanOperation(Operation? booleanOperation);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BooleanOperation(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -147,7 +147,7 @@ abstract class _$BooleanOperationCWProxy {
     Map<int, PaintOverride?>? fillOverrideTable,
     StrokeWeights? individualStrokeWeights,
     List<Node?>? children,
-    Operation? operation,
+    Operation? booleanOperation,
   });
 }
 
@@ -317,8 +317,8 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
   BooleanOperation children(List<Node?>? children) => this(children: children);
 
   @override
-  BooleanOperation operation(Operation? operation) =>
-      this(operation: operation);
+  BooleanOperation booleanOperation(Operation? booleanOperation) =>
+      this(booleanOperation: booleanOperation);
 
   @override
 
@@ -371,7 +371,7 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
     Object? children = const $CopyWithPlaceholder(),
-    Object? operation = const $CopyWithPlaceholder(),
+    Object? booleanOperation = const $CopyWithPlaceholder(),
   }) {
     return BooleanOperation(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -554,10 +554,10 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
           ? _value.children
           // ignore: cast_nullable_to_non_nullable
           : children as List<Node?>?,
-      operation: operation == const $CopyWithPlaceholder()
-          ? _value.operation
+      booleanOperation: booleanOperation == const $CopyWithPlaceholder()
+          ? _value.booleanOperation
           // ignore: cast_nullable_to_non_nullable
-          : operation as Operation?,
+          : booleanOperation as Operation?,
     );
   }
 }
@@ -672,7 +672,8 @@ BooleanOperation _$BooleanOperationFromJson(Map<String, dynamic> json) =>
       children: (json['children'] as List<dynamic>?)
           ?.map(const NodeJsonConverter().fromJson)
           .toList(),
-      operation: $enumDecodeNullable(_$OperationEnumMap, json['operation']),
+      booleanOperation:
+          $enumDecodeNullable(_$OperationEnumMap, json['booleanOperation']),
     );
 
 Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
@@ -725,7 +726,7 @@ Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
           ?.map((k, e) => MapEntry(_$StyleTypeKeyEnumMap[k]!, e)),
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),
-      'operation': _$OperationEnumMap[instance.operation],
+      'booleanOperation': _$OperationEnumMap[instance.booleanOperation],
     };
 
 const _$NodeTypesEnumMap = {
