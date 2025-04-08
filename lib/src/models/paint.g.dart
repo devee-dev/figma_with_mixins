@@ -11,6 +11,8 @@ abstract class _$PaintCWProxy {
 
   Paint visible(bool visible);
 
+  Paint rotation(num? rotation);
+
   Paint opacity(double? opacity);
 
   Paint color(Color? color);
@@ -40,6 +42,7 @@ abstract class _$PaintCWProxy {
   Paint call({
     PaintType? type,
     bool? visible,
+    num? rotation,
     double? opacity,
     Color? color,
     BlendMode? blendMode,
@@ -64,6 +67,9 @@ class _$PaintCWProxyImpl implements _$PaintCWProxy {
 
   @override
   Paint visible(bool visible) => this(visible: visible);
+
+  @override
+  Paint rotation(num? rotation) => this(rotation: rotation);
 
   @override
   Paint opacity(double? opacity) => this(opacity: opacity);
@@ -109,6 +115,7 @@ class _$PaintCWProxyImpl implements _$PaintCWProxy {
   Paint call({
     Object? type = const $CopyWithPlaceholder(),
     Object? visible = const $CopyWithPlaceholder(),
+    Object? rotation = const $CopyWithPlaceholder(),
     Object? opacity = const $CopyWithPlaceholder(),
     Object? color = const $CopyWithPlaceholder(),
     Object? blendMode = const $CopyWithPlaceholder(),
@@ -129,6 +136,10 @@ class _$PaintCWProxyImpl implements _$PaintCWProxy {
           ? _value.visible
           // ignore: cast_nullable_to_non_nullable
           : visible as bool,
+      rotation: rotation == const $CopyWithPlaceholder()
+          ? _value.rotation
+          // ignore: cast_nullable_to_non_nullable
+          : rotation as num?,
       opacity: opacity == const $CopyWithPlaceholder()
           ? _value.opacity
           // ignore: cast_nullable_to_non_nullable
@@ -187,6 +198,7 @@ extension $PaintCopyWith on Paint {
 Paint _$PaintFromJson(Map<String, dynamic> json) => Paint(
       type: $enumDecodeNullable(_$PaintTypeEnumMap, json['type']),
       visible: json['visible'] as bool? ?? true,
+      rotation: json['rotation'] as num?,
       opacity: (json['opacity'] as num?)?.toDouble(),
       color: json['color'] == null
           ? null
@@ -221,6 +233,7 @@ Map<String, dynamic> _$PaintToJson(Paint instance) => <String, dynamic>{
       'scalingFactor': instance.scalingFactor,
       'imageRef': instance.imageRef,
       'gifRef': instance.gifRef,
+      'rotation': instance.rotation,
     };
 
 const _$PaintTypeEnumMap = {

@@ -74,9 +74,12 @@ class Paint extends Equatable {
   /// references to image URLs.
   final String? gifRef;
 
+  final num? rotation;
+
   Paint({
     this.type,
     required this.visible,
+    this.rotation,
     this.opacity,
     this.color,
     this.blendMode,
