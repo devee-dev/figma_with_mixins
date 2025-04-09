@@ -34,6 +34,9 @@ abstract class AutoLayoutMixin {
   ///Applicable only on auto-layout frames. Determines whether strokes are included in layout calculations. When true, auto-layout frames behave like css box-sizing: border-box.
   bool? get strokesIncludedInLayout;
 
+  //Determines whether this layer should use wrapping auto-layout. Defaults to "NO_WRAP".
+  LayoutWrap? get layoutWrap;
+
   ///DEPRECATED
   /// The horizontal padding between the borders of the frame and its children.
   /// This property is only applicable for auto-layout frames.

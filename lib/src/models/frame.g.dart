@@ -122,6 +122,8 @@ abstract class _$FrameCWProxy {
 
   Frame layoutAlign(LayoutAlign? layoutAlign);
 
+  Frame layoutWrap(LayoutWrap? layoutWrap);
+
   Frame transitionNodeID(String? transitionNodeID);
 
   Frame transitionDuration(double? transitionDuration);
@@ -198,6 +200,7 @@ abstract class _$FrameCWProxy {
     MaskType? maskType,
     LayoutConstraint? constraints,
     LayoutAlign? layoutAlign,
+    LayoutWrap? layoutWrap,
     String? transitionNodeID,
     double? transitionDuration,
     List<List<double>>? relativeTransform,
@@ -413,6 +416,9 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
   Frame layoutAlign(LayoutAlign? layoutAlign) => this(layoutAlign: layoutAlign);
 
   @override
+  Frame layoutWrap(LayoutWrap? layoutWrap) => this(layoutWrap: layoutWrap);
+
+  @override
   Frame transitionNodeID(String? transitionNodeID) =>
       this(transitionNodeID: transitionNodeID);
 
@@ -499,6 +505,7 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
     Object? maskType = const $CopyWithPlaceholder(),
     Object? constraints = const $CopyWithPlaceholder(),
     Object? layoutAlign = const $CopyWithPlaceholder(),
+    Object? layoutWrap = const $CopyWithPlaceholder(),
     Object? transitionNodeID = const $CopyWithPlaceholder(),
     Object? transitionDuration = const $CopyWithPlaceholder(),
     Object? relativeTransform = const $CopyWithPlaceholder(),
@@ -765,6 +772,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.layoutAlign
           // ignore: cast_nullable_to_non_nullable
           : layoutAlign as LayoutAlign?,
+      layoutWrap: layoutWrap == const $CopyWithPlaceholder()
+          ? _value.layoutWrap
+          // ignore: cast_nullable_to_non_nullable
+          : layoutWrap as LayoutWrap?,
       transitionNodeID: transitionNodeID == const $CopyWithPlaceholder()
           ? _value.transitionNodeID
           // ignore: cast_nullable_to_non_nullable
@@ -918,6 +929,7 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
               json['constraints'] as Map<String, dynamic>),
       layoutAlign:
           $enumDecodeNullable(_$LayoutAlignEnumMap, json['layoutAlign']),
+      layoutWrap: $enumDecodeNullable(_$LayoutWrapEnumMap, json['layoutWrap']),
       transitionNodeID: json['transitionNodeID'] as String?,
       transitionDuration: (json['transitionDuration'] as num?)?.toDouble(),
       relativeTransform: (json['relativeTransform'] as List<dynamic>?)
@@ -967,6 +979,7 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'layoutGrow': instance.layoutGrow,
       'constraints': instance.constraints,
       'layoutAlign': _$LayoutAlignEnumMap[instance.layoutAlign],
+      'layoutWrap': _$LayoutWrapEnumMap[instance.layoutWrap],
       'transitionNodeID': instance.transitionNodeID,
       'transitionDuration': instance.transitionDuration,
       'opacity': instance.opacity,
@@ -1126,6 +1139,11 @@ const _$LayoutAlignEnumMap = {
   LayoutAlign.max: 'MAX',
   LayoutAlign.stretch: 'STRETCH',
   LayoutAlign.inherit: 'INHERIT',
+};
+
+const _$LayoutWrapEnumMap = {
+  LayoutWrap.noWrap: 'NO_WRAP',
+  LayoutWrap.wrap: 'WRAP',
 };
 
 const _$LayoutModeEnumMap = {

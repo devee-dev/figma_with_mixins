@@ -136,6 +136,10 @@ class Frame extends NodeWithChildren
   @override
   final LayoutAlign? layoutAlign;
 
+  //Determines whether this layer should use wrapping auto-layout. Defaults to "NO_WRAP".
+  @override
+  final LayoutWrap? layoutWrap;
+
   /// Node ID of node to transition to in prototyping.
   final String? transitionNodeID;
 
@@ -364,6 +368,7 @@ class Frame extends NodeWithChildren
     this.maskType,
     this.constraints,
     this.layoutAlign,
+    this.layoutWrap,
     this.transitionNodeID,
     this.transitionDuration,
     this.relativeTransform,
@@ -406,6 +411,7 @@ class Frame extends NodeWithChildren
         relativeTransform,
         clipsContent,
         layoutMode,
+        layoutWrap,
         primaryAxisSizingMode,
         primaryAxisAlignItems,
         counterAxisSizingMode,

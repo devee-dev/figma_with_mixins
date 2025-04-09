@@ -32,6 +32,7 @@ export 'models/group.dart';
 export 'models/stroke_weights.dart';
 export 'models/instance.dart';
 export 'models/layout_align.dart';
+export 'models/layout_wrap.dart';
 export 'models/layout_constraint.dart';
 export 'models/layout_grid.dart';
 export 'models/layout_mode.dart';
