@@ -116,6 +116,9 @@ class TypeStyle extends Equatable {
   /// Font family of text (standard name).
   final String? fontFamily;
 
+  /// Describes visual weight or emphasis, such as Bold or Italic.
+  final String? fontStyle;
+
   /// PostScript font name.
   final String? fontPostScriptName;
 
@@ -178,6 +181,7 @@ class TypeStyle extends Equatable {
 
   TypeStyle({
     this.fontFamily,
+    this.fontStyle,
     this.fontPostScriptName,
     this.paragraphSpacing,
     this.paragraphIndent,

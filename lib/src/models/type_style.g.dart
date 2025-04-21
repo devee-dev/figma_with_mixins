@@ -9,6 +9,8 @@ part of 'type_style.dart';
 abstract class _$TypeStyleCWProxy {
   TypeStyle fontFamily(String? fontFamily);
 
+  TypeStyle fontStyle(String? fontStyle);
+
   TypeStyle fontPostScriptName(String? fontPostScriptName);
 
   TypeStyle paragraphSpacing(num? paragraphSpacing);
@@ -53,6 +55,7 @@ abstract class _$TypeStyleCWProxy {
   /// ````
   TypeStyle call({
     String? fontFamily,
+    String? fontStyle,
     String? fontPostScriptName,
     num? paragraphSpacing,
     num? paragraphIndent,
@@ -82,6 +85,9 @@ class _$TypeStyleCWProxyImpl implements _$TypeStyleCWProxy {
 
   @override
   TypeStyle fontFamily(String? fontFamily) => this(fontFamily: fontFamily);
+
+  @override
+  TypeStyle fontStyle(String? fontStyle) => this(fontStyle: fontStyle);
 
   @override
   TypeStyle fontPostScriptName(String? fontPostScriptName) =>
@@ -159,6 +165,7 @@ class _$TypeStyleCWProxyImpl implements _$TypeStyleCWProxy {
   /// ````
   TypeStyle call({
     Object? fontFamily = const $CopyWithPlaceholder(),
+    Object? fontStyle = const $CopyWithPlaceholder(),
     Object? fontPostScriptName = const $CopyWithPlaceholder(),
     Object? paragraphSpacing = const $CopyWithPlaceholder(),
     Object? paragraphIndent = const $CopyWithPlaceholder(),
@@ -183,6 +190,10 @@ class _$TypeStyleCWProxyImpl implements _$TypeStyleCWProxy {
           ? _value.fontFamily
           // ignore: cast_nullable_to_non_nullable
           : fontFamily as String?,
+      fontStyle: fontStyle == const $CopyWithPlaceholder()
+          ? _value.fontStyle
+          // ignore: cast_nullable_to_non_nullable
+          : fontStyle as String?,
       fontPostScriptName: fontPostScriptName == const $CopyWithPlaceholder()
           ? _value.fontPostScriptName
           // ignore: cast_nullable_to_non_nullable
@@ -272,6 +283,7 @@ extension $TypeStyleCopyWith on TypeStyle {
 
 TypeStyle _$TypeStyleFromJson(Map<String, dynamic> json) => TypeStyle(
       fontFamily: json['fontFamily'] as String?,
+      fontStyle: json['fontStyle'] as String?,
       fontPostScriptName: json['fontPostScriptName'] as String?,
       paragraphSpacing: json['paragraphSpacing'] as num?,
       paragraphIndent: json['paragraphIndent'] as num?,
@@ -303,6 +315,7 @@ TypeStyle _$TypeStyleFromJson(Map<String, dynamic> json) => TypeStyle(
 
 Map<String, dynamic> _$TypeStyleToJson(TypeStyle instance) => <String, dynamic>{
       'fontFamily': instance.fontFamily,
+      'fontStyle': instance.fontStyle,
       'fontPostScriptName': instance.fontPostScriptName,
       'paragraphSpacing': instance.paragraphSpacing,
       'paragraphIndent': instance.paragraphIndent,
