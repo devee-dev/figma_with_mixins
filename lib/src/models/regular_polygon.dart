@@ -49,6 +49,7 @@ class RegularPolygon extends Vector {
     super.absoluteRenderBounds,
     super.fillOverrideTable,
     super.individualStrokeWeights,
+    super.annotations,
   });
 
   factory RegularPolygon.fromJson(Map<String, dynamic> json) =>

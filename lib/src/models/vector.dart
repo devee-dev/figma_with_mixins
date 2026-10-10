@@ -231,6 +231,7 @@ class Vector extends Node
     this.absoluteRenderBounds,
     this.fillOverrideTable,
     this.maskType,
+    super.annotations,
   });
 
   @override

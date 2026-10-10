@@ -8,7 +8,6 @@ part 'component_set.g.dart';
 @JsonSerializable()
 @CopyWith()
 class ComponentSet extends Component {
-
   ComponentSet({
     super.key,
     super.fileKey,
@@ -23,7 +22,6 @@ class ComponentSet extends Component {
     super.containingPage,
     required super.componentPropertyDefinitions,
   });
-
 
   factory ComponentSet.fromJson(Map<String, dynamic> json) =>
       _$ComponentSetFromJson(json);

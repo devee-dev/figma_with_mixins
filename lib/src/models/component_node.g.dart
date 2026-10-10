@@ -127,6 +127,8 @@ abstract class _$ComponentNodeCWProxy {
   ComponentNode layoutSizingVertical(
       AutoLayoutSizingMode? layoutSizingVertical);
 
+  ComponentNode annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ComponentNode(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -190,6 +192,7 @@ abstract class _$ComponentNodeCWProxy {
     StrokeWeights? individualStrokeWeights,
     AutoLayoutSizingMode? layoutSizingHorizontal,
     AutoLayoutSizingMode? layoutSizingVertical,
+    List<Annotation>? annotations,
   });
 }
 
@@ -416,6 +419,10 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
       this(layoutSizingVertical: layoutSizingVertical);
 
   @override
+  ComponentNode annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ComponentNode(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -480,6 +487,7 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
     Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
     Object? layoutSizingVertical = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return ComponentNode(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -739,6 +747,10 @@ class _$ComponentNodeCWProxyImpl implements _$ComponentNodeCWProxy {
           ? _value.layoutSizingVertical
           // ignore: cast_nullable_to_non_nullable
           : layoutSizingVertical as AutoLayoutSizingMode?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -880,6 +892,9 @@ ComponentNode _$ComponentNodeFromJson(Map<String, dynamic> json) =>
           _$AutoLayoutSizingModeEnumMap, json['layoutSizingHorizontal']),
       layoutSizingVertical: $enumDecodeNullable(
           _$AutoLayoutSizingModeEnumMap, json['layoutSizingVertical']),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ComponentNodeToJson(ComponentNode instance) =>
@@ -891,6 +906,7 @@ Map<String, dynamic> _$ComponentNodeToJson(ComponentNode instance) =>
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),

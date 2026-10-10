@@ -50,6 +50,7 @@ class Star extends Vector {
     super.absoluteRenderBounds,
     super.fillOverrideTable,
     super.individualStrokeWeights,
+    super.annotations,
   });
 
   factory Star.fromJson(Map<String, dynamic> json) => _$StarFromJson(json);

@@ -18,6 +18,7 @@ class NodeWithChildren extends Node {
       required super.type,
       required super.visible,
       this.children,
+      super.annotations,
       super.componentPropertyReferences});
 
   @override

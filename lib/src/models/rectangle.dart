@@ -68,6 +68,7 @@ class Rectangle extends Vector implements RectangleCornerMixin {
     this.cornerRadius,
     this.cornerSmoothing,
     this.rectangleCornerRadii,
+    super.annotations,
   });
 
   @override

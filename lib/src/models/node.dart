@@ -34,6 +34,7 @@ class Node extends Equatable {
 
   /// The rotation of the node, if not 0.
   final double? rotation;
+  final List<Annotation>? annotations;
 
   /// A mapping of a layer's property to component property name of component
   /// properties attached to this node. The component property name can be used
@@ -50,6 +51,7 @@ class Node extends Equatable {
     this.sharedPluginData,
     this.rotation,
     this.componentPropertyReferences,
+    this.annotations,
   });
 
   @override

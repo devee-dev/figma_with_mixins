@@ -90,6 +90,8 @@ abstract class _$StarCWProxy {
 
   Star individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
+  Star annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Star(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -138,6 +140,7 @@ abstract class _$StarCWProxy {
     SizeRectangle? absoluteRenderBounds,
     Map<int, PaintOverride?>? fillOverrideTable,
     StrokeWeights? individualStrokeWeights,
+    List<Annotation>? annotations,
   });
 }
 
@@ -291,6 +294,10 @@ class _$StarCWProxyImpl implements _$StarCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
+  Star annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Star(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -340,6 +347,7 @@ class _$StarCWProxyImpl implements _$StarCWProxy {
     Object? absoluteRenderBounds = const $CopyWithPlaceholder(),
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Star(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -518,6 +526,10 @@ class _$StarCWProxyImpl implements _$StarCWProxy {
               ? _value.individualStrokeWeights
               // ignore: cast_nullable_to_non_nullable
               : individualStrokeWeights as StrokeWeights?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -628,6 +640,9 @@ Star _$StarFromJson(Map<String, dynamic> json) => Star(
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$StarToJson(Star instance) => <String, dynamic>{
@@ -638,6 +653,7 @@ Map<String, dynamic> _$StarToJson(Star instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

@@ -90,6 +90,8 @@ abstract class _$LineCWProxy {
 
   Line individualStrokeWeights(StrokeWeights? individualStrokeWeights);
 
+  Line annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Line(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -138,6 +140,7 @@ abstract class _$LineCWProxy {
     SizeRectangle? absoluteRenderBounds,
     Map<int, PaintOverride?>? fillOverrideTable,
     StrokeWeights? individualStrokeWeights,
+    List<Annotation>? annotations,
   });
 }
 
@@ -291,6 +294,10 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
       this(individualStrokeWeights: individualStrokeWeights);
 
   @override
+  Line annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Line(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -340,6 +347,7 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
     Object? absoluteRenderBounds = const $CopyWithPlaceholder(),
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Line(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -518,6 +526,10 @@ class _$LineCWProxyImpl implements _$LineCWProxy {
               ? _value.individualStrokeWeights
               // ignore: cast_nullable_to_non_nullable
               : individualStrokeWeights as StrokeWeights?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -628,6 +640,9 @@ Line _$LineFromJson(Map<String, dynamic> json) => Line(
           ? null
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$LineToJson(Line instance) => <String, dynamic>{
@@ -638,6 +653,7 @@ Map<String, dynamic> _$LineToJson(Line instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

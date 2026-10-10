@@ -75,6 +75,7 @@ class BooleanOperation extends Vector implements NodeWithChildren {
     super.individualStrokeWeights,
     this.children,
     this.booleanOperation,
+    super.annotations,
   });
 
   @override

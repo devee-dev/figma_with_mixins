@@ -98,6 +98,8 @@ abstract class _$BooleanOperationCWProxy {
 
   BooleanOperation booleanOperation(Operation? booleanOperation);
 
+  BooleanOperation annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BooleanOperation(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -148,6 +150,7 @@ abstract class _$BooleanOperationCWProxy {
     StrokeWeights? individualStrokeWeights,
     List<Node?>? children,
     Operation? booleanOperation,
+    List<Annotation>? annotations,
   });
 }
 
@@ -321,6 +324,10 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
       this(booleanOperation: booleanOperation);
 
   @override
+  BooleanOperation annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BooleanOperation(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -372,6 +379,7 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
     Object? children = const $CopyWithPlaceholder(),
     Object? booleanOperation = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return BooleanOperation(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -558,6 +566,10 @@ class _$BooleanOperationCWProxyImpl implements _$BooleanOperationCWProxy {
           ? _value.booleanOperation
           // ignore: cast_nullable_to_non_nullable
           : booleanOperation as Operation?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -674,6 +686,9 @@ BooleanOperation _$BooleanOperationFromJson(Map<String, dynamic> json) =>
           .toList(),
       booleanOperation:
           $enumDecodeNullable(_$OperationEnumMap, json['booleanOperation']),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
@@ -685,6 +700,7 @@ Map<String, dynamic> _$BooleanOperationToJson(BooleanOperation instance) =>
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

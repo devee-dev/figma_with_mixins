@@ -92,6 +92,8 @@ abstract class _$EllipseCWProxy {
 
   Ellipse arcData(ArcData arcData);
 
+  Ellipse annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Ellipse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -141,6 +143,7 @@ abstract class _$EllipseCWProxy {
     Map<int, PaintOverride?>? fillOverrideTable,
     StrokeWeights? individualStrokeWeights,
     ArcData? arcData,
+    List<Annotation>? annotations,
   });
 }
 
@@ -302,6 +305,10 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
   Ellipse arcData(ArcData arcData) => this(arcData: arcData);
 
   @override
+  Ellipse annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Ellipse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -352,6 +359,7 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? individualStrokeWeights = const $CopyWithPlaceholder(),
     Object? arcData = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Ellipse(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -534,6 +542,10 @@ class _$EllipseCWProxyImpl implements _$EllipseCWProxy {
           ? _value.arcData
           // ignore: cast_nullable_to_non_nullable
           : arcData as ArcData,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -645,6 +657,9 @@ Ellipse _$EllipseFromJson(Map<String, dynamic> json) => Ellipse(
           : StrokeWeights.fromJson(
               json['individualStrokeWeights'] as Map<String, dynamic>),
       arcData: ArcData.fromJson(json['arcData'] as Map<String, dynamic>),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$EllipseToJson(Ellipse instance) => <String, dynamic>{
@@ -655,6 +670,7 @@ Map<String, dynamic> _$EllipseToJson(Ellipse instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

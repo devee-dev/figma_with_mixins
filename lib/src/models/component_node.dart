@@ -66,7 +66,8 @@ class ComponentNode extends Frame {
     super.layoutMode,
     super.individualStrokeWeights,
     super.layoutSizingHorizontal,
-    super.layoutSizingVertical
+    super.layoutSizingVertical,
+    super.annotations,
   });
 
   /// A mapping of name to ComponentPropertyDefinition for every component

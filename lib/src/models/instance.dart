@@ -70,6 +70,7 @@ class Instance extends Frame {
     super.strokeMiterAngle,
     super.strokeGeometry,
     super.fillGeometry,
+    super.annotations,
     required this.isExposedInstance,
     required this.exposedInstances,
     required this.componentProperties,

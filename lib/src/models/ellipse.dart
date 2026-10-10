@@ -51,6 +51,7 @@ class Ellipse extends Vector {
     super.fillOverrideTable,
     super.individualStrokeWeights,
     required this.arcData,
+    super.annotations,
   });
 
   /// Start and end angles of the ellipse measured clockwise from the x axis,

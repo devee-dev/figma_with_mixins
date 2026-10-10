@@ -92,6 +92,8 @@ abstract class _$VectorCWProxy {
 
   Vector maskType(MaskType? maskType);
 
+  Vector annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Vector(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -141,6 +143,7 @@ abstract class _$VectorCWProxy {
     SizeRectangle? absoluteRenderBounds,
     Map<int, PaintOverride?>? fillOverrideTable,
     MaskType? maskType,
+    List<Annotation>? annotations,
   });
 }
 
@@ -300,6 +303,10 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
   Vector maskType(MaskType? maskType) => this(maskType: maskType);
 
   @override
+  Vector annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Vector(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -350,6 +357,7 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
     Object? absoluteRenderBounds = const $CopyWithPlaceholder(),
     Object? fillOverrideTable = const $CopyWithPlaceholder(),
     Object? maskType = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Vector(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -532,6 +540,10 @@ class _$VectorCWProxyImpl implements _$VectorCWProxy {
           ? _value.maskType
           // ignore: cast_nullable_to_non_nullable
           : maskType as MaskType?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -643,6 +655,9 @@ Vector _$VectorFromJson(Map<String, dynamic> json) => Vector(
                 : PaintOverride.fromJson(e as Map<String, dynamic>)),
       ),
       maskType: $enumDecodeNullable(_$MaskTypeEnumMap, json['maskType']),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
@@ -653,6 +668,7 @@ Map<String, dynamic> _$VectorToJson(Vector instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

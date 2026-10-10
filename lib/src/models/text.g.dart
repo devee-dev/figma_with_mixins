@@ -102,6 +102,8 @@ abstract class _$TextCWProxy {
 
   Text lineIndentations(List<int>? lineIndentations);
 
+  Text annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Text(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -156,6 +158,7 @@ abstract class _$TextCWProxy {
     Map<int, TypeStyle>? styleOverrideTable,
     List<LineType>? lineTypes,
     List<int>? lineIndentations,
+    List<Annotation>? annotations,
   });
 }
 
@@ -330,6 +333,10 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
       this(lineIndentations: lineIndentations);
 
   @override
+  Text annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Text(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -385,6 +392,7 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
     Object? styleOverrideTable = const $CopyWithPlaceholder(),
     Object? lineTypes = const $CopyWithPlaceholder(),
     Object? lineIndentations = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Text(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -588,6 +596,10 @@ class _$TextCWProxyImpl implements _$TextCWProxy {
           ? _value.lineIndentations
           // ignore: cast_nullable_to_non_nullable
           : lineIndentations as List<int>?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -717,6 +729,9 @@ Text _$TextFromJson(Map<String, dynamic> json) => Text(
       lineIndentations: (json['lineIndentations'] as List<dynamic>?)
           ?.map((e) => (e as num).toInt())
           .toList(),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$TextToJson(Text instance) => <String, dynamic>{
@@ -727,6 +742,7 @@ Map<String, dynamic> _$TextToJson(Text instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

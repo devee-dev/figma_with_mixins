@@ -24,6 +24,8 @@ abstract class _$NodeCWProxy {
   Node componentPropertyReferences(
       Map<String, String>? componentPropertyReferences);
 
+  Node annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Node(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -39,6 +41,7 @@ abstract class _$NodeCWProxy {
     dynamic sharedPluginData,
     double? rotation,
     Map<String, String>? componentPropertyReferences,
+    List<Annotation>? annotations,
   });
 }
 
@@ -76,6 +79,10 @@ class _$NodeCWProxyImpl implements _$NodeCWProxy {
       this(componentPropertyReferences: componentPropertyReferences);
 
   @override
+  Node annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Node(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -92,6 +99,7 @@ class _$NodeCWProxyImpl implements _$NodeCWProxy {
     Object? sharedPluginData = const $CopyWithPlaceholder(),
     Object? rotation = const $CopyWithPlaceholder(),
     Object? componentPropertyReferences = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Node(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -129,6 +137,10 @@ class _$NodeCWProxyImpl implements _$NodeCWProxy {
               ? _value.componentPropertyReferences
               // ignore: cast_nullable_to_non_nullable
               : componentPropertyReferences as Map<String, String>?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -155,6 +167,9 @@ Node _$NodeFromJson(Map<String, dynamic> json) => Node(
           (json['componentPropertyReferences'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, e as String),
       ),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$NodeToJson(Node instance) => <String, dynamic>{
@@ -165,6 +180,7 @@ Map<String, dynamic> _$NodeToJson(Node instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
     };
 

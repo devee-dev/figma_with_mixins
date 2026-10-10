@@ -130,6 +130,8 @@ abstract class _$InstanceCWProxy {
 
   Instance fillGeometry(List<dynamic>? fillGeometry);
 
+  Instance annotations(List<Annotation>? annotations);
+
   Instance isExposedInstance(bool isExposedInstance);
 
   Instance exposedInstances(List<String> exposedInstances);
@@ -212,6 +214,7 @@ abstract class _$InstanceCWProxy {
     double? strokeMiterAngle,
     List<dynamic>? strokeGeometry,
     List<dynamic>? fillGeometry,
+    List<Annotation>? annotations,
     bool? isExposedInstance,
     List<String>? exposedInstances,
     Map<String, ComponentProperty>? componentProperties,
@@ -450,6 +453,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
       this(fillGeometry: fillGeometry);
 
   @override
+  Instance annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
   Instance isExposedInstance(bool isExposedInstance) =>
       this(isExposedInstance: isExposedInstance);
 
@@ -544,6 +551,7 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
     Object? strokeMiterAngle = const $CopyWithPlaceholder(),
     Object? strokeGeometry = const $CopyWithPlaceholder(),
     Object? fillGeometry = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
     Object? isExposedInstance = const $CopyWithPlaceholder(),
     Object? exposedInstances = const $CopyWithPlaceholder(),
     Object? componentProperties = const $CopyWithPlaceholder(),
@@ -826,6 +834,10 @@ class _$InstanceCWProxyImpl implements _$InstanceCWProxy {
           ? _value.fillGeometry
           // ignore: cast_nullable_to_non_nullable
           : fillGeometry as List<dynamic>?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
       isExposedInstance: isExposedInstance == const $CopyWithPlaceholder() ||
               isExposedInstance == null
           ? _value.isExposedInstance
@@ -995,6 +1007,9 @@ Instance _$InstanceFromJson(Map<String, dynamic> json) => Instance(
       strokeMiterAngle: (json['strokeMiterAngle'] as num?)?.toDouble(),
       strokeGeometry: json['strokeGeometry'] as List<dynamic>?,
       fillGeometry: json['fillGeometry'] as List<dynamic>?,
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
       isExposedInstance: json['isExposedInstance'] as bool? ?? false,
       exposedInstances: (json['exposedInstances'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -1028,6 +1043,7 @@ Map<String, dynamic> _$InstanceToJson(Instance instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),

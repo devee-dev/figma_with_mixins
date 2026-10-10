@@ -22,6 +22,8 @@ abstract class _$FrameCWProxy {
 
   Frame sharedPluginData(dynamic sharedPluginData);
 
+  Frame annotations(List<Annotation>? annotations);
+
   Frame devStatus(DevStatus? devStatus);
 
   Frame layoutSizingHorizontal(AutoLayoutSizingMode? layoutSizingHorizontal);
@@ -150,6 +152,7 @@ abstract class _$FrameCWProxy {
     double? rotation,
     dynamic pluginData,
     dynamic sharedPluginData,
+    List<Annotation>? annotations,
     DevStatus? devStatus,
     AutoLayoutSizingMode? layoutSizingHorizontal,
     AutoLayoutSizingMode? layoutSizingVertical,
@@ -239,6 +242,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
   @override
   Frame sharedPluginData(dynamic sharedPluginData) =>
       this(sharedPluginData: sharedPluginData);
+
+  @override
+  Frame annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
 
   @override
   Frame devStatus(DevStatus? devStatus) => this(devStatus: devStatus);
@@ -455,6 +462,7 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
     Object? rotation = const $CopyWithPlaceholder(),
     Object? pluginData = const $CopyWithPlaceholder(),
     Object? sharedPluginData = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
     Object? devStatus = const $CopyWithPlaceholder(),
     Object? layoutSizingHorizontal = const $CopyWithPlaceholder(),
     Object? layoutSizingVertical = const $CopyWithPlaceholder(),
@@ -545,6 +553,10 @@ class _$FrameCWProxyImpl implements _$FrameCWProxy {
           ? _value.sharedPluginData
           // ignore: cast_nullable_to_non_nullable
           : sharedPluginData as dynamic,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
       devStatus: devStatus == const $CopyWithPlaceholder()
           ? _value.devStatus
           // ignore: cast_nullable_to_non_nullable
@@ -825,6 +837,9 @@ Frame _$FrameFromJson(Map<String, dynamic> json) => Frame(
       rotation: (json['rotation'] as num?)?.toDouble(),
       pluginData: json['pluginData'],
       sharedPluginData: json['sharedPluginData'],
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
       devStatus: json['devStatus'] == null
           ? null
           : DevStatus.fromJson(json['devStatus'] as Map<String, dynamic>),
@@ -953,6 +968,7 @@ Map<String, dynamic> _$FrameToJson(Frame instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'children':
           instance.children?.map(const NodeJsonConverter().toJson).toList(),

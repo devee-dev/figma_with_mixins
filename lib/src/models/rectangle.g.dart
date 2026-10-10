@@ -99,6 +99,8 @@ abstract class _$RectangleCWProxy {
 
   Rectangle rectangleCornerRadii(List<double>? rectangleCornerRadii);
 
+  Rectangle annotations(List<Annotation>? annotations);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Rectangle(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -151,6 +153,7 @@ abstract class _$RectangleCWProxy {
     double? cornerRadius,
     double? cornerSmoothing,
     List<double>? rectangleCornerRadii,
+    List<Annotation>? annotations,
   });
 }
 
@@ -324,6 +327,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
       this(rectangleCornerRadii: rectangleCornerRadii);
 
   @override
+  Rectangle annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Rectangle(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -377,6 +384,7 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
     Object? cornerRadius = const $CopyWithPlaceholder(),
     Object? cornerSmoothing = const $CopyWithPlaceholder(),
     Object? rectangleCornerRadii = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
   }) {
     return Rectangle(
       id: id == const $CopyWithPlaceholder() || id == null
@@ -571,6 +579,10 @@ class _$RectangleCWProxyImpl implements _$RectangleCWProxy {
           ? _value.rectangleCornerRadii
           // ignore: cast_nullable_to_non_nullable
           : rectangleCornerRadii as List<double>?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
     );
   }
 }
@@ -687,6 +699,9 @@ Rectangle _$RectangleFromJson(Map<String, dynamic> json) => Rectangle(
       rectangleCornerRadii: (json['rectangleCornerRadii'] as List<dynamic>?)
           ?.map((e) => (e as num).toDouble())
           .toList(),
+      annotations: (json['annotations'] as List<dynamic>?)
+          ?.map((e) => Annotation.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$RectangleToJson(Rectangle instance) => <String, dynamic>{
@@ -697,6 +712,7 @@ Map<String, dynamic> _$RectangleToJson(Rectangle instance) => <String, dynamic>{
       'pluginData': instance.pluginData,
       'sharedPluginData': instance.sharedPluginData,
       'rotation': instance.rotation,
+      'annotations': instance.annotations,
       'componentPropertyReferences': instance.componentPropertyReferences,
       'locked': instance.locked,
       'exportSettings': instance.exportSettings,

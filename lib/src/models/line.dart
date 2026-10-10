@@ -49,6 +49,7 @@ class Line extends Vector {
     super.absoluteRenderBounds,
     super.fillOverrideTable,
     super.individualStrokeWeights,
+    super.annotations,
   });
 
   factory Line.fromJson(Map<String, dynamic> json) => _$LineFromJson(json);

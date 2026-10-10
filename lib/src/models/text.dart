@@ -97,6 +97,7 @@ class Text extends Vector {
     this.styleOverrideTable,
     this.lineTypes,
     this.lineIndentations,
+    super.annotations,
   });
 
   @override

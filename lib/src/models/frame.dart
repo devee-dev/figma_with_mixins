@@ -318,6 +318,7 @@ class Frame extends NodeWithChildren
     super.rotation,
     super.pluginData,
     super.sharedPluginData,
+    super.annotations,
     this.devStatus,
     this.layoutSizingHorizontal,
     this.layoutSizingVertical,

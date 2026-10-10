@@ -23,6 +23,8 @@ abstract class _$NodeWithChildrenCWProxy {
 
   NodeWithChildren children(List<Node?>? children);
 
+  NodeWithChildren annotations(List<Annotation>? annotations);
+
   NodeWithChildren componentPropertyReferences(
       Map<String, String>? componentPropertyReferences);
 
@@ -41,6 +43,7 @@ abstract class _$NodeWithChildrenCWProxy {
     NodeTypes? type,
     bool? visible,
     List<Node?>? children,
+    List<Annotation>? annotations,
     Map<String, String>? componentPropertyReferences,
   });
 }
@@ -78,6 +81,10 @@ class _$NodeWithChildrenCWProxyImpl implements _$NodeWithChildrenCWProxy {
   NodeWithChildren children(List<Node?>? children) => this(children: children);
 
   @override
+  NodeWithChildren annotations(List<Annotation>? annotations) =>
+      this(annotations: annotations);
+
+  @override
   NodeWithChildren componentPropertyReferences(
           Map<String, String>? componentPropertyReferences) =>
       this(componentPropertyReferences: componentPropertyReferences);
@@ -99,6 +106,7 @@ class _$NodeWithChildrenCWProxyImpl implements _$NodeWithChildrenCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? visible = const $CopyWithPlaceholder(),
     Object? children = const $CopyWithPlaceholder(),
+    Object? annotations = const $CopyWithPlaceholder(),
     Object? componentPropertyReferences = const $CopyWithPlaceholder(),
   }) {
     return NodeWithChildren(
@@ -136,6 +144,10 @@ class _$NodeWithChildrenCWProxyImpl implements _$NodeWithChildrenCWProxy {
           ? _value.children
           // ignore: cast_nullable_to_non_nullable
           : children as List<Node?>?,
+      annotations: annotations == const $CopyWithPlaceholder()
+          ? _value.annotations
+          // ignore: cast_nullable_to_non_nullable
+          : annotations as List<Annotation>?,
       componentPropertyReferences:
           componentPropertyReferences == const $CopyWithPlaceholder()
               ? _value.componentPropertyReferences
